@@ -4,7 +4,7 @@ server:
 spring:
   datasource:
     # driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:postgresql://RfAVV1LEZsQMmj8i2UBnLoZVLhzF2dHc@dpg-cjsttpe3m8ac7391hrjg-a:5432/house_j42q
+    url: jdbc:postgresql://dpg-cjsttpe3m8ac7391hrjg-a:5432/house_j42q
     username: houseuser
     password: RfAVV1LEZsQMmj8i2UBnLoZVLhzF2dHc
   jpa:
