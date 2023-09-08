@@ -3,7 +3,7 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 FROM openjdk:17.0.1-jdk-slim
-ARG JAR_FILE
+ARG JAR_FILE=target/house.jar 
 COPY ${JAR_FILE} house.jar
 EXPOSE 9090
 ENTRYPOINT ["java","-jar","house.jar"]
