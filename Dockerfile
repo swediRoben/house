@@ -1,7 +1,6 @@
 FROM maven:3.6.0-jdk-11-slim AS build
-COPY src /house/src
-COPY pom.xml /house/ 
-RUN mvn -f /house/pom.xml clean package
+COPY src /house/src 
+RUN mvn clean install
 
 #
 # Package stage
