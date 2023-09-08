@@ -1,6 +1,6 @@
 FROM maven:3.6.0-jdk-11-slim AS build
-COPY src /house/src 
-RUN mvn clean install
+COPY ..
+RUN mvn clean package -DskipTests
 
 #
 # Package stage
