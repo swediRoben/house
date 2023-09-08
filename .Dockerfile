@@ -1,5 +1,8 @@
-FROM openjdk:17-alpine
-VOLUME /tmp 
-COPY ${JAR_FILE} app.jar
+FROM maven:3.8.5-openjdk-17 AS build
+COPY . .
+RUN mvn clean package -DskipTests
+
+FROM openjdk:17.0.1-jdk-slim
+COPY --from=build /target/nom_app.jar nom_projet.jar
 EXPOSE 9090
-ENTRYPOINT ["java","-jar","/app.jar"]
+ENTRYPOINT ["java","-jar","nom_projet.jar"]
