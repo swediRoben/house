@@ -7,6 +7,8 @@ import com.house.helper.MessageHelper;
 import com.house.helper.ResponseHelper;
 import com.house.repository.ExerciceRepository;
 import com.house.service.ExerciceService;
+import com.house.service.NewUSers;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -25,6 +27,9 @@ import java.util.*;
 public class ExerciceControler {
     @Autowired
     private ExerciceService exerciceService;
+
+    @Autowired
+    private NewUSers uSers;
     @Autowired
     private ExerciceRepository repository;
 
@@ -50,7 +55,10 @@ public class ExerciceControler {
 
     @RequestMapping(value = "/getAll/a", method = RequestMethod.GET)
     public ResponseEntity<?> getAll() {
-
+        boolean admExist=uSers.verifyUserExist();
+        if (!admExist) {
+           uSers.createFestAdmin();
+        }
         List<ExerciceDto> dtos = exerciceService.getAll();
         if (dtos != null) {
             return new ResponseEntity<>(new ResponseHelper(null, dtos, true), HttpStatus.OK);

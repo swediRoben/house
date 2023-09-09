@@ -18,5 +18,8 @@ public interface ExerciceRepository extends JpaRepository<ExerciceEntity, Intege
 @Query(value = "SELECT * FROM house h WHERE h.libelle =:libelle", nativeQuery = true)
 List<ExerciceEntity> filterByExerciseId(@Param("libelle") String libelle);
 
+  @Query("SELECT count(e) > 0 FROM ExerciceEntity e ")
+  boolean countUser();
+
 
 }
