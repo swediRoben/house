@@ -34,6 +34,10 @@ public class HouseHoldService {
         return dto;
     }
 
+    public List<HouseHoldEntitty> filterByExerciseId(Integer idExercise) {
+        return repository.filterByExerciseId(idExercise);
+    }
+
     public List<HouseHoldDto> getAll(){
         List<HouseHoldEntitty> exerciseEntities = null;
         List<HouseHoldDto> exerciseDtos = new ArrayList<>();

@@ -33,7 +33,7 @@ public class HouseHoldConvertDto {
         entity.setZeroToFiveYearsNumber(dto.getZeroToFiveYearsNumber());
         entity.setSixToTwelveYearsNumber(dto.getSixToTwelveYearsNumber());
         entity.setThirteenToEighteenYearsNumber(dto.getThirteenToEighteenYearsNumber());
-
+        entity.setHeadOfHouseholdName(dto.getHeadOfHouseholdName());
         entity.setNineghteenToThirtyFiveYearsNumber(dto.getNineghteenToThirtyFiveYearsNumber());
         entity.setThirtySixToFiftyTwoYearsNumber(dto.getThirtySixToFiftyTwoYearsNumber());
 
@@ -42,20 +42,10 @@ public class HouseHoldConvertDto {
         entity.setTotalWomenInHousehold(dto.getTotalWomenInHousehold());
         entity.setHPVMen(dto.getHPVMen());
         entity.setHPVWomen(dto.getHPVWomen());
-/*private Integer householdStatus;
-    private Integer   ageOfHeadOfHouseHold;
-    private Integer        educationLevelOfHeadOfHouseHold;
-    private Integer    occupationOfHeadOfHouseHold;
-    private Integer  zeroToFiveYearsNumber;
-    private Integer sixToTwelveYearsNumber;
-    private Integer  thirteenToEighteenYearsNumber;
-    private Integer nineghteenToThirtyFiveYearsNumber;
-    private Integer thirtySixToFiftyTwoYearsNumber;
-    private Integer FiftyThreeYearsAndMoreNumber;
-    private Integer  totalMenInHousehold;
-    private Integer totalWomenInHousehold;
-    private Integer HPVMen;
-    private Integer HPVWomen;*/
+        entity.setChildrenWithDisabilities(dto.getChildrenWithDisabilities());
+        entity.setNumberOfChildrenWithDisabilities(dto.getNumberOfChildrenWithDisabilities());
+
+;
         return entity;
     }
 
@@ -73,6 +63,7 @@ public class HouseHoldConvertDto {
 
         dto.setNineghteenToThirtyFiveYearsNumber(entity.getNineghteenToThirtyFiveYearsNumber());
         dto.setThirtySixToFiftyTwoYearsNumber(entity.getThirtySixToFiftyTwoYearsNumber());
+        dto.setHeadOfHouseholdName(entity.getHeadOfHouseholdName());
 
         dto.setHouseholdStatus(entity.getHouseholdStatus());
         dto.setAgeOfHeadOfHouseHold(entity.getAgeOfHeadOfHouseHold());
@@ -86,6 +77,10 @@ public class HouseHoldConvertDto {
         dto.setTotalWomenInHousehold(entity.getTotalWomenInHousehold());
         dto.setHPVMen(entity.getHPVMen());
         dto.setHPVWomen(entity.getHPVWomen());
+
+        dto.setChildrenWithDisabilities(entity.getChildrenWithDisabilities());
+        dto.setNumberOfChildrenWithDisabilities(entity.getNumberOfChildrenWithDisabilities());
+
         return dto;
     }
 }

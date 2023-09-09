@@ -18,25 +18,41 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
+@CrossOrigin(origins = "*")
 @RestController
+@RequestMapping("/users")
 public class UserController {
 @Autowired
-private UserService exerciceService;
+private UserService userService;
 @Autowired
 private UserRepository repository;
 
+    private  AuthenticationManager authenticationManager;
 @RequestMapping(value = "/getAll/a", method = RequestMethod.GET)
 public ResponseEntity<?> getAll() {
 
-List<UserDto> dtos = exerciceService.getAll();
+List<UserDto> dtos = userService.getAll();
 if (dtos != null) {
 return new ResponseEntity<>(new ResponseHelper(null, dtos, true), HttpStatus.OK);
 }
 return new ResponseEntity<>(new ResponseHelper(MessageHelper.noContent()), HttpStatus.NO_CONTENT);
 }
+
+//@RequestMapping("/login")
+//ResponseEntity<?> login(@RequestParam(value = "username", required = true) String username,
+//                        @RequestParam(value = "password", required = true) String password){
+//    List<UserDto> dtos = userService.getAllByUsernameAndPassword(username, password);
+//
+//    if (dtos != null){
+//        return new ResponseEntity<>(new ResponseHelper(dtos, true), HttpStatus.OK);
+//    }
+//    return new ResponseEntity<>(new ResponseHelper(MessageHelper.noContent()), HttpStatus.OK);
+//}
 
 @GetMapping("/")
 public ResponseEntity<Map<String, Object>> getAllTutorialsPage(
@@ -83,7 +99,7 @@ return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 
 @RequestMapping(value = "/{id}", method = RequestMethod.GET)
 public ResponseEntity<?> getById(@PathVariable(name = "id") Integer id) {
-UserDto dto = exerciceService.getByIdm(id);
+UserDto dto = userService.getByIdm(id);
 
 if (dto != null) {
 return new ResponseEntity<>(new ResponseHelper(null, dto, true), HttpStatus.OK);
@@ -93,10 +109,15 @@ return new ResponseEntity<>(new ResponseHelper(MessageHelper.noContent()), HttpS
 
 @PostMapping("/")
 public ResponseEntity<?> create(@RequestBody UserDto dto) {
-UserDto userDto = exerciceService.createm(dto);
+
+    if (repository.existsByUsername(dto.getUsername()))
+            return new ResponseEntity<>(new ResponseHelper(MessageHelper.dataExist("username"), false),
+                    HttpStatus.BAD_REQUEST);
+
+UserDto userDto = userService.create1(dto);
 
 if (userDto != null) {
-return new ResponseEntity<>(new ResponseHelper(null, userDto, true), HttpStatus.OK);
+return new ResponseEntity<>(new ResponseHelper("sucess", true), HttpStatus.OK);
 }
 return new ResponseEntity<>(new ResponseHelper(MessageHelper.noContent()), HttpStatus.NO_CONTENT);
 }
@@ -104,19 +125,19 @@ return new ResponseEntity<>(new ResponseHelper(MessageHelper.noContent()), HttpS
 @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 public ResponseEntity<?> update(@RequestBody UserDto dto,
                                 @PathVariable(name = "id", required = true) Integer id) {
-UserDto userDto = exerciceService.updatem(id, dto);
+UserDto userDto = userService.updatem(id, dto);
 if (userDto != null) {
-return new ResponseEntity<>(new ResponseHelper(null, userDto, true), HttpStatus.OK);
+return new ResponseEntity<>(new ResponseHelper("sucess", true), HttpStatus.OK);
 }
 return new ResponseEntity<>(new ResponseHelper(MessageHelper.noContent()), HttpStatus.OK);
 }
 
 @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 public ResponseEntity<?> deleteById(@PathVariable(name = "id") Integer id) {
-boolean dto = exerciceService.deleteByIdm(id);
+boolean dto = userService.deleteByIdm(id);
 
 if (dto) {
-return new ResponseEntity<>(new ResponseHelper(null, dto, true), HttpStatus.OK);
+return new ResponseEntity<>(new ResponseHelper("sucess", true), HttpStatus.OK);
 }
 return new ResponseEntity<>(new ResponseHelper(MessageHelper.noContent()), HttpStatus.NO_CONTENT);
 }
@@ -130,6 +151,26 @@ return Sort.Direction.DESC;
 
 return Sort.Direction.ASC;
 }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody UserDto dto) {
+        UserEntity user = repository.findByUsername(dto.getUsername());
+
+        if (user == null) {
+        //    return new ResponseEntity<>(new ResponseHelper(null, exerciceDto, true), HttpStatus.OK);
+            return new ResponseEntity<>(new ResponseHelper("Invalid username or password" , true), HttpStatus.UNAUTHORIZED);
+
+//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");
+
+        }
+
+        if (!user.getPassword().equals(dto.getPassword())) {
+            return new ResponseEntity<>(new ResponseHelper("Invalid username or password" , true), HttpStatus.UNAUTHORIZED);
+        }
+
+        return new ResponseEntity<>(new ResponseHelper("success" , true), HttpStatus.OK);
+
+    }
 
 
 }

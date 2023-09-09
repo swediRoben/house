@@ -3,6 +3,7 @@ package com.house.service;
 import com.house.convertDto.ExerciceConvertDto;
 import com.house.dto.ExerciceDto;
 import com.house.entity.ExerciceEntity;
+import com.house.entity.HouseHoldEntitty;
 import com.house.helper.PagingAndSortingHelper;
 import com.house.repository.ExerciceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,9 @@ public class ExerciceService {
 private ExerciceRepository repository;
 
 
+public List<ExerciceEntity> filterByExerciseId(String libelle) {
+return repository.filterByExerciseId(libelle);
+}
 
 
 public List<ExerciceDto> getAll() {

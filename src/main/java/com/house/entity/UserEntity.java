@@ -14,16 +14,15 @@ import java.util.Date;
 public class UserEntity implements Serializable {
 private static final long serialVersionUID = 1L;
 
-//. nom, prenom, email, mot de passe
 
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 @Column(name = "id", length = 11)
 private Integer id;
-@Column(name = "nom", length = 50)
-private String nom;
+@Column(name = "username", length = 50)
+private String username;
 @Column(name = "prenom")
-private String prenom;
+private String lastname;
 @Email
 @Column(name = "email", length = 50)
 private String email;
@@ -36,4 +35,85 @@ private String sex;
 @Column(name = "date_creation")
 @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 private Date dateCreation;
+
+private String roles;
+
+public Integer getId() {
+	return id;
+}
+
+public void setId(Integer id) {
+	this.id = id;
+}
+
+public String getUsername() {
+	return username;
+}
+
+public void setUsername(String username) {
+	this.username = username;
+}
+
+public String getLastname() {
+	return lastname;
+}
+
+public void setLastname(String lastname) {
+	this.lastname = lastname;
+}
+
+public String getEmail() {
+	return email;
+}
+
+public void setEmail(String email) {
+	this.email = email;
+}
+
+public String getPassword() {
+	return password;
+}
+
+public void setPassword(String password) {
+	this.password = password;
+}
+
+public String getTel() {
+	return tel;
+}
+
+public void setTel(String tel) {
+	this.tel = tel;
+}
+
+public String getSex() {
+	return sex;
+}
+
+public void setSex(String sex) {
+	this.sex = sex;
+}
+
+public Date getDateCreation() {
+	return dateCreation;
+}
+
+public void setDateCreation(Date dateCreation) {
+	this.dateCreation = dateCreation;
+}
+
+public String getRoles() {
+	return roles;
+}
+
+public void setRoles(String roles) {
+	this.roles = roles;
+}
+
+public static long getSerialversionuid() {
+	return serialVersionUID;
+}
+
+
+
 }

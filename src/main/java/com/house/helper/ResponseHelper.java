@@ -13,6 +13,41 @@ private String type;
 private Boolean success;
 private Object data;
 
+
+
+
+public String getMessage() {
+	return message;
+}
+
+public void setMessage(String message) {
+	this.message = message;
+}
+
+public String getType() {
+	return type;
+}
+
+public void setType(String type) {
+	this.type = type;
+}
+
+public Boolean getSuccess() {
+	return success;
+}
+
+public void setSuccess(Boolean success) {
+	this.success = success;
+}
+
+public Object getData() {
+	return data;
+}
+
+public void setData(Object data) {
+	this.data = data;
+}
+
 public ResponseHelper(String message, Object data) {
 this.message = message;
 this.setData(data);

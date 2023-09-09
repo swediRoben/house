@@ -2,6 +2,7 @@ package com.house.controller;
 
 import com.house.dto.ExerciceDto;
 import com.house.entity.ExerciceEntity;
+import com.house.entity.HouseHoldEntitty;
 import com.house.helper.MessageHelper;
 import com.house.helper.ResponseHelper;
 import com.house.repository.ExerciceRepository;
@@ -36,6 +37,17 @@ public class ExerciceControler {
 
         return Sort.Direction.ASC;
     }
+
+
+    @GetMapping("/getExerciceByLibelle/{libelle}")
+    public ResponseEntity<List<ExerciceEntity>> filterByExerciseId(@PathVariable String libelle) {
+        List<ExerciceEntity> houseHolds = exerciceService.filterByExerciseId(libelle);
+        if (houseHolds.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(houseHolds);
+    }
+
     @RequestMapping(value = "/getAll/a", method = RequestMethod.GET)
     public ResponseEntity<?> getAll() {
 
@@ -101,6 +113,11 @@ public class ExerciceControler {
 
     @PostMapping("/")
     public ResponseEntity<?> create(@RequestBody ExerciceDto dto) {
+
+        if (repository.existsByLibelle(dto.getLibelle()))
+            return new ResponseEntity<>(new ResponseHelper(MessageHelper.dataExist("libelle"), false),
+                    HttpStatus.BAD_REQUEST);
+
         ExerciceDto exerciceDto = exerciceService.create(dto);
 
         if (exerciceDto != null) {

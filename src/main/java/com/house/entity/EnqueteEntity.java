@@ -37,4 +37,82 @@ private Boolean constant;
 @JoinColumn(name = "id_user", referencedColumnName = "id", insertable = false, updatable = false)
 private ExerciceEntity exercise;
 
+public Integer getId() {
+	return id;
+}
+
+public void setId(Integer id) {
+	this.id = id;
+}
+
+public Integer getIdUser() {
+	return idUser;
+}
+
+public void setIdUser(Integer idUser) {
+	this.idUser = idUser;
+}
+
+public Date getDateCreation() {
+	return dateCreation;
+}
+
+public void setDateCreation(Date dateCreation) {
+	this.dateCreation = dateCreation;
+}
+
+public String getProvince() {
+	return province;
+}
+
+public void setProvince(String province) {
+	this.province = province;
+}
+
+public String getCommune() {
+	return commune;
+}
+
+public void setCommune(String commune) {
+	this.commune = commune;
+}
+
+public String getZone() {
+	return zone;
+}
+
+public void setZone(String zone) {
+	this.zone = zone;
+}
+
+public String getTerritoire() {
+	return territoire;
+}
+
+public void setTerritoire(String territoire) {
+	this.territoire = territoire;
+}
+
+public Boolean getConstant() {
+	return constant;
+}
+
+public void setConstant(Boolean constant) {
+	this.constant = constant;
+}
+
+public ExerciceEntity getExercise() {
+	return exercise;
+}
+
+public void setExercise(ExerciceEntity exercise) {
+	this.exercise = exercise;
+}
+
+public static long getSerialversionuid() {
+	return serialVersionUID;
+}
+
+
+
 }

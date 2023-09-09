@@ -1,18 +1,24 @@
 package com.house.service;
 
 import com.house.convertDto.ExerciceConvertDto;
+import com.house.convertDto.HouseHoldConvertDto;
 import com.house.convertDto.UserConvertDto;
 import com.house.dto.ExerciceDto;
+import com.house.dto.HouseHoldDto;
 import com.house.dto.UserDto;
 import com.house.entity.ExerciceEntity;
+import com.house.entity.HouseHoldEntitty;
 import com.house.entity.UserEntity;
+import com.house.helper.DateHelper;
 import com.house.helper.PagingAndSortingHelper;
 import com.house.repository.ExerciceRepository;
 import com.house.repository.UserRepository;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
@@ -26,8 +32,8 @@ public class UserService {
 
 @Autowired
 private UserRepository repository;
-
-
+//@Autowired
+//private PasswordEncoder passwordEncoder;
 
 
 public List<UserDto> getAll() {
@@ -38,6 +44,8 @@ List<UserDto> dtos = new ArrayList<>();
 try {
 for (UserEntity entity : entities) {
 UserDto dto = UserConvertDto.getInstance().toDto(entity);
+// dto.setPassword(passwordEncoder.decode(entity.getPassword()));
+//dto.setPassword(passwordEncoder.encode(entity.getPassword()));
 dtos.add(dto);
 
 }
@@ -47,6 +55,21 @@ System.out.println(e.getMessage());
 return dtos;
 }
 
+//public List<UserDto> getAllByUsernameAndPassword(String username, String password){
+// List<UserEntity> entities = repository.findByUsernameAndPassword(username, password);
+//List<UserDto> dtos = new ArrayList<>();
+//try {
+// for (UserEntity entity : entities){
+//  UserDto dto = UserConvertDto.getInstance().toDto(entity);
+//  dtos.add(dto);
+// }
+//}catch (Exception e){
+// System.out.println(e.getMessage());
+// dtos = new ArrayList<>();
+//}
+//return dtos;
+//
+//}
 
 
 
@@ -68,23 +91,7 @@ return dto;
 
 
 
-public UserDto createm(UserDto userDto) {
-UserDto dto = null;
 
-try {
-UserEntity imoEntity = UserConvertDto.getInstance()
-        .toEntity(userDto);
-//            imoEntity.setDateCreation(DateHelper.now());
-UserEntity fromBd = repository.save(imoEntity);
-
-dto = UserConvertDto.getInstance().toDto(fromBd);
-
-} catch (Exception e) {
-System.out.println(e.getMessage());
-dto = null;
-}
-return userDto;
-}
 
 public boolean deleteByIdm(Integer id) {
 boolean result = false;
@@ -117,5 +124,26 @@ System.out.println(e.getMessage());
 }
 return dto;
 }
+
+public UserDto create1(UserDto userDto)  {
+UserEntity entity = null;
+UserDto dto = null;
+try {
+entity = UserConvertDto.getInstance().toEntity(userDto);
+ entity.setDateCreation(DateHelper.now());
+//entity.setPassword(passwordEncoder.encode(entity.getPassword()));
+UserEntity savedExercise = repository.save(entity);
+dto =UserConvertDto.getInstance().toDto(savedExercise);
+}catch (Exception e){
+System.out.println(e.getMessage());
+}
+
+return dto;
+}
+ public String login(UserDto userDto) {
+
+
+ return "success";
+ }
 
 }

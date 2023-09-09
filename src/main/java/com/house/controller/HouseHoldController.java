@@ -38,6 +38,17 @@ public class HouseHoldController {
 
         return Sort.Direction.ASC;
     }
+
+    @GetMapping("/getHouseholdsByIdExercice/{idExercise}")
+    public ResponseEntity<List<HouseHoldEntitty>> filterByExerciseId(@PathVariable Integer idExercise) {
+        List<HouseHoldEntitty> houseHolds = houseHoldService.filterByExerciseId(idExercise);
+        if (houseHolds.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(houseHolds);
+    }
+
+
     @GetMapping("/")
     public ResponseEntity<Map<String, Object>> getAllTutorialsPage(
             @RequestParam(required = false) String title,

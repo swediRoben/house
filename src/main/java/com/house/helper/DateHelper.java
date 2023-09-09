@@ -56,6 +56,10 @@ public class DateHelper {
     }
 
 
+    public static Date now() {
+        Date date = new Date();
+        return date;
+    }
 
 
 
