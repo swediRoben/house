@@ -28,9 +28,9 @@ public class NewUSers {
         ex.setLibelle("exercise 1");
         ex.setStartDate(new Date());
         ex.setEndDate(new Date());
-        ex=repository.save(ex);
+        repository.save(ex);
    
-        UserEntity user=new UserEntity();
+        UserEntity user=new UserEntity(); 
         user.setEmail("admin@email.com");
         user.setUsername("admin");
         user.setTel("000000");
@@ -39,6 +39,7 @@ public class NewUSers {
         user.setRoles("admin");
         user.setLastname("admin");
         user.setDateCreation(new Date());
+        useRepository.save(user);
 
     }
 }
