@@ -30,6 +30,7 @@ public class ExerciceControler {
 
     @Autowired
     private NewUSers uSers;
+    
     @Autowired
     private ExerciceRepository repository;
 
@@ -44,14 +45,14 @@ public class ExerciceControler {
     }
 
 
-    @GetMapping("/getExerciceByLibelle/{libelle}")
-    public ResponseEntity<List<ExerciceEntity>> filterByExerciseId(@PathVariable String libelle) {
-        List<ExerciceEntity> houseHolds = exerciceService.filterByExerciseId(libelle);
-        if (houseHolds.isEmpty()) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(houseHolds);
-    }
+//    @GetMapping("/getExerciceByLibelle/{libelle}")
+//    public ResponseEntity<List<ExerciceEntity>> filterByExerciseId(@PathVariable String libelle) {
+//        List<ExerciceEntity> houseHolds = exerciceService.filterByExerciseId(libelle);
+//        if (houseHolds.isEmpty()) {
+//            return ResponseEntity.notFound().build();
+//        }
+//        return ResponseEntity.ok(houseHolds);
+//    }
 
     @RequestMapping(value = "/getAll/a", method = RequestMethod.GET)
     public ResponseEntity<?> getAll() {

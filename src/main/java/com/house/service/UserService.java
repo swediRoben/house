@@ -18,8 +18,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -55,25 +57,9 @@ System.out.println(e.getMessage());
 return dtos;
 }
 
-//public List<UserDto> getAllByUsernameAndPassword(String username, String password){
-// List<UserEntity> entities = repository.findByUsernameAndPassword(username, password);
-//List<UserDto> dtos = new ArrayList<>();
-//try {
-// for (UserEntity entity : entities){
-//  UserDto dto = UserConvertDto.getInstance().toDto(entity);
-//  dtos.add(dto);
-// }
-//}catch (Exception e){
-// System.out.println(e.getMessage());
-// dtos = new ArrayList<>();
-//}
-//return dtos;
-//
-//}
 
 
 
-//ImoProformaImmobilisationService
 public UserDto getByIdm(Integer id) {
 
 UserEntity entity = null;
@@ -89,7 +75,21 @@ dto = null;
 return dto;
 }
 
+public UserDto login(UserDto userDto){
 
+ UserEntity entity = null;
+ UserDto dto = null;
+
+ try {
+  entity = repository.findByUsername(userDto.getUsername());
+  dto = UserConvertDto.getInstance().toDto(entity);
+
+
+ }catch (Exception e){
+  System.out.println(e.getMessage());
+ }
+ return userDto;
+}
 
 
 
@@ -140,10 +140,6 @@ System.out.println(e.getMessage());
 
 return dto;
 }
- public String login(UserDto userDto) {
 
-
- return "success";
- }
 
 }

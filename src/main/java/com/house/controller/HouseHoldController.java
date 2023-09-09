@@ -39,13 +39,15 @@ public class HouseHoldController {
         return Sort.Direction.ASC;
     }
 
+
     @GetMapping("/getHouseholdsByIdExercice/{idExercise}")
-    public ResponseEntity<List<HouseHoldEntitty>> filterByExerciseId(@PathVariable Integer idExercise) {
-        List<HouseHoldEntitty> houseHolds = houseHoldService.filterByExerciseId(idExercise);
-        if (houseHolds.isEmpty()) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(houseHolds);
+    public ResponseEntity<?> getSortieDeFond(@PathVariable Integer idExercise) {
+
+        List<HouseHoldEntitty> sortieFond = houseHoldService.filterByExerciseId(idExercise);
+        if (sortieFond.size() >= 0)
+            return new ResponseEntity<>(new ResponseHelper("success", sortieFond, true), HttpStatus.OK);
+        else
+            return new ResponseEntity<>(new ResponseHelper(MessageHelper.noContent()), HttpStatus.NO_CONTENT);
     }
 
 

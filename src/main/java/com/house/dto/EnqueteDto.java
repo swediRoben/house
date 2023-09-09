@@ -4,7 +4,7 @@ import lombok.Data;
 
 import java.util.Date;
 
-@Data
+
 public class EnqueteDto {
 private Integer id;
 private Integer idUser;
@@ -13,7 +13,8 @@ private String province;
 private String commune;
 private String zone;
 private String territoire;
-private Boolean constant;
+private String userName;
+private UserDtoId_Username user;
 public Integer getId() {
 	return id;
 }
@@ -56,12 +57,20 @@ public String getTerritoire() {
 public void setTerritoire(String territoire) {
 	this.territoire = territoire;
 }
-public Boolean getConstant() {
-	return constant;
-}
-public void setConstant(Boolean constant) {
-	this.constant = constant;
-}
 
+	public UserDtoId_Username getUser() {
+		return user;
+	}
 
+	public void setUser(UserDtoId_Username user) {
+		this.user = user;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 }

@@ -1,6 +1,7 @@
 package com.house.convertDto;
 
 import com.house.dto.UserDto;
+import com.house.dto.UserDtoId_Username;
 import com.house.entity.UserEntity;
 import com.house.helper.DateHelper;
 
@@ -41,5 +42,14 @@ dto.setRoles(entity.getRoles());
 
 dto.setDateCreation(DateHelper.toText(entity.getDateCreation()));
 return dto;
+}
+
+public UserDtoId_Username toDtoUsernameId(UserEntity entity) {
+    UserDtoId_Username dto = new UserDtoId_Username();
+    dto.setId(entity.getId());
+    dto.setUsername(entity.getUsername());
+
+    return dto;
+
 }
 }

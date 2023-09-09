@@ -29,13 +29,14 @@ private String province;
 private String commune;
 private String zone;
 private String territoire;
-private Boolean constant;
+//private Boolean constant;
 
 @ManyToOne(fetch = FetchType.LAZY)
 @JsonIgnore
 @NotFound(action = NotFoundAction.IGNORE)
 @JoinColumn(name = "id_user", referencedColumnName = "id", insertable = false, updatable = false)
-private ExerciceEntity exercise;
+private UserEntity user;
+
 
 public Integer getId() {
 	return id;
@@ -93,23 +94,16 @@ public void setTerritoire(String territoire) {
 	this.territoire = territoire;
 }
 
-public Boolean getConstant() {
-	return constant;
-}
 
-public void setConstant(Boolean constant) {
-	this.constant = constant;
-}
+	public UserEntity getUser() {
+		return user;
+	}
 
-public ExerciceEntity getExercise() {
-	return exercise;
-}
+	public void setUser(UserEntity user) {
+		this.user = user;
+	}
 
-public void setExercise(ExerciceEntity exercise) {
-	this.exercise = exercise;
-}
-
-public static long getSerialversionuid() {
+	public static long getSerialversionuid() {
 	return serialVersionUID;
 }
 

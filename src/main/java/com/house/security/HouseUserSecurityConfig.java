@@ -27,16 +27,18 @@ return new BCryptPasswordEncoder();
 
 
 private static final String[] UN_SECURED_URLs = {
-          
+
         "/question_menage/**",
         "/constantes_param/**",
         "/rapport/**",
         "/exercice/**",
+        "/houseHold/getHouseholdsByIdExercice/**",
         "/houseHold/**",
         "/enquete/**",
         "/users/**",
         "/users/login/**",
         "/swagger-ui.html/**"
+
 
 
 

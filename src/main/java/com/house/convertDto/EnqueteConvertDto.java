@@ -27,29 +27,33 @@ return new EnqueteConvertDto();
 public EnqueteEntity toEntity(EnqueteDto dto) throws ParseException {
 EnqueteEntity entity = new EnqueteEntity();
 entity.setId(dto.getId());
+entity.setIdUser(dto.getIdUser());
 entity.setDateCreation(DateHelper.toDate(dto.getDateCreation()));
 entity.setProvince(dto.getProvince());
 entity.setCommune(dto.getCommune());
 entity.setZone(dto.getZone());
 entity.setTerritoire(dto.getTerritoire());
-entity.setConstant(dto.getConstant());
-entity.setIdUser(dto.getIdUser());
 
+    if (dto.getUser() != null){
+        entity.setIdUser(dto.getUser().getId());
+    }
 return entity;
 }
 
 public EnqueteDto toDto(EnqueteEntity entity){
 EnqueteDto dto = new EnqueteDto();
 
+dto.setIdUser(entity.getIdUser());
 dto.setId(entity.getId());
 dto.setDateCreation(DateHelper.toText(entity.getDateCreation()));
 dto.setProvince(entity.getProvince());
 dto.setCommune(entity.getCommune());
 dto.setZone(entity.getZone());
 dto.setTerritoire(entity.getTerritoire());
-dto.setConstant(entity.getConstant());
-dto.setIdUser(entity.getIdUser());
 
+    if (entity.getIdUser() != null){
+        dto.setUser(UserConvertDto.getInstance().toDtoUsernameId(entity.getUser()));
+    }
 return dto;
 }
 

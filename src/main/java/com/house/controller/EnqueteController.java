@@ -1,5 +1,6 @@
 package com.house.controller;
 
+import com.house.convertDto.EnqueteConvertDto;
 import com.house.dto.EnqueteDto;
 import com.house.entity.EnqueteEntity;
 import com.house.helper.MessageHelper;
@@ -72,14 +73,18 @@ List<EnqueteEntity> enqueteEntities = new ArrayList<>();
 Pageable pagingSort = PageRequest.of(page, size, Sort.by(orders));
 
 Page<EnqueteEntity> entityPage = null;
+    List<EnqueteDto> dtos = new ArrayList<>();
 if (title == null)
 entityPage = repository.findAll(pagingSort);
 
+    for (EnqueteEntity entity: entityPage){
+        EnqueteDto dto = EnqueteConvertDto.getInstance().toDto(entity);
+        dtos.add(dto);
+    }
 
-enqueteEntities = entityPage.getContent();
 
 Map<String, Object> response = new HashMap<>();
-response.put("enquetes", enqueteEntities);
+response.put("dtos", dtos);
 response.put("currentPage", entityPage.getNumber());
 response.put("totalItems", entityPage.getTotalElements());
 response.put("totalPages", entityPage.getTotalPages());

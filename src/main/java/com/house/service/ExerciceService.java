@@ -21,9 +21,9 @@ public class ExerciceService {
 private ExerciceRepository repository;
 
 
-public List<ExerciceEntity> filterByExerciseId(String libelle) {
-return repository.filterByExerciseId(libelle);
-}
+//public List<ExerciceEntity> filterByExerciseId(String libelle) {
+//return repository.filterByExerciseId(libelle);
+//}
 
 
 public List<ExerciceDto> getAll() {
