@@ -159,6 +159,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
 
         // PERSONNE ASSEZ A MANGES
         if (idExercice!=null && idTrimestre!=null) {
+          nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotal(idExercice,idTrimestre);
             nombre=menageRepository.getTotalMenageAssezMange(idExercice,idTrimestre);
             if (nombre>0 || nombreTotal>0) { 
@@ -173,6 +178,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else   if (idExercice!=null && idTrimestre==null) {
             List<Integer> trimestre=listTrimestre(idExercice);
              for (int index = 0; index < trimestre.size(); index++) {
+                nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotal(idExercice,trimestre.get(index));
             nombre=menageRepository.getTotalMenageAssezMange(idExercice,trimestre.get(index));
                 if (nombre>0 || nombreTotal>0) {
@@ -188,6 +198,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else{
             List<Integer> trimestre=listTrimestre(null); 
              for (int index = 0; index < trimestre.size(); index++) {
+                nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotalTrimestre(trimestre.get(index));
             nombre=menageRepository.getTotalMenageAssezMange(trimestre.get(index));
                if (nombre>0 || nombreTotal>0) {
@@ -234,6 +249,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
            sommeMoyene.clear(); 
         //2. Nombre moyen d'aliments et d'eau potable de qualité pour les enfants handicapés de la famille 
         if (idExercice!=null && idTrimestre!=null) {
+          nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotalListDeux(idExercice,idTrimestre);
             nombre=menageRepository.getTotalQualiteAlimentEauPotableEnfantHandicape(idExercice,idTrimestre); 
             pourcentage=pourcentage(nombre, nombreTotal)+0; 
@@ -244,6 +264,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else if (idExercice!=null && idTrimestre==null) {
             List<Integer> trimestre=listTrimestre(idExercice);
              for (int index = 0; index < trimestre.size(); index++) {
+                nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotalListDeux(idExercice,trimestre.get(index));
             nombre=menageRepository.getTotalQualiteAlimentEauPotableEnfantHandicape(idExercice,trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -255,6 +280,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else{
             List<Integer> trimestre=listTrimestre(null);
              for (int index = 0; index < trimestre.size(); index++) {
+                nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotalTrimestreQualiteAlimentEauPotableEnfantHandicape(trimestre.get(index));
             nombre=menageRepository.getTotalQualiteAlimentEauPotableEnfantHandicape(trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -297,6 +327,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
         sommeMoyene.clear();
          // 3.	Pourcentage de jeunes handicapés ayant des activités génératrices de revenus (AGR)
         if (idExercice!=null && idTrimestre!=null) {
+          nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotalListTrois(idExercice,idTrimestre);
             nombre=menageRepository.getTotalJeunesHandicapeAGR(idExercice,idTrimestre);
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -307,6 +342,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else   if (idExercice!=null && idTrimestre==null) {
             List<Integer> trimestre=listTrimestre(idExercice);
              for (int index = 0; index < trimestre.size(); index++) {
+                nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotalListTrois(idExercice,trimestre.get(index));
             nombre=menageRepository.getTotalJeunesHandicapeAGR(idExercice,trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -318,6 +358,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else{
             List<Integer> trimestre=listTrimestre(0);
              for (int index = 0; index < trimestre.size(); index++) {
+                nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotalTrimestreJeunesHandicapeAGR(trimestre.get(index));
             nombre=menageRepository.getTotalJeunesHandicapeAGR(trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -361,6 +406,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
         sommeMoyene.clear();
          // 4.	Moyenne Dans les discussions de groupe sur les questions concernant les enfants handicapés (EVH)
         if (idExercice!=null && idTrimestre!=null) {
+          nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotalListQuatre(idExercice,idTrimestre); 
             nombre=menageRepository.getTotalEnfantHandicapeDicussionGroupe(idExercice,idTrimestre); 
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -371,6 +421,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else   if (idExercice!=null && idTrimestre==null) {
             List<Integer> trimestre=listTrimestre(idExercice);
              for (int index = 0; index < trimestre.size(); index++) {
+                nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotalListQuatre(idExercice,trimestre.get(index));
             nombre=menageRepository.getTotalEnfantHandicapeDicussionGroupe(idExercice,trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -382,6 +437,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else{
             List<Integer> trimestre=listTrimestre(null);
              for (int index = 0; index < trimestre.size(); index++) {
+                nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotalTrimestreEnfantHandicapeDicussionGroupe(trimestre.get(index));
             nombre=menageRepository.getTotalEnfantHandicapeDicussionGroupe(trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -424,6 +484,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
         sommeMoyene.clear();
        // 5.	Le nombre moyen de repas familiaux par jour (3.1)
         if (idExercice!=null && idTrimestre!=null) {
+          nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotalListCinq(idExercice,idTrimestre); 
              moyenne=menageRepository.getTotalCombienFoisMangeParJour(idExercice,idTrimestre); 
              pourcentage=pourcentage(moyenne, nombreTotal);
@@ -434,6 +499,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else   if (idExercice!=null && idTrimestre==null) {
             List<Integer> trimestre=listTrimestre(idExercice);
              for (int index = 0; index < trimestre.size(); index++) {
+                nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotalListCinq(idExercice,trimestre.get(index));
             moyenne=menageRepository.getTotalCombienFoisMangeParJour(idExercice,trimestre.get(index));
             pourcentage=pourcentage(moyenne, nombreTotal);
@@ -445,6 +515,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else{
             List<Integer> trimestre=listTrimestre(null);
              for (int index = 0; index < trimestre.size(); index++) {
+                nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotalTrimestreCombienFoisMangeParJour(trimestre.get(index));
             moyenne=menageRepository.getTotalCombienFoisMangeParJour(trimestre.get(index));
             pourcentage=pourcentage(moyenne, nombreTotal);
@@ -488,6 +563,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
         sommeMoyene.clear();
   // 6.	Durée moyenne d'une période au cours des 12 derniers mois pendant laquelle les ménages ciblés ont eu suffisamment de nourriture pour répondre aux besoins de leurs membres (3.3)
         if (idExercice!=null && idTrimestre!=null) {
+          nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotalPenurieAlimentaireList(idExercice,idTrimestre);
             nombre=menageRepository.getTotalPenurieAlimentaire(idExercice,idTrimestre); 
 			pg = menageRepository.getPenurieAlimentaire(idExercice,idTrimestre,pagingSort); 
@@ -497,6 +577,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else   if (idExercice!=null && idTrimestre==null) {
             List<Integer> trimestre=listTrimestre(idExercice);
              for (int index = 0; index < trimestre.size(); index++) {
+                nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotalPenurieAlimentaireList(idExercice,trimestre.get(index));
             nombre=menageRepository.getTotalPenurieAlimentaire(idExercice,trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -508,6 +593,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else{
             List<Integer> trimestre=listTrimestre(null);
              for (int index = 0; index < trimestre.size(); index++) {
+                nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotalTrimestrePenurieAlimentaire(trimestre.get(index));
             nombre=menageRepository.getTotalPenurieAlimentaire(trimestre.get(index));
           
@@ -552,6 +642,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
         sommeMoyene.clear();
   // 7.	% de ménages ciblés dont les membres ont dû se coucher le soir le ventre vide au cours des 4 dernières semaines en raison d'un manque de nourriture 
         if (idExercice!=null && idTrimestre!=null) {
+          nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotalListSeth(idExercice,idTrimestre);
             nombre=menageRepository.getTotalManqueAlimentQuatreSemaine(idExercice,idTrimestre);
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -562,6 +657,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else   if (idExercice!=null && idTrimestre==null) {
             List<Integer> trimestre=listTrimestre(idExercice);
              for (int index = 0; index < trimestre.size(); index++) {
+                nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotalListSeth(idExercice,trimestre.get(index));
             nombre=menageRepository.getTotalManqueAlimentQuatreSemaine(idExercice,trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -573,6 +673,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else{
             List<Integer> trimestre=listTrimestre(null);
              for (int index = 0; index < trimestre.size(); index++) {
+                nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotalTrimestreManqueAlimentQuatreSemaine(trimestre.get(index));
             nombre=menageRepository.getTotalManqueAlimentQuatreSemaine(trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -640,6 +745,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
         Map<String,Object> donnee1=new HashMap<>();
 
         if (idExercice!=null && idTrimestre!=null) {  
+          nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
            nombreTerrain=menageRepository.getTotalMenageTerrainActif(idExercice,idTrimestre); 
 			pg = menageRepository.getMenageTerrainActif(idExercice,idTrimestre,pagingSort); 
             donnee1.put("nombreTrimestre", nombreTerrain);
@@ -647,6 +757,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else   if (idExercice!=null && idTrimestre==null) {
             List<Integer> trimestre=listTrimestre(idExercice);
              for (int index = 0; index < trimestre.size(); index++) {
+                nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTerrain=menageRepository.getTotalMenageTerrainActif(idExercice,idTrimestre); 
                  donnee1.put("nombreTrimestre", nombreTerrain); 
              }  
@@ -655,6 +770,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else{
             List<Integer> trimestre=listTrimestre(null);
              for (int index = 0; index < trimestre.size(); index++) {
+                nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
              nombreTerrain=menageRepository.getTotalMenageTerrainActif(idExercice,idTrimestre);  
                 donnee1.put("nombreTrimestre", nombreTerrain);
              }  
@@ -678,6 +798,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
            sommeMoyene.clear(); 
         // 2.	Pourcentage d'enfants et de jeunes handicapés ayant abandonné l'école L'un de vos enfants ou jeunes handicapés a-t-il abandonné l'école (oui/non) ?
         if (idExercice!=null && idTrimestre!=null) {
+          nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotalListAVH(idExercice,idTrimestre);
             nombre=menageRepository.getTotalEnfantHadicapeAbandonneEcole(idExercice,idTrimestre);
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -688,6 +813,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else   if (idExercice!=null && idTrimestre==null) {
             List<Integer> trimestre=listTrimestre(idExercice);
              for (int index = 0; index < trimestre.size(); index++) {
+                nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotalListAVH(idExercice,trimestre.get(index));
             nombre=menageRepository.getTotalEnfantHadicapeAbandonneEcole(idExercice,trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -699,6 +829,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else{
             List<Integer> trimestre=listTrimestre(null);
              for (int index = 0; index < trimestre.size(); index++) {
+                nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotalTrimestreEnfantHadicapeAbandonneEcole(trimestre.get(index));
             nombre=menageRepository.getTotalEnfantHadicapeAbandonneEcole(trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -744,6 +879,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          // 3.	% de ménages dont les enfants handicapés en âge d'aller à l'école sont scolarisés vos enfants handicapés en âge d'aller à l'école sont-ils actuellement scolarisés (oui/non) ?
 
         if (idExercice!=null && idTrimestre!=null) {
+          nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotalAVHScolarise(idExercice,idTrimestre);
             nombre=menageRepository.getTotalEnfantHadicapeScolariser(idExercice,idTrimestre);
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -754,6 +894,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else   if (idExercice!=null && idTrimestre==null) {
             List<Integer> trimestre=listTrimestre(idExercice);
              for (int index = 0; index < trimestre.size(); index++) {
+                nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotalAVHScolarise(idExercice,trimestre.get(index));
             nombre=menageRepository.getTotalEnfantHadicapeScolariser(idExercice,trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -765,6 +910,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else{
             List<Integer> trimestre=listTrimestre(null);
              for (int index = 0; index < trimestre.size(); index++) {
+                nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotalTrimestreEnfantHadicapeScolariser(trimestre.get(index));
             nombre=menageRepository.getTotalEnfantHadicapeScolariser(trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -809,7 +959,12 @@ public class QuestionMenageServImpl implements QuestionMenageService{
 
          // 4.	Pourcentage de l'argent directement investi dans les questions relatives aux enfants handicapés
         if (idExercice!=null && idTrimestre!=null) {
-            nombreTotal=menageRepository.getTotalInvestiAVH(idExercice,idTrimestre)*96;
+          nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
+            nombreTotal=menageRepository.getTotalInvestiAVH(idExercice,idTrimestre);
             nombre=menageRepository.getTotalResourceFinancierePourenfantHadicape(idExercice,idTrimestre);
             pourcentage=pourcentage(nombre, nombreTotal);
 			pg = menageRepository.getResourceFinancierePourenfantHadicape(idExercice,idTrimestre,pagingSort);
@@ -819,6 +974,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else   if (idExercice!=null && idTrimestre==null) {
             List<Integer> trimestre=listTrimestre(idExercice);
              for (int index = 0; index < trimestre.size(); index++) {
+                nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotalInvestiAVH(idExercice,trimestre.get(index));
             nombre=menageRepository.getTotalResourceFinancierePourenfantHadicape(idExercice,trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -830,6 +990,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else{
             List<Integer> trimestre=listTrimestre(null);
              for (int index = 0; index < trimestre.size(); index++) {
+                nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotalTrimestreResourceFinancierePourenfantHadicape(trimestre.get(index));
             nombre=menageRepository.getTotalResourceFinancierePourenfantHadicape(trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -866,9 +1031,9 @@ public class QuestionMenageServImpl implements QuestionMenageService{
         donnee4.put("PourcentageTotalMoyenne", 0.0);
         donnee4.put("details",list4);  
          }
-
+        
         dataReturn.put("resourceFinancierePourenfantHadicape", donnee4);
-
+       
         Map<String, Object> dtos = PagingAndSortingHelper.filteredAndSortedResult(pg.getNumber(), pg.getSize(), pg.getTotalPages(),
         dataReturn);
 
@@ -894,6 +1059,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
 
         // 1.	% de participants ayant trouvé le programme de formation très utile
         if (idExercice!=null && idTrimestre!=null) {
+          nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotalProgrammeFormation(idExercice,idTrimestre);
             nombre=menageRepository.getTotalEvaluationParticipantionAuxFormarmation(idExercice,idTrimestre);
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -904,6 +1074,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else   if (idExercice!=null && idTrimestre==null) {
             List<Integer> trimestre=listTrimestre(idExercice);
              for (int index = 0; index < trimestre.size(); index++) {
+                nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotalProgrammeFormation(idExercice,trimestre.get(index));
             nombre=menageRepository.getTotalEvaluationParticipantionAuxFormarmation(idExercice,trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -915,6 +1090,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else{
             List<Integer> trimestre=listTrimestre(null);
              for (int index = 0; index < trimestre.size(); index++) {
+                nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotalTrimestre(trimestre.get(index));
             nombre=menageRepository.getTotalEvaluationParticipantionAuxFormarmation(trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -954,13 +1134,18 @@ public class QuestionMenageServImpl implements QuestionMenageService{
 
   
 
-        dataReturn.put("programmeFormation", donneeAssezMange);
+        dataReturn.put("evaluationParticipantionAuxFormation", donneeAssezMange);
 
            sommeMoyenePourcentage.clear();
            sommeMoyene.clear(); 
 
         // 2.	% Sur la famille EVH (enfant vivant avec handicape) Considérations sur la pensée positive 
         if (idExercice!=null && idTrimestre!=null) {
+          nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotalAVH(idExercice,idTrimestre);
             nombre=menageRepository.getTotalConsiderationPositiveAuxEnfantHendicape(idExercice,idTrimestre);
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -971,6 +1156,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else   if (idExercice!=null && idTrimestre==null) {
             List<Integer> trimestre=listTrimestre(idExercice);
              for (int index = 0; index < trimestre.size(); index++) {
+                nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotalAVH(idExercice,trimestre.get(index));
             nombre=menageRepository.getTotalConsiderationPositiveAuxEnfantHendicape(idExercice,trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -982,6 +1172,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else{
             List<Integer> trimestre=listTrimestre(null);
              for (int index = 0; index < trimestre.size(); index++) {
+                nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotalTrimestreConsiderationPositiveAuxEnfantHendicape(trimestre.get(index));
             nombre=menageRepository.getTotalConsiderationPositiveAuxEnfantHendicape(trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -1044,6 +1239,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
 
         //1.	 % de ménages déclarant être plus heureux
         if (idExercice!=null && idTrimestre!=null) {
+          nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotal(idExercice,idTrimestre);
             nombre=menageRepository.getTotalMenageHeure(idExercice,idTrimestre);
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -1054,6 +1254,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else   if (idExercice!=null && idTrimestre==null) {
             List<Integer> trimestre=listTrimestre(idExercice);
              for (int index = 0; index < trimestre.size(); index++) {
+                nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotal(idExercice,trimestre.get(index));
             nombre=menageRepository.getTotalMenageHeure(idExercice,trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -1065,6 +1270,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else{
             List<Integer> trimestre=listTrimestre(null);
              for (int index = 0; index < trimestre.size(); index++) {
+                nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotalTrimestre(trimestre.get(index));
             nombre=menageRepository.getTotalMenageHeure(trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -1107,6 +1317,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
            sommeMoyene.clear(); 
         //2.	% d'enfants et de jeunes handicapés déclarant être plus heureux 
         if (idExercice!=null && idTrimestre!=null) {
+          nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotal(idExercice,idTrimestre);
             nombre=menageRepository.getTotalEnfantHandicapeHeure(idExercice,idTrimestre);
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -1117,6 +1332,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else   if (idExercice!=null && idTrimestre==null) {
             List<Integer> trimestre=listTrimestre(idExercice);
              for (int index = 0; index < trimestre.size(); index++) {
+                nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotal(idExercice,trimestre.get(index));
             nombre=menageRepository.getTotalEnfantHandicapeHeure(idExercice,trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -1128,6 +1348,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else{
             List<Integer> trimestre=listTrimestre(null);
              for (int index = 0; index < trimestre.size(); index++) {
+                nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotalTrimestreEnfantHandicapeHeure(trimestre.get(index));
             nombre=menageRepository.getTotalEnfantHandicapeHeure(trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -1171,6 +1396,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
         sommeMoyene.clear();
          //3.	% de ménages déclarant être mieux acceptés socialement et économiquement au sein de la communauté
         if (idExercice!=null && idTrimestre!=null) {
+          nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotal(idExercice,idTrimestre);
             nombre=menageRepository.getTotalMenageMieuxAccepteSocialementEconomiquementCommunaute(idExercice,idTrimestre);
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -1181,6 +1411,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else   if (idExercice!=null && idTrimestre==null) {
             List<Integer> trimestre=listTrimestre(idExercice);
              for (int index = 0; index < trimestre.size(); index++) {
+                nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotal(idExercice,trimestre.get(index));
             nombre=menageRepository.getTotalMenageMieuxAccepteSocialementEconomiquementCommunaute(idExercice,trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -1192,6 +1427,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else{
             List<Integer> trimestre=listTrimestre(null);
              for (int index = 0; index < trimestre.size(); index++) {
+                nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotalTrimestreMenageMieuxAccepteSocialementEconomiquementCommunaute(trimestre.get(index));
             nombre=menageRepository.getTotalMenageMieuxAccepteSocialementEconomiquementCommunaute(trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -1256,6 +1496,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
 
         // 1.	% de familles ciblées ayant augmenté leur revenu grâce à l'aide fournie
         if (idExercice!=null && idTrimestre!=null) {
+          nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotal(idExercice,idTrimestre);
             nombre=menageRepository.getTotalFamilleAugmentRevenuParFournie(idExercice,idTrimestre);
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -1266,6 +1511,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else   if (idExercice!=null && idTrimestre==null) {
             List<Integer> trimestre=listTrimestre(idExercice);
              for (int index = 0; index < trimestre.size(); index++) {
+                nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotal(idExercice,trimestre.get(index));
             nombre=menageRepository.getTotalFamilleAugmentRevenuParFournie(idExercice,trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -1277,6 +1527,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else{
             List<Integer> trimestre=listTrimestre(null);
              for (int index = 0; index < trimestre.size(); index++) {
+                nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotalTrimestre(trimestre.get(index));
             nombre=menageRepository.getTotalFamilleAugmentRevenuParFournie(trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -1320,6 +1575,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
            sommeMoyene.clear(); 
         // 2.	Épargne mensuelle moyenne par femme 
         if (idExercice!=null && idTrimestre!=null) {
+          nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotal(idExercice,idTrimestre);
             nombre=menageRepository.getTotalEpargneMnsuelleMoyenneParFemme(idExercice,idTrimestre);
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -1330,6 +1590,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else   if (idExercice!=null && idTrimestre==null) {
             List<Integer> trimestre=listTrimestre(idExercice);
              for (int index = 0; index < trimestre.size(); index++) {
+                nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotal(idExercice,trimestre.get(index));
             nombre=menageRepository.getTotalEpargneMnsuelleMoyenneParFemme(idExercice,trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -1341,6 +1606,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else{
             List<Integer> trimestre=listTrimestre(null);
              for (int index = 0; index < trimestre.size(); index++) {
+                nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotalTrimestreEpargneMnsuelleMoyenneParFemme(trimestre.get(index));
             nombre=menageRepository.getTotalEpargneMnsuelleMoyenneParFemme(trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -1384,6 +1654,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
         sommeMoyene.clear();
          // 3.	% de familles de personnes handicapées ayant obtenu un prêt
          if (idExercice!=null && idTrimestre!=null) {
+             nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotalAVH(idExercice,idTrimestre);
             nombre=menageRepository.getTotalFemillePrete(idExercice,idTrimestre);
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -1394,6 +1669,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else   if (idExercice!=null && idTrimestre==null) {
             List<Integer> trimestre=listTrimestre(idExercice);
              for (int index = 0; index < trimestre.size(); index++) {
+                nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotal(idExercice,trimestre.get(index));
             nombre=menageRepository.getTotalFemillePrete(idExercice,trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -1405,6 +1685,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else{
             List<Integer> trimestre=listTrimestre(null);
              for (int index = 0; index < trimestre.size(); index++) {
+                nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotalTrimestreFemillePrete(trimestre.get(index));
             nombre=menageRepository.getTotalFemillePrete(trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -1449,6 +1734,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
         sommeMoyene.clear();
          //4.	%  de ménages faisant des choix et prenant des décisions en connaissance de causes
         if (idExercice!=null && idTrimestre!=null) {
+          nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotal(idExercice,idTrimestre);
             nombre=menageRepository.getTotalChoixFamilleEnAGR(idExercice,idTrimestre);
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -1459,6 +1749,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else   if (idExercice!=null && idTrimestre==null) {
             List<Integer> trimestre=listTrimestre(idExercice);
              for (int index = 0; index < trimestre.size(); index++) {
+                nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotal(idExercice,trimestre.get(index));
             nombre=menageRepository.getTotalChoixFamilleEnAGR(idExercice,trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
@@ -1470,6 +1765,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else{
             List<Integer> trimestre=listTrimestre(null);
              for (int index = 0; index < trimestre.size(); index++) {
+                nombreTotal=0;
+        nombre=0;
+        pourcentage=0;
+        moyenne=0;
+        moyennePourcentage=0;
             nombreTotal=menageRepository.getTotalTrimestreChoixFamilleEnAGR(trimestre.get(index));
             nombre=menageRepository.getTotalChoixFamilleEnAGR(trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);

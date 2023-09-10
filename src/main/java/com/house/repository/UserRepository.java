@@ -21,6 +21,6 @@ public interface UserRepository extends JpaRepository<UserEntity, Integer> {
 //    boolean existsByPasswordAndUsername(@Param("username") String username, @Param("password") String password);
     @Query("SELECT u.password FROM UserEntity u  WHERE u.username = :username")
     String getPasswordByUsername(@Param("username") String username);
-    UserEntity findByUsername(String username); 
-    
+    UserEntity findByUsername(String username);
+
 }

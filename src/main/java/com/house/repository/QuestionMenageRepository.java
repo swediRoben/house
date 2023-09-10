@@ -228,7 +228,7 @@ Integer getTotalTrimestreResourceFinancierePourenfantHadicape(Integer idTrimestr
 @Query("select count(p) from QuestionMenageEntity p where p.idTrimestre=?1  and p.resourceFinancierePourenfantHadicape>0 AND p.resourceFinancierePourenfantHadicape!=null")
 double getTotalResourceFinancierePourenfantHadicape(Integer idTrimestre);
 
-@Query("select count(p) from QuestionMenageEntity p JOIN HouseHoldEntitty  h ON p.idMenage=h.id where h.idExercise=?1 and p.idTrimestre=?2 and p.resourceFinancierePourenfantHadicape>0 AND p.resourceFinancierePourenfantHadicape!=null")
+@Query("select count(p)*96 from QuestionMenageEntity p JOIN HouseHoldEntitty  h ON p.idMenage=h.id where h.idExercise=?1 and p.idTrimestre=?2 and p.resourceFinancierePourenfantHadicape>0 AND p.resourceFinancierePourenfantHadicape!=null")
 Integer getTotalInvestiAVH(Integer idExercice, Integer idTrimestre);
 //
 

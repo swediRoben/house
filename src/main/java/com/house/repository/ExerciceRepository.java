@@ -19,6 +19,4 @@ public interface ExerciceRepository extends JpaRepository<ExerciceEntity, Intege
     @Query("SELECT count(e) > 0 FROM ExerciceEntity e ")
     boolean countUser(); 
 
-
-
 }
