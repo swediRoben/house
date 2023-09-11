@@ -36,12 +36,9 @@ private static final String[] UN_SECURED_URLs = {
         "/houseHold/**",
         "/enquete/**",
         "/users/**",
+        "/swagger-ui/index.html#/**",
         "/users/login/**",
         "/swagger-ui.html/**"
-
-
-
-
 };
 
 

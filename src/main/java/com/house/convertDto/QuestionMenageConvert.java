@@ -126,17 +126,17 @@ public class QuestionMenageConvert {
         dto.setMembreSHG(questionMenageEntity.getMembreSHG());  
         dto.setMembreStrictureCommunautaire(questionMenageEntity.getMembreStrictureCommunautaire());  
         dto.setMembreStrictureCommunautaireLequel(questionMenageEntity.getMembreStrictureCommunautaireLequel()); 
-           
+        dto.setUploaded(questionMenageEntity.getUploaded());
         dto.setDateTime(DateHelper.toText(questionMenageEntity.getDateTime()));  
         return dto;
       }
 
     public QuestionMenageEntity toEntity(QuestionMenageDto questionMenageEntity) {
         QuestionMenageEntity dto = new QuestionMenageEntity();
-         dto.setId(questionMenageEntity.getId());
-         dto.setIdMenage(questionMenageEntity.getIdMenage()); 
-        dto.setIdTrimestre(questionMenageEntity.getIdTrimestre()); 
-         dto.setMenageProprieteMaison(questionMenageEntity.getMenageProprieteMaison());
+        dto.setId(questionMenageEntity.getId());
+        dto.setIdMenage(questionMenageEntity.getIdMenage());
+        dto.setIdTrimestre(questionMenageEntity.getIdTrimestre());
+        dto.setMenageProprieteMaison(questionMenageEntity.getMenageProprieteMaison());
         dto.setEtattoitmaison(questionMenageEntity.getEtattoitmaison());
         dto.setTypeToit(questionMenageEntity.getTypeToit());
         dto.setTyperevêtementSol(questionMenageEntity.getTyperevêtementSol());
@@ -145,72 +145,72 @@ public class QuestionMenageConvert {
         dto.setElectricite(questionMenageEntity.getElectricite());
         dto.setElectriciteCuisine(questionMenageEntity.getElectriciteCuisine());
         dto.setMembreMenagePorteChaussirLit(questionMenageEntity.isMembreMenagePorteChaussirLit());
-        dto.setMembreMenageDormeMemeChambre(questionMenageEntity.getMembreMenageDormeMemeChambre()); 
-        dto.setMaisonAccessiblePersonnesHandicape(questionMenageEntity.getMaisonAccessiblePersonnesHandicape()); 
+        dto.setMembreMenageDormeMemeChambre(questionMenageEntity.getMembreMenageDormeMemeChambre());
+        dto.setMaisonAccessiblePersonnesHandicape(questionMenageEntity.getMaisonAccessiblePersonnesHandicape());
 
-        dto.setCombienFoisMangeParJour(questionMenageEntity.getCombienFoisMangeParJour()); 
+        dto.setCombienFoisMangeParJour(questionMenageEntity.getCombienFoisMangeParJour());
         dto.setRepasImportantJournee(questionMenageEntity.getRepasImportantJournee());
         dto.setChangementAlimentaireHabituerLastTroisMois(questionMenageEntity.isChangementAlimentaireHabituerLastTroisMois());
-        dto.setMesureChangementAlimentaireLastTroisMois(questionMenageEntity.getMesureChangementAlimentaireLastTroisMois()); 
+        dto.setMesureChangementAlimentaireLastTroisMois(questionMenageEntity.getMesureChangementAlimentaireLastTroisMois());
         dto.setRaisonChangementAlimentaire(questionMenageEntity.getRaisonChangementAlimentaire());
         dto.setPenurieAlimentaire(questionMenageEntity.isPenurieAlimentaire());
-        dto.setPenurieAlimentaireParMois(questionMenageEntity.getPenurieAlimentaireParMois()); 
+        dto.setPenurieAlimentaireParMois(questionMenageEntity.getPenurieAlimentaireParMois());
         dto.setPenurieAlimentaireRaison(questionMenageEntity.getPenurieAlimentaireRaison());
         dto.setCriseAffecteMnage(questionMenageEntity.getCriseAffecteMnage());
         dto.setManqueAlimentQuatreSemaine(questionMenageEntity.isManqueAlimentQuatreSemaine());
-        dto.setCombienManqueAlimentQuatreSemaine(questionMenageEntity.getCombienManqueAlimentQuatreSemaine()); 
+        dto.setCombienManqueAlimentQuatreSemaine(questionMenageEntity.getCombienManqueAlimentQuatreSemaine());
         dto.setManqueAlimentSoir(questionMenageEntity.isManqueAlimentSoir());
         dto.setNombreManqueAliment(questionMenageEntity.getNombreManqueAliment());
-        dto.setManqueAlimentMembre(questionMenageEntity.isManqueAlimentMembre()); 
+        dto.setManqueAlimentMembre(questionMenageEntity.isManqueAlimentMembre());
         dto.setNombreManqueAlimentMembre(questionMenageEntity.getNombreManqueAlimentMembre());
-        dto.setEauBoire(questionMenageEntity.isEauBoire()); 
-        dto.setQualiteAlimentEauPotableEnfantHandicape(questionMenageEntity.getQualiteAlimentEauPotableEnfantHandicape());    
+        dto.setEauBoire(questionMenageEntity.isEauBoire());
+        dto.setQualiteAlimentEauPotableEnfantHandicape(questionMenageEntity.getQualiteAlimentEauPotableEnfantHandicape());
 
-        dto.setMesureRevenue(questionMenageEntity.getMesureRevenue()); 
+        dto.setMesureRevenue(questionMenageEntity.getMesureRevenue());
         dto.setRevenueChangeDernieresAnnee(questionMenageEntity.getRevenueChangeDernieresAnnee());
         dto.setPrincipaleActiviteDeuxDernierieSemaine(questionMenageEntity.getPrincipaleActiviteDeuxDernierieSemaine());
-        dto.setSourceRevenueImportant(questionMenageEntity.getSourceRevenueImportant()); 
+        dto.setSourceRevenueImportant(questionMenageEntity.getSourceRevenueImportant());
         dto.setMontantMinimumParAn(questionMenageEntity.getMontantMinimumParAn());
         dto.setContrainteActivite(questionMenageEntity.getContrainteActivite());
-        dto.setNiveauVie(questionMenageEntity.getNiveauVie()); 
+        dto.setNiveauVie(questionMenageEntity.getNiveauVie());
         dto.setMontantEstimer(questionMenageEntity.getMontantEstimer());
-        dto.setPremiereBesoinManage(questionMenageEntity.getPremiereBesoinManage()); 
+        dto.setPremiereBesoinManage(questionMenageEntity.getPremiereBesoinManage());
         dto.setActivteEnfantHandicapeAGR(questionMenageEntity.isActivteEnfantHandicapeAGR());
         dto.setEnfantHandicapeDicussionGroupe(questionMenageEntity.isEnfantHandicapeDicussionGroupe());
-        dto.setFamilleAugmentRevenuParFournie(questionMenageEntity.getFamilleAugmentRevenuParFournie());    
-        dto.setEpargneMnsuelleMoyenneParFemme(questionMenageEntity.getEpargneMnsuelleMoyenneParFemme());   
-        dto.setFemillePrete(questionMenageEntity.isFemillePrete());   
-        dto.setChoixFamilleEnAGR(questionMenageEntity.getChoixFamilleEnAGR()); 
-        
-        dto.setMenageTerrain(questionMenageEntity.getMenageTerrain()); 
+        dto.setFamilleAugmentRevenuParFournie(questionMenageEntity.getFamilleAugmentRevenuParFournie());
+        dto.setEpargneMnsuelleMoyenneParFemme(questionMenageEntity.getEpargneMnsuelleMoyenneParFemme());
+        dto.setFemillePrete(questionMenageEntity.isFemillePrete());
+        dto.setChoixFamilleEnAGR(questionMenageEntity.getChoixFamilleEnAGR());
+
+        dto.setMenageTerrain(questionMenageEntity.getMenageTerrain());
         dto.setMenageSuperficieTerrain(questionMenageEntity.getMenageSuperficieTerrain());
         dto.setProprieteFonciereEnregistre(questionMenageEntity.isProprieteFonciereEnregistre());
-        dto.setMenageAgriculture(questionMenageEntity.getMenageAgriculture());    
+        dto.setMenageAgriculture(questionMenageEntity.getMenageAgriculture());
 
-        dto.setAccesAuMarche(questionMenageEntity.getAccesAuMarche()); 
+        dto.setAccesAuMarche(questionMenageEntity.getAccesAuMarche());
         dto.setAccesAuMarcheSethDerniereJours(questionMenageEntity.getAccesAuMarcheSethDerniereJours());
         dto.setTempsArriveAuMarche(questionMenageEntity.getTempsArriveAuMarche());
-        dto.setFluctuationPrixMarcheSethDerniereJours(questionMenageEntity.getFluctuationPrixMarcheSethDerniereJours());   
-        dto.setAccesPaiementMobile(questionMenageEntity.getAccesPaiementMobile());  
+        dto.setFluctuationPrixMarcheSethDerniereJours(questionMenageEntity.getFluctuationPrixMarcheSethDerniereJours());
+        dto.setAccesPaiementMobile(questionMenageEntity.getAccesPaiementMobile());
 
-        dto.setHospitalSoigne(questionMenageEntity.getHospitalSoigne()); 
+        dto.setHospitalSoigne(questionMenageEntity.getHospitalSoigne());
         dto.setMembreFimmilleAccidentMaladeQuatreDerniereSemaine(questionMenageEntity.isMembreFimmilleAccidentMaladeQuatreDerniereSemaine());
-        dto.setTempsMembreTombeMaladeQuatreDerniereSemaine(questionMenageEntity.getTempsMembreTombeMaladeQuatreDerniereSemaine()); 
-        dto.setDistanceEntreHospitalMaison(questionMenageEntity.getDistanceEntreHospitalMaison()); 
-        dto.setMembreAssuranceMaladi(questionMenageEntity.isMembreAssuranceMaladi()); 
-        dto.setDormeMoustiquaire(questionMenageEntity.isDormeMoustiquaire()); 
-        dto.setOuAccouchezVousHabituellement(questionMenageEntity.getOuAccouchezVousHabituellement()); 
-        dto.setTempsEntreHospitalMaisonAccoucher(questionMenageEntity.getTempsEntreHospitalMaisonAccoucher()); 
-        dto.setProblemePrincipalePourSointSante(questionMenageEntity.getProblemePrincipalePourSointSante()); 
-        dto.setMenageHeure(questionMenageEntity.getMenageHeure()); 
-        dto.setEnfantHandicapeHeure(questionMenageEntity.getEnfantHandicapeHeure()); 
-        dto.setMenageMieuxAccepteSocialementEconomiquementCommunaute(questionMenageEntity.isMenageMieuxAccepteSocialementEconomiquementCommunaute()); 
+        dto.setTempsMembreTombeMaladeQuatreDerniereSemaine(questionMenageEntity.getTempsMembreTombeMaladeQuatreDerniereSemaine());
+        dto.setDistanceEntreHospitalMaison(questionMenageEntity.getDistanceEntreHospitalMaison());
+        dto.setMembreAssuranceMaladi(questionMenageEntity.isMembreAssuranceMaladi());
+        dto.setDormeMoustiquaire(questionMenageEntity.isDormeMoustiquaire());
+        dto.setOuAccouchezVousHabituellement(questionMenageEntity.getOuAccouchezVousHabituellement());
+        dto.setTempsEntreHospitalMaisonAccoucher(questionMenageEntity.getTempsEntreHospitalMaisonAccoucher());
+        dto.setProblemePrincipalePourSointSante(questionMenageEntity.getProblemePrincipalePourSointSante());
+        dto.setMenageHeure(questionMenageEntity.getMenageHeure());
+        dto.setEnfantHandicapeHeure(questionMenageEntity.getEnfantHandicapeHeure());
+        dto.setMenageMieuxAccepteSocialementEconomiquementCommunaute(questionMenageEntity.isMenageMieuxAccepteSocialementEconomiquementCommunaute());
 
         dto.setPersonHandicapeExist(questionMenageEntity.getPersonHandicapeExist());
         dto.setCombienPersonHandicapeEnfant(questionMenageEntity.getCombienPersonHandicapeEnfant());
         dto.setCombienPersonHandicapeJeunesse(questionMenageEntity.getCombienPersonHandicapeJeunesse());
         dto.setPersonHandicapeChefMenage(questionMenageEntity.getPersonHandicapeChefMenage());
-        dto.setPersonHandicapeChefMenageActivite(questionMenageEntity.getPersonHandicapeChefMenageActivite()); 
+        dto.setPersonHandicapeChefMenageActivite(questionMenageEntity.getPersonHandicapeChefMenageActivite());
         dto.setEvaluationParticipantionAuxFormarmation(questionMenageEntity.getEvaluationParticipantionAuxFormation());//
         dto.setConsiderationPositiveAuxEnfantHendicape(questionMenageEntity.getConsiderationPositiveAuxEnfantHendicape());//
 
@@ -227,20 +227,20 @@ public class QuestionMenageConvert {
         dto.setSatisfeteServiceRecuScolaire(questionMenageEntity.getSatisfeteServiceRecuScolaire());
         dto.setPrincipalProblemeScolaire(questionMenageEntity.getPrincipalProblemeScolaire());
         dto.setChefDeEcole(questionMenageEntity.getChefDeEcole());
-        dto.setPrincipaleRaisonEnfantNonScolarise(questionMenageEntity.getPrincipaleRaisonEnfantNonScolarise());  
+        dto.setPrincipaleRaisonEnfantNonScolarise(questionMenageEntity.getPrincipaleRaisonEnfantNonScolarise());
         dto.setEnfantHadicapeAbandonneEcole(questionMenageEntity.isEnfantHadicapeAbandonneEcole());//
         dto.setEnfantHadicapeScolariser(questionMenageEntity.isEnfantHadicapeScolariser());//
-        dto.setResourceFinancierePourenfantHadicape(questionMenageEntity.getResourceFinancierePourenfantHadicape());//  
+        dto.setResourceFinancierePourenfantHadicape(questionMenageEntity.getResourceFinancierePourenfantHadicape());//
 
-        dto.setMembreFoyer(questionMenageEntity.getMembreFoyer());   
-        dto.setPartenaireOrganisation(questionMenageEntity.getPartenaireOrganisation());  
-        dto.setTypeOrganisation(questionMenageEntity.getTypeOrganisation());  
-        dto.setMembreSHG(questionMenageEntity.getMembreSHG());  
-        dto.setMembreStrictureCommunautaire(questionMenageEntity.getMembreStrictureCommunautaire());  
-        dto.setMembreStrictureCommunautaireLequel(questionMenageEntity.getMembreStrictureCommunautaireLequel()); 
-          
-           
-        dto.setDateTime(DateHelper.toDate(questionMenageEntity.getDateTime()));   
+        dto.setMembreFoyer(questionMenageEntity.getMembreFoyer());
+        dto.setPartenaireOrganisation(questionMenageEntity.getPartenaireOrganisation());
+        dto.setTypeOrganisation(questionMenageEntity.getTypeOrganisation());
+        dto.setMembreSHG(questionMenageEntity.getMembreSHG());
+        dto.setMembreStrictureCommunautaire(questionMenageEntity.getMembreStrictureCommunautaire());
+        dto.setMembreStrictureCommunautaireLequel(questionMenageEntity.getMembreStrictureCommunautaireLequel());
+        dto.setUploaded(questionMenageEntity.getUploaded());
+
+        dto.setDateTime(DateHelper.toDate(questionMenageEntity.getDateTime()));
         return dto;
     }
 }

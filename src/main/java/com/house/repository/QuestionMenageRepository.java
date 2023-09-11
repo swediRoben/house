@@ -102,7 +102,7 @@ Page<QuestionMenageEntity> getEnfantHandicapeDicussionGroupe(Integer idExercice,
 
 @Query("select count(p) from QuestionMenageEntity p where p.idTrimestre=?1 and p.enfantHandicapeDicussionGroupe=true")
 Integer getTotalTrimestreEnfantHandicapeDicussionGroupe(Integer idTrimestre);
-@Query("select count(p) from QuestionMenageEntity p JOIN HouseHoldEntitty  h ON p.idMenage=h.id where h.idExercise=?1 and p.idTrimestre=?2 and p.enfantHandicapeDicussionGroupe=true OR p.enfantHandicapeDicussionGroupe=false")
+@Query("select count(p) from QuestionMenageEntity p JOIN HouseHoldEntitty  h ON p.idMenage=h.id where h.idExercise=?1 and p.idTrimestre=?2 and (p.enfantHandicapeDicussionGroupe=true OR p.enfantHandicapeDicussionGroupe=false)")
 Integer getTotalListQuatre(Integer idExercice, Integer idTrimestre);
 
 @Query("select count(p) from QuestionMenageEntity p where p.idTrimestre=?1 and p.enfantHandicapeDicussionGroupe=true")
@@ -321,24 +321,24 @@ double getTotalMenageMieuxAccepteSocialementEconomiquementCommunaute(Integer idT
 
 //
 
-@Query("select count(p) from QuestionMenageEntity p JOIN HouseHoldEntitty  h ON p.idMenage=h.id where h.idExercise=?1 and p.idTrimestre=?2 and p.familleAugmentRevenuParFournie=1 or p.familleAugmentRevenuParFournie=2")
+@Query("select count(p) from QuestionMenageEntity p JOIN HouseHoldEntitty  h ON p.idMenage=h.id where h.idExercise=?1 and p.idTrimestre=?2 and (p.familleAugmentRevenuParFournie=1 or p.familleAugmentRevenuParFournie=2)")
 double getTotalFamilleAugmentRevenuParFournie(Integer idExercice, Integer idTrimestre);
 
-@Query("select p from QuestionMenageEntity p JOIN HouseHoldEntitty  h ON p.idMenage=h.id where h.idExercise=?1 and p.idTrimestre=?2 and p.familleAugmentRevenuParFournie=1 or p.familleAugmentRevenuParFournie=2")
+@Query("select p from QuestionMenageEntity p JOIN HouseHoldEntitty  h ON p.idMenage=h.id where h.idExercise=?1 and p.idTrimestre=?2 and (p.familleAugmentRevenuParFournie=1 or p.familleAugmentRevenuParFournie=2)")
 Page<QuestionMenageEntity> getFamilleAugmentRevenuParFournie(Integer idExercice, Integer idTrimestre, Pageable pagingSort);
 
-@Query("select p from QuestionMenageEntity p JOIN HouseHoldEntitty  h ON p.idMenage=h.id where h.idExercise=?1 and p.familleAugmentRevenuParFournie=1 or p.familleAugmentRevenuParFournie=2")
+@Query("select p from QuestionMenageEntity p JOIN HouseHoldEntitty  h ON p.idMenage=h.id where h.idExercise=?1 and (p.familleAugmentRevenuParFournie=1 or p.familleAugmentRevenuParFournie=2)")
 Page<QuestionMenageEntity> getFamilleAugmentRevenuParFournie(Integer idExercice, Pageable pagingSort);
 
 @Query("select count(p) from QuestionMenageEntity p where p.idTrimestre=?1")
 Integer getTotalTrimestreFamilleAugmentRevenuParFournie(Integer idTrimestre);
 
-@Query("select count(p) from QuestionMenageEntity p where p.idTrimestre=?1 and p.familleAugmentRevenuParFournie=1 or p.familleAugmentRevenuParFournie=2")
+@Query("select count(p) from QuestionMenageEntity p where p.idTrimestre=?1 and (p.familleAugmentRevenuParFournie=1 or p.familleAugmentRevenuParFournie=2)")
 double getTotalFamilleAugmentRevenuParFournie(Integer idTrimestre);
 
 // 
 
-@Query("select SUM(epargneMnsuelleMoyenneParFemme) from QuestionMenageEntity p JOIN HouseHoldEntitty  h ON p.idMenage=h.id where h.idExercise=?1 and p.idTrimestre=?2  and p.epargneMnsuelleMoyenneParFemme>0 OR p.epargneMnsuelleMoyenneParFemme!=null")
+@Query("select SUM(epargneMnsuelleMoyenneParFemme) from QuestionMenageEntity p JOIN HouseHoldEntitty  h ON p.idMenage=h.id where h.idExercise=?1 and p.idTrimestre=?2  and (p.epargneMnsuelleMoyenneParFemme>0 OR p.epargneMnsuelleMoyenneParFemme!=null)")
 double getTotalEpargneMnsuelleMoyenneParFemme(Integer idExercice, Integer idTrimestre);
 
 @Query("select p from QuestionMenageEntity p JOIN HouseHoldEntitty  h ON p.idMenage=h.id where h.idExercise=?1 and p.idTrimestre=?2  and p.epargneMnsuelleMoyenneParFemme>0 ")
@@ -347,10 +347,10 @@ Page<QuestionMenageEntity> getEpargneMnsuelleMoyenneParFemme(Integer idExercice,
 @Query("select p from QuestionMenageEntity p JOIN HouseHoldEntitty  h ON p.idMenage=h.id where h.idExercise=?1  and p.epargneMnsuelleMoyenneParFemme>0 ")
 Page<QuestionMenageEntity> getEpargneMnsuelleMoyenneParFemme(Integer idExercice, Pageable pagingSort);
 
-@Query("select count(p) from QuestionMenageEntity p where p.idTrimestre=?1 and p.epargneMnsuelleMoyenneParFemme>0 OR p.epargneMnsuelleMoyenneParFemme!=null")
+@Query("select count(p) from QuestionMenageEntity p where p.idTrimestre=?1 and (p.epargneMnsuelleMoyenneParFemme>0 OR p.epargneMnsuelleMoyenneParFemme!=null)")
 Integer getTotalTrimestreEpargneMnsuelleMoyenneParFemme(Integer idTrimestre);
 
-@Query("select count(p) from QuestionMenageEntity p where p.idTrimestre=?1  and p.epargneMnsuelleMoyenneParFemme>0 OR p.epargneMnsuelleMoyenneParFemme!=null")
+@Query("select count(p) from QuestionMenageEntity p where p.idTrimestre=?1  and (p.epargneMnsuelleMoyenneParFemme>0 OR p.epargneMnsuelleMoyenneParFemme!=null)")
 double getTotalEpargneMnsuelleMoyenneParFemme(Integer idTrimestre);
 
 //
@@ -372,19 +372,19 @@ double getTotalFemillePrete(Integer idTrimestre);
 
 //
 
-@Query("select count(p) from QuestionMenageEntity p JOIN HouseHoldEntitty  h ON p.idMenage=h.id where h.idExercise=?1 and p.idTrimestre=?2 and p.choixFamilleEnAGR=1 or p.choixFamilleEnAGR=2")
+@Query("select count(p) from QuestionMenageEntity p JOIN HouseHoldEntitty  h ON p.idMenage=h.id where h.idExercise=?1 and p.idTrimestre=?2 and (p.choixFamilleEnAGR=1 or p.choixFamilleEnAGR=2)")
 double getTotalChoixFamilleEnAGR(Integer idExercice, Integer idTrimestre);
 
-@Query("select p from QuestionMenageEntity p JOIN HouseHoldEntitty  h ON p.idMenage=h.id where h.idExercise=?1 and p.idTrimestre=?2 and p.choixFamilleEnAGR=1 or p.choixFamilleEnAGR=2")
+@Query("select p from QuestionMenageEntity p JOIN HouseHoldEntitty  h ON p.idMenage=h.id where h.idExercise=?1 and p.idTrimestre=?2 and (p.choixFamilleEnAGR=1 or p.choixFamilleEnAGR=2)")
 Page<QuestionMenageEntity> getChoixFamilleEnAGR(Integer idExercice, Integer idTrimestre, Pageable pagingSort);
 
-@Query("select p from QuestionMenageEntity p JOIN HouseHoldEntitty  h ON p.idMenage=h.id where h.idExercise=?1 and p.choixFamilleEnAGR=1 or p.choixFamilleEnAGR=2")
+@Query("select p from QuestionMenageEntity p JOIN HouseHoldEntitty  h ON p.idMenage=h.id where h.idExercise=?1 and (p.choixFamilleEnAGR=1 or p.choixFamilleEnAGR=2)")
 Page<QuestionMenageEntity> getChoixFamilleEnAGR(Integer idExercice, Pageable pagingSort);
 
 @Query("select count(p) from QuestionMenageEntity p where p.idTrimestre=?1")
 Integer getTotalTrimestreChoixFamilleEnAGR(Integer idTrimestre);
 
-@Query("select count(p) from QuestionMenageEntity p where p.idTrimestre=?1 and p.choixFamilleEnAGR=1 or p.choixFamilleEnAGR=2")
+@Query("select count(p) from QuestionMenageEntity p where p.idTrimestre=?1 and (p.choixFamilleEnAGR=1 or p.choixFamilleEnAGR=2)")
 double getTotalChoixFamilleEnAGR(Integer idTrimestre);
 
 @Query("select count(p) > 0 from QuestionMenageEntity p where  p.idMenage=?1 and p.idTrimestre=?2")

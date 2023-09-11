@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, Integer> {
@@ -15,12 +16,13 @@ public interface UserRepository extends JpaRepository<UserEntity, Integer> {
     @Query("SELECT count(u) > 0 FROM UserEntity u  WHERE u.username = :username")
     boolean existsByUsername(@Param("username") String username);
 
-    @Query(value = "SELECT u.password FROM users u  WHERE u.username = :username", nativeQuery = true)
-    String  existsByPasswordByUsername(@Param("username") String username);
-//    @Query("SELECT count(u) > 0 FROM UserEntity u  WHERE u.username = :username AND u.password=: password")
-//    boolean existsByPasswordAndUsername(@Param("username") String username, @Param("password") String password);
-    @Query("SELECT u.password FROM UserEntity u  WHERE u.username = :username")
-    String getPasswordByUsername(@Param("username") String username);
+    @Query(value = "SELECT C FROM users C WHERE C.username=:username and C.id!=:id", nativeQuery = true)
+    Optional<UserEntity> verificationUsernname(@Param("id") Integer id, @Param("username") String username);
+
+
+    @Query(value = "SELECT * FROM users WHERE username LIKE %?1%", nativeQuery = true)
+    List<UserEntity> findByUsernameContaining(@Param("username") String username);
+
     UserEntity findByUsername(String username);
 
 }

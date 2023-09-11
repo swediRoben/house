@@ -17,4 +17,7 @@ List<HouseHoldEntitty> filterByExerciseId(@Param("idExercise") Integer idExercis
 
 //    @Query(value = "SELECT * FROM house h WHERE h.libelle =:libelle", nativeQuery = true)
 //    List<ExerciceEntity> filterByExerciseId(@Param("libelle") String libelle);
+//@Query("SELECT count(e) > 0 FROM ExerciceEntity e  WHERE e.id = :id")
+//boolean existsByExercise(Integer id);
+
 }

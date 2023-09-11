@@ -792,7 +792,7 @@ public class QuestionMenageServImpl implements QuestionMenageService{
         } 
         
         donnee1.put("details",list );
-        dataReturn.put("nombreActifMenage", donnee1);
+        dataReturn.put("menageTerrain", donnee1);
 
            sommeMoyenePourcentage.clear();
            sommeMoyene.clear(); 
@@ -1501,8 +1501,8 @@ public class QuestionMenageServImpl implements QuestionMenageService{
         pourcentage=0;
         moyenne=0;
         moyennePourcentage=0;
-            nombreTotal=menageRepository.getTotal(idExercice,idTrimestre);
-            nombre=menageRepository.getTotalFamilleAugmentRevenuParFournie(idExercice,idTrimestre);
+            nombreTotal=menageRepository.getTotal(idExercice,idTrimestre); 
+            nombre=menageRepository.getTotalFamilleAugmentRevenuParFournie(idExercice,idTrimestre); 
             pourcentage=pourcentage(nombre, nombreTotal);
 			pg = menageRepository.getFamilleAugmentRevenuParFournie(idExercice,idTrimestre,pagingSort);
 		    sommeMoyenePourcentage.add(pourcentage);

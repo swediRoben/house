@@ -28,7 +28,6 @@ public class UserController {
     @Autowired
     private UserRepository repository;
 
-    private AuthenticationManager authenticationManager;
 
     @RequestMapping(value = "/getAll/a", method = RequestMethod.GET)
     public ResponseEntity<?> getAll() {
@@ -111,7 +110,13 @@ public class UserController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity<?> update(@RequestBody UserDto dto,
-                                    @PathVariable(name = "id", required = true) Integer id) {
+                                    @PathVariable(name = "id") Integer id) {
+        Optional<UserEntity> usernameExist = repository.verificationUsernname(id,
+                dto.getUsername());
+        if (usernameExist.isPresent())
+            return new ResponseEntity<>(
+                    new ResponseHelper(("username " + dto.getUsername() + " exist"), true),
+                    HttpStatus.BAD_REQUEST);
         UserDto userDto = userService.updatem(id, dto);
         if (userDto != null) {
             return new ResponseEntity<>(new ResponseHelper("sucess", true), HttpStatus.OK);
@@ -127,6 +132,16 @@ public class UserController {
             return new ResponseEntity<>(new ResponseHelper("sucess", true), HttpStatus.OK);
         }
         return new ResponseEntity<>(new ResponseHelper(MessageHelper.noContent()), HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/getUsersByUsername/{username}")
+    public ResponseEntity<?> getUsersByUsername(@PathVariable String username) {
+
+        List<UserEntity> users = userService.filterByUsername(username);
+        if (users.size() >= 0)
+            return new ResponseEntity<>(new ResponseHelper("success", users, true), HttpStatus.OK);
+        else
+            return new ResponseEntity<>(new ResponseHelper(MessageHelper.noContent()), HttpStatus.NO_CONTENT);
     }
 
     private Sort.Direction getSortDirection(String direction) {

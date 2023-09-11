@@ -134,6 +134,7 @@ public class QuestionMenageEntity {
     private Integer membreStrictureCommunautaire;
     private String membreStrictureCommunautaireLequel;
 
+    private Boolean uploaded;
     @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     private Date dateTime;
 

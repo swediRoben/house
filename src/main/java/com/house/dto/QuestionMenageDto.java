@@ -116,7 +116,7 @@ public class QuestionMenageDto {
     private Integer membreSHG;
     private Integer membreStrictureCommunautaire;
     private String membreStrictureCommunautaireLequel;
-
+    private Boolean uploaded;
     private String dateTime;
 
 }

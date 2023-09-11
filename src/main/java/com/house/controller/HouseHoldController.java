@@ -3,6 +3,7 @@ package com.house.controller;
 import com.house.dto.ExerciceDto;
 import com.house.dto.HouseHoldDto;
 import com.house.entity.HouseHoldEntitty;
+import com.house.exception.ResourceNotFoundException;
 import com.house.helper.MessageHelper;
 import com.house.helper.ResponseHelper;
 import com.house.repository.HouseHoldRepository;

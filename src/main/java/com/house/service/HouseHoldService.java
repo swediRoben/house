@@ -2,24 +2,25 @@ package com.house.service;
 
 import com.house.convertDto.HouseHoldConvertDto;
 import com.house.dto.HouseHoldDto;
+import com.house.entity.ExerciceEntity;
 import com.house.entity.HouseHoldEntitty;
+import com.house.exception.ResourceNotFoundException;
 import com.house.helper.PagingAndSortingHelper;
+import com.house.repository.ExerciceRepository;
 import com.house.repository.HouseHoldRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class HouseHoldService {
     @Autowired
     private HouseHoldRepository repository;
-
+    @Autowired
+    private ExerciceRepository exerciceRepository;
     public HouseHoldDto getById(Integer id) {
         HouseHoldDto dto = null;
         HouseHoldEntitty entity = null;
@@ -117,10 +118,12 @@ public class HouseHoldService {
         return dtoRetour;
     }
 
-    public boolean delete(Integer id){
+    public boolean delete(Integer id) {
+
         boolean result = false;
         try {
             HouseHoldDto dto = getById(id);
+
             if (dto != null){
                 repository.deleteById(id);
                 result = true;

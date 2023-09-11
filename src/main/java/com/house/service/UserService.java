@@ -34,8 +34,6 @@ public class UserService {
 
 @Autowired
 private UserRepository repository;
-//@Autowired
-//private PasswordEncoder passwordEncoder;
 
 
 public List<UserDto> getAll() {
@@ -46,8 +44,6 @@ List<UserDto> dtos = new ArrayList<>();
 try {
 for (UserEntity entity : entities) {
 UserDto dto = UserConvertDto.getInstance().toDto(entity);
-// dto.setPassword(passwordEncoder.decode(entity.getPassword()));
-//dto.setPassword(passwordEncoder.encode(entity.getPassword()));
 dtos.add(dto);
 
 }
@@ -58,6 +54,9 @@ return dtos;
 }
 
 
+ public List<UserEntity> filterByUsername(String username) {
+  return repository.findByUsernameContaining(username);
+ }
 
 
 public UserDto getByIdm(Integer id) {
@@ -74,23 +73,6 @@ dto = null;
 }
 return dto;
 }
-
-public UserDto login(UserDto userDto){
-
- UserEntity entity = null;
- UserDto dto = null;
-
- try {
-  entity = repository.findByUsername(userDto.getUsername());
-  dto = UserConvertDto.getInstance().toDto(entity);
-
-
- }catch (Exception e){
-  System.out.println(e.getMessage());
- }
- return userDto;
-}
-
 
 
 public boolean deleteByIdm(Integer id) {
@@ -131,7 +113,6 @@ UserDto dto = null;
 try {
 entity = UserConvertDto.getInstance().toEntity(userDto);
  entity.setDateCreation(DateHelper.now());
-//entity.setPassword(passwordEncoder.encode(entity.getPassword()));
 UserEntity savedExercise = repository.save(entity);
 dto =UserConvertDto.getInstance().toDto(savedExercise);
 }catch (Exception e){

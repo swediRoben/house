@@ -81,10 +81,11 @@ dto = null;
 return exerciceDto;
 }
 
-public boolean deleteById(Integer id) {
-boolean result = false;
+public boolean deleteById(Integer id)  {
+    boolean result = false;
 try {
 ExerciceDto dto = getById(id);
+
 if (dto != null) {
 repository.deleteById(id);
 result = true;
