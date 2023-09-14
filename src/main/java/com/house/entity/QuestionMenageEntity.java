@@ -28,8 +28,11 @@ public class QuestionMenageEntity {
     private Integer idTrimestre;  
 
     @Column(name = "id_menage")
-    private Integer idMenage; 
-    
+    private Integer idMenage;
+
+    @Column(name = "id_enquete")
+    private Integer idEnquete;
+
     private Integer menageProprieteMaison; 
     private Integer etattoitmaison;
     private Integer typeToit;
@@ -141,5 +144,9 @@ public class QuestionMenageEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_menage", referencedColumnName = "id", insertable = false, updatable = false)
     private HouseHoldEntitty menage; 
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_enquete", referencedColumnName = "id", insertable = false, updatable = false)
+    private EnqueteEntity enqueteEntity; 
 
 }

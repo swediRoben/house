@@ -13,7 +13,16 @@ import java.util.List;
 public interface HouseHoldRepository extends JpaRepository<HouseHoldEntitty, Integer> {
 
 @Query(value = "SELECT * FROM house h WHERE h.id_exercise =:idExercise", nativeQuery = true)
-List<HouseHoldEntitty> filterByExerciseId(@Param("idExercise") Integer idExercise);
+List<HouseHoldEntitty> filterByExerciseId(@Param("idExercise") Integer idExercise); 
+
+@Query(value = "SELECT count(h) FROM HouseHoldEntitty h WHERE h.idExercise =?1") 
+Integer countMenage(Integer idExercice);
+
+@Query(value = "SELECT count(h) FROM HouseHoldEntitty h WHERE h.idExercise =?1 and childrenWithDisabilities=true") 
+Integer nombreMenageHandicape(Integer idExercice);
+
+@Query(value = "SELECT count(h) FROM HouseHoldEntitty h WHERE h.idExercise =?1 and childrenWithDisabilities=false") 
+Integer nombreSansMenageHandicape(Integer idExercice);
 
 //    @Query(value = "SELECT * FROM house h WHERE h.libelle =:libelle", nativeQuery = true)
 //    List<ExerciceEntity> filterByExerciseId(@Param("libelle") String libelle);

@@ -12,7 +12,9 @@ public class QuestionMenageDto {
     private  StaticValue quarter;
     
     private Integer idMenage;
+    private Integer idEnquete;
     private HouseHoldDto menageDto; 
+    private EnqueteDto EnqueteDto; 
     private Integer menageProprieteMaison; 
     private Integer etattoitmaison;
     private Integer typeToit;

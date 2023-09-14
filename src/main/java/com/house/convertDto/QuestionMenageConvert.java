@@ -15,15 +15,16 @@ public class QuestionMenageConvert {
         QuestionMenageDto dto = new QuestionMenageDto(); 
         dto.setId(questionMenageEntity.getId()); 
         dto.setIdMenage(questionMenageEntity.getIdMenage()); 
-        dto.setIdTrimestre(questionMenageEntity.getIdTrimestre()); 
-
-        	if (questionMenageEntity.getIdTrimestre()!=null && questionMenageEntity.getIdTrimestre()<8) {
+         dto.setIdMenage(questionMenageEntity.getIdMenage()); 
+         dto.setIdEnquete(questionMenageEntity.getIdEnquete()); 
+        if (questionMenageEntity.getIdTrimestre()!=null && questionMenageEntity.getIdTrimestre()<8) {
 			StaticListOfValues slove = new StaticListOfValues();
 			StaticValue sv = slove.getTypeTrimestres().get(questionMenageEntity.getIdTrimestre());
 			dto.setQuarter(sv); 
 		}
 
         dto.setMenageDto(HouseHoldConvertDto.getInstance().toDto(questionMenageEntity.getMenage()));
+        dto.setEnqueteDto(EnqueteConvertDto.getInstance().toDto(questionMenageEntity.getEnqueteEntity()));
         dto.setMenageProprieteMaison(questionMenageEntity.getMenageProprieteMaison());
         dto.setEtattoitmaison(questionMenageEntity.getEtattoitmaison());
         dto.setTypeToit(questionMenageEntity.getTypeToit());
@@ -135,6 +136,7 @@ public class QuestionMenageConvert {
         QuestionMenageEntity dto = new QuestionMenageEntity();
         dto.setId(questionMenageEntity.getId());
         dto.setIdMenage(questionMenageEntity.getIdMenage());
+        dto.setIdEnquete(questionMenageEntity.getIdEnquete()); 
         dto.setIdTrimestre(questionMenageEntity.getIdTrimestre());
         dto.setMenageProprieteMaison(questionMenageEntity.getMenageProprieteMaison());
         dto.setEtattoitmaison(questionMenageEntity.getEtattoitmaison());

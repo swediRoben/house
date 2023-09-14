@@ -30,6 +30,7 @@ private static final String[] UN_SECURED_URLs = {
 
         "/question_menage/**",
         "/constantes_param/**",
+        "/dashBord/**",
         "/rapport/**",
         "/exercice/**",
         "/houseHold/getHouseholdsByIdExercice/**",

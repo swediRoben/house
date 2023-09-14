@@ -154,4 +154,17 @@ public class ExerciceControler {
         return new ResponseEntity<>(new ResponseHelper(MessageHelper.noContent()), HttpStatus.NO_CONTENT);
     }
 
+
+   
+    @DeleteMapping(value = "/delete/all")
+    public ResponseEntity<?> deleteAll() {
+        boolean dto = uSers.deleteAll();
+
+        if (dto) {
+            return new ResponseEntity<>(new ResponseHelper(null, dto, true), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(new ResponseHelper(MessageHelper.noContent()), HttpStatus.NO_CONTENT);
+    } 
+
+
 }
