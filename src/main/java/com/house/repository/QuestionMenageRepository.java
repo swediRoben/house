@@ -13,7 +13,8 @@ import com.house.entity.QuestionMenageEntity;
 @Repository
 public interface QuestionMenageRepository extends JpaRepository<QuestionMenageEntity, Long>{
 
-    boolean findByIdMenageAndIdTrimestre(Integer idMenage, Integer idQuarter);
+ @Query("select count(p)>0 from QuestionMenageEntity p where p.idMenage=?1 and p.idTrimestre=?2 ")
+ boolean getByIdMenageAndIdTrimestre(Integer idMenage, Integer idQuarter);
 
     @Query("select p from QuestionMenageEntity p JOIN HouseHoldEntitty  h ON p.idMenage=h.id where h.idExercise=?1 and p.idTrimestre=?2 ")
     Page<QuestionMenageEntity> getByIdExerciceAndIdTrimestre(Integer idExercice, Integer idTrimestre,
