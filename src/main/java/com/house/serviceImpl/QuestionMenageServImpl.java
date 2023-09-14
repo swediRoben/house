@@ -93,13 +93,8 @@ public class QuestionMenageServImpl implements QuestionMenageService{
     }
 
     @Override
-    public boolean checkQuarter(Integer idMenage,Integer idQuarter) {
-        try {   
-            menageRepository.findByIdMenageAndIdTrimestre(idMenage,idQuarter); 
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
+    public boolean checkQuarter(Integer idMenage,Integer idQuarter) { 
+          return menageRepository.getByIdMenageAndIdTrimestre(idMenage,idQuarter);  
     }
 
     public List<Integer> listTrimestre(Integer idExercice)
