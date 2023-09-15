@@ -82,6 +82,18 @@ public class DashbordControler {
         } else {
             return new ResponseEntity<>(new ResponseHelper("not found", false), HttpStatus.NOT_FOUND);
         }
+    }
 
- }
+       @GetMapping(value = "/formation")
+     public ResponseEntity<Object> formation(      
+                                 @RequestParam(required = false) Integer idExercice) { 
+  
+        List<Rapport> data = service.formation(idExercice);
+
+        if (data.size() > 0) {
+            return new ResponseEntity<>(new ResponseHelper("succes",data, true), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(new ResponseHelper("not found", false), HttpStatus.NOT_FOUND);
+        }
+    }
 }

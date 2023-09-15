@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.aspectj.weaver.ast.Not;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -118,6 +119,35 @@ public class DashBordService {
            
         data.put("total", total);  
         data.put("parTrimestre", rapoList);
+        return data;
+    }
+
+    public List<Rapport> formation(Integer idExercice) {
+         List<Integer> trimestre=listTrimestre(idExercice);
+        List<Rapport> data=new ArrayList<>();  
+
+         for (int i = 0; i < trimestre.size(); i++) {
+             Rapport rap=new Rapport();
+              Map<String, Object> dataPourcentage=new HashMap<>(); 
+            Integer nombreMenage =menageRepository.getTotal(idExercice,trimestre.get(i));
+            double nombreVeryUseful=menageRepository.getTotalEvaluationParticipantionAuxFormarmationType(idExercice,trimestre.get(i),1);  
+            double nombreSomewhatUseful=menageRepository.getTotalEvaluationParticipantionAuxFormarmationType(idExercice,trimestre.get(i),2);  
+            double nombreNotAllUseful=menageRepository.getTotalEvaluationParticipantionAuxFormarmationType(idExercice,trimestre.get(i),3); 
+            double pourcentageVeryUseful =(nombreVeryUseful*100)/nombreMenage;
+            double pourcentageSomewhatUseful =(nombreSomewhatUseful*100)/nombreMenage;
+            double pourcentageNotAllUseful =(nombreNotAllUseful*100)/nombreMenage;
+
+            dataPourcentage.put("Nombre", nombreMenage);
+            dataPourcentage.put("VeryUseful", pourcentageVeryUseful);
+            dataPourcentage.put("SomewhatUseful", pourcentageSomewhatUseful);
+            dataPourcentage.put("NotAllUseful", pourcentageNotAllUseful);
+
+            rap.setQuarter(trimestre.get(i));
+            rap.setResponses(dataPourcentage);
+            data.add(rap);
+     
+        }
+ 
         return data;
     }
     
