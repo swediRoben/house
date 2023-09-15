@@ -79,8 +79,7 @@ public class QuestionMenageController {
         if (questionMenageDto.getIdTrimestre()==null ) {
         return new ResponseEntity<>(
         new ResponseHelper(MessageHelper.message("choose Quarter"), false),HttpStatus.NOT_ACCEPTABLE);
-        }
-
+        } 
         boolean dataSave= service.createQuestion(questionMenageDto);
 
         if (dataSave) {

@@ -90,8 +90,8 @@ public class QuestionMenageServImpl implements QuestionMenageService{
         } catch (Exception e) {
             return false;
         }
-    }
-
+    } 
+    
     @Override
     public boolean checkQuarter(Integer idMenage,Integer idQuarter) { 
           return menageRepository.getByIdMenageAndIdTrimestre(idMenage,idQuarter);  

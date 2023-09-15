@@ -1,5 +1,6 @@
 package com.house.controller;
  
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.house.dto.Rapport;
 import com.house.helper.MessageHelper;
 import com.house.helper.ResponseHelper;
 import com.house.service.DashBordService;
@@ -52,5 +54,34 @@ public class DashbordControler {
             return new ResponseEntity<>(new ResponseHelper("not found", false), HttpStatus.NOT_FOUND);
         }
 
+ }
+ 
+  @GetMapping(value = "/nombremenagebyquestionnaire")
+     public ResponseEntity<Object> menagebyquestionnaire( 
+                                @RequestHeader(name = "Accept-Language", required = false) String localeString,    
+                                 @RequestParam(required = false) Integer idExercice) { 
+  
+        Map<String, Object> data = service.menagebyquestionnaire(idExercice);
+
+        if (data.size() > 0) {
+            return new ResponseEntity<>(new ResponseHelper("succes",data, true), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(new ResponseHelper("not found", false), HttpStatus.NOT_FOUND);
+        }
+
  } 
+
+   @GetMapping(value = "/menageheureux")
+     public ResponseEntity<Object> menageheureux(      
+                                 @RequestParam(required = false) Integer idExercice) { 
+  
+        List<Rapport> data = service.menageheureux(idExercice);
+
+        if (data.size() > 0) {
+            return new ResponseEntity<>(new ResponseHelper("succes",data, true), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(new ResponseHelper("not found", false), HttpStatus.NOT_FOUND);
+        }
+
+ }
 }

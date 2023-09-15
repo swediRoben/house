@@ -11,10 +11,10 @@ public class QuestionMenageDto {
     private Integer idTrimestre; 
     private  StaticValue quarter;
     
-    private Integer idMenage;
-    private Integer idEnquete;
-    private HouseHoldDto menageDto; 
-    private EnqueteDto EnqueteDto; 
+    private Integer idMenage; 
+    private HouseHoldDto menageDto;  
+    private Integer idUser;
+    private UserDto userDto; 
     private Integer menageProprieteMaison; 
     private Integer etattoitmaison;
     private Integer typeToit;

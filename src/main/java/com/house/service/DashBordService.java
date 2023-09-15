@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.house.dto.Rapport;
 import com.house.repository.HouseHoldRepository;
 import com.house.repository.QuestionMenageRepository;
 
@@ -65,6 +66,58 @@ public class DashBordService {
         data.put("totalEnfantHandicape", totalEnfant);
         data.put("totalJeuneHandicape", totalJeune);
 
+        return data;
+    }
+
+    public List<Rapport> menageheureux(Integer idExercice) {
+        List<Integer> trimestre=listTrimestre(idExercice);
+        List<Rapport> data=new ArrayList<>(); 
+
+         for (int i = 0; i < trimestre.size(); i++) {
+             Rapport rap=new Rapport();
+              Map<String, Object> dataPourcentage=new HashMap<>(); 
+            Integer nombreMenage =menageRepository.getTotal(idExercice,trimestre.get(i));
+            double nombreJamais=menageRepository.getTotalMenageHeureType(idExercice,trimestre.get(i),1);  
+            double nombreParfois=menageRepository.getTotalMenageHeureType(idExercice,trimestre.get(i),2);  
+            double nombreSouvent=menageRepository.getTotalMenageHeureType(idExercice,trimestre.get(i),3); 
+            double pourcentageJamais =(nombreJamais*100)/nombreMenage;
+            double pourcentageParfois =(nombreParfois*100)/nombreMenage;
+            double pourcentageSouvent =(nombreSouvent*100)/nombreMenage;
+
+            dataPourcentage.put("Nombre", nombreMenage);
+             dataPourcentage.put("Never", pourcentageJamais);
+            dataPourcentage.put("Sometimes", pourcentageParfois);
+            dataPourcentage.put("Often", pourcentageSouvent);
+
+            rap.setQuarter(trimestre.get(i));
+            rap.setResponses(dataPourcentage);
+            data.add(rap);
+     
+        }
+ 
+        return data;
+    }
+
+    public Map<String, Object> menagebyquestionnaire(Integer idExercice) {
+        List<Integer> trimestre=listTrimestre(idExercice); 
+        Map<String, Object> data=new HashMap<>(); 
+        Integer total=0;
+        List<Rapport> rapoList=new ArrayList<>(); 
+         for (int i = 0; i < trimestre.size(); i++) {
+             Rapport rap=new Rapport();
+              Map<String, Object> dataNobre=new HashMap<>(); 
+            Integer nombreMenage =menageRepository.getTotal(idExercice,trimestre.get(i));  
+             total+=nombreMenage;
+            dataNobre.put("Nombre", nombreMenage); 
+
+            rap.setQuarter(trimestre.get(i));
+            rap.setResponses(dataNobre);
+         rapoList.add(rap);
+           
+        }
+           
+        data.put("total", total);  
+        data.put("parTrimestre", rapoList);
         return data;
     }
     
