@@ -159,11 +159,11 @@ public class QuestionMenageServImpl implements QuestionMenageService{
         pourcentage=0;
         moyenne=0;
         moyennePourcentage=0;
-            nombreTotal=menageRepository.getTotal(idExercice,idTrimestre);
-            nombre=menageRepository.getTotalMenageAssezMange(idExercice,idTrimestre);
+            nombreTotal+=menageRepository.getTotal(idExercice,idTrimestre);
+            nombre+=menageRepository.getTotalMenageAssezMange(idExercice,idTrimestre);
             if (nombre>0 || nombreTotal>0) { 
            pourcentage=pourcentage(nombre, nombreTotal);
-            sommeMoyenePourcentage.add(pourcentage);
+            sommeMoyenePourcentage.add(nombre);
             sommeMoyene.add(nombre); 
 		      }
            
@@ -172,14 +172,14 @@ public class QuestionMenageServImpl implements QuestionMenageService{
 		      
          }else   if (idExercice!=null && idTrimestre==null) {
             List<Integer> trimestre=listTrimestre(idExercice);
-             for (int index = 0; index < trimestre.size(); index++) {
-                nombreTotal=0;
+        nombreTotal=0;
         nombre=0;
+             for (int index = 0; index < trimestre.size(); index++) {
         pourcentage=0;
         moyenne=0;
         moyennePourcentage=0;
-            nombreTotal=menageRepository.getTotal(idExercice,trimestre.get(index));
-            nombre=menageRepository.getTotalMenageAssezMange(idExercice,trimestre.get(index));
+            nombreTotal+=menageRepository.getTotal(idExercice,trimestre.get(index));
+            nombre+=menageRepository.getTotalMenageAssezMange(idExercice,trimestre.get(index));
                 if (nombre>0 || nombreTotal>0) {
                  pourcentage=pourcentage(nombre, nombreTotal);
                  sommeMoyenePourcentage.add(pourcentage);
@@ -211,7 +211,9 @@ public class QuestionMenageServImpl implements QuestionMenageService{
 			pg = menageRepository.getMenageAssezMange(idExercice,pagingSort);
 		    
          }  
-         moyennePourcentage=moyenne(sommeMoyenePourcentage);
+        // moyennePourcentage=moyenne(sommeMoyenePourcentage);
+         moyennePourcentage=pourcentage(nombre, nombreTotal);
+
          moyenne=moyenne(sommeMoyene);
 
          Map<String,Object> donneeAssezMange=new HashMap<>();
@@ -327,8 +329,8 @@ public class QuestionMenageServImpl implements QuestionMenageService{
         pourcentage=0;
         moyenne=0;
         moyennePourcentage=0;
-            nombreTotal=menageRepository.getTotalListTrois(idExercice,idTrimestre);
-            nombre=menageRepository.getTotalJeunesHandicapeAGR(idExercice,idTrimestre);
+            nombreTotal+=menageRepository.getTotalListTrois(idExercice,idTrimestre);
+            nombre+=menageRepository.getTotalJeunesHandicapeAGR(idExercice,idTrimestre);
             pourcentage=pourcentage(nombre, nombreTotal);
 			pg = menageRepository.getJeunesHandicapeAGR(idExercice,idTrimestre,pagingSort);
 		    sommeMoyenePourcentage.add(pourcentage);
@@ -336,14 +338,14 @@ public class QuestionMenageServImpl implements QuestionMenageService{
 
          }else   if (idExercice!=null && idTrimestre==null) {
             List<Integer> trimestre=listTrimestre(idExercice);
-             for (int index = 0; index < trimestre.size(); index++) {
-                nombreTotal=0;
+         nombreTotal=0;
         nombre=0;
+             for (int index = 0; index < trimestre.size(); index++) { 
         pourcentage=0;
         moyenne=0;
         moyennePourcentage=0;
-            nombreTotal=menageRepository.getTotalListTrois(idExercice,trimestre.get(index));
-            nombre=menageRepository.getTotalJeunesHandicapeAGR(idExercice,trimestre.get(index));
+            nombreTotal+=menageRepository.getTotalListTrois(idExercice,trimestre.get(index));
+            nombre+=menageRepository.getTotalJeunesHandicapeAGR(idExercice,trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
             sommeMoyenePourcentage.add(pourcentage);
             sommeMoyene.add(nombre); 
@@ -368,7 +370,8 @@ public class QuestionMenageServImpl implements QuestionMenageService{
 		    
          } 
          
-         moyennePourcentage=moyenne(sommeMoyenePourcentage);
+         //moyennePourcentage=moyenne(sommeMoyenePourcentage);
+         moyennePourcentage=pourcentage(nombre, nombreTotal);
          moyenne=moyenne(sommeMoyene);
 
          Map<String,Object> donnee3=new HashMap<>();
@@ -642,8 +645,8 @@ public class QuestionMenageServImpl implements QuestionMenageService{
         pourcentage=0;
         moyenne=0;
         moyennePourcentage=0;
-            nombreTotal=menageRepository.getTotalListSeth(idExercice,idTrimestre);
-            nombre=menageRepository.getTotalManqueAlimentQuatreSemaine(idExercice,idTrimestre);
+            nombreTotal+=menageRepository.getTotalListSeth(idExercice,idTrimestre);
+            nombre+=menageRepository.getTotalManqueAlimentQuatreSemaine(idExercice,idTrimestre);
             pourcentage=pourcentage(nombre, nombreTotal);
 			pg = menageRepository.getManqueAlimentQuatreSemaine(idExercice,idTrimestre,pagingSort);
 		    sommeMoyenePourcentage.add(pourcentage);
@@ -651,14 +654,14 @@ public class QuestionMenageServImpl implements QuestionMenageService{
 
          }else   if (idExercice!=null && idTrimestre==null) {
             List<Integer> trimestre=listTrimestre(idExercice);
-             for (int index = 0; index < trimestre.size(); index++) {
-                nombreTotal=0;
+       nombreTotal=0;
         nombre=0;
+             for (int index = 0; index < trimestre.size(); index++) {
         pourcentage=0;
         moyenne=0;
         moyennePourcentage=0;
-            nombreTotal=menageRepository.getTotalListSeth(idExercice,trimestre.get(index));
-            nombre=menageRepository.getTotalManqueAlimentQuatreSemaine(idExercice,trimestre.get(index));
+            nombreTotal+=menageRepository.getTotalListSeth(idExercice,trimestre.get(index));
+            nombre+=menageRepository.getTotalManqueAlimentQuatreSemaine(idExercice,trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
             sommeMoyenePourcentage.add(pourcentage);
             sommeMoyene.add(nombre); 
@@ -673,8 +676,8 @@ public class QuestionMenageServImpl implements QuestionMenageService{
         pourcentage=0;
         moyenne=0;
         moyennePourcentage=0;
-            nombreTotal=menageRepository.getTotalTrimestreManqueAlimentQuatreSemaine(trimestre.get(index));
-            nombre=menageRepository.getTotalManqueAlimentQuatreSemaine(trimestre.get(index));
+            nombreTotal+=menageRepository.getTotalTrimestreManqueAlimentQuatreSemaine(trimestre.get(index));
+            nombre+=menageRepository.getTotalManqueAlimentQuatreSemaine(trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
             sommeMoyenePourcentage.add(pourcentage);
             sommeMoyene.add(nombre); 
@@ -683,7 +686,8 @@ public class QuestionMenageServImpl implements QuestionMenageService{
 		    
          } 
          
-         moyennePourcentage=moyenne(sommeMoyenePourcentage);
+         //moyennePourcentage=moyenne(sommeMoyenePourcentage);
+          moyennePourcentage=pourcentage(nombre, nombreTotal);
          moyenne=moyenne(sommeMoyene);
 
          Map<String,Object> donnee7=new HashMap<>();
@@ -798,8 +802,8 @@ public class QuestionMenageServImpl implements QuestionMenageService{
         pourcentage=0;
         moyenne=0;
         moyennePourcentage=0;
-            nombreTotal=menageRepository.getTotalListAVH(idExercice,idTrimestre);
-            nombre=menageRepository.getTotalEnfantHadicapeAbandonneEcole(idExercice,idTrimestre);
+            nombreTotal+=menageRepository.getTotalListAVH(idExercice,idTrimestre);
+            nombre+=menageRepository.getTotalEnfantHadicapeAbandonneEcole(idExercice,idTrimestre);
             pourcentage=pourcentage(nombre, nombreTotal);
 			pg = menageRepository.getEnfantHadicapeAbandonneEcole(idExercice,idTrimestre,pagingSort);
 		    sommeMoyenePourcentage.add(pourcentage);
@@ -807,14 +811,14 @@ public class QuestionMenageServImpl implements QuestionMenageService{
 
          }else   if (idExercice!=null && idTrimestre==null) {
             List<Integer> trimestre=listTrimestre(idExercice);
-             for (int index = 0; index < trimestre.size(); index++) {
-                nombreTotal=0;
+        nombreTotal=0;
         nombre=0;
+          for (int index = 0; index < trimestre.size(); index++) {
         pourcentage=0;
         moyenne=0;
         moyennePourcentage=0;
-            nombreTotal=menageRepository.getTotalListAVH(idExercice,trimestre.get(index));
-            nombre=menageRepository.getTotalEnfantHadicapeAbandonneEcole(idExercice,trimestre.get(index));
+            nombreTotal+=menageRepository.getTotalListAVH(idExercice,trimestre.get(index));
+            nombre+=menageRepository.getTotalEnfantHadicapeAbandonneEcole(idExercice,trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
             sommeMoyenePourcentage.add(pourcentage);
             sommeMoyene.add(nombre); 
@@ -839,7 +843,8 @@ public class QuestionMenageServImpl implements QuestionMenageService{
 		    
          } 
          
-         moyennePourcentage=moyenne(sommeMoyenePourcentage);
+         //moyennePourcentage=moyenne(sommeMoyenePourcentage);
+         moyennePourcentage=pourcentage(nombre, nombreTotal);
          moyenne=moyenne(sommeMoyene);
 
          Map<String,Object> donnee2=new HashMap<>();
@@ -879,8 +884,8 @@ public class QuestionMenageServImpl implements QuestionMenageService{
         pourcentage=0;
         moyenne=0;
         moyennePourcentage=0;
-            nombreTotal=menageRepository.getTotalAVHScolarise(idExercice,idTrimestre);
-            nombre=menageRepository.getTotalEnfantHadicapeScolariser(idExercice,idTrimestre);
+            nombreTotal+=menageRepository.getTotalAVHScolarise(idExercice,idTrimestre);
+            nombre+=menageRepository.getTotalEnfantHadicapeScolariser(idExercice,idTrimestre);
             pourcentage=pourcentage(nombre, nombreTotal);
 			pg = menageRepository.getEnfantHadicapeScolariser(idExercice,idTrimestre,pagingSort);
 		    sommeMoyenePourcentage.add(pourcentage);
@@ -888,14 +893,14 @@ public class QuestionMenageServImpl implements QuestionMenageService{
 
          }else   if (idExercice!=null && idTrimestre==null) {
             List<Integer> trimestre=listTrimestre(idExercice);
-             for (int index = 0; index < trimestre.size(); index++) {
-                nombreTotal=0;
+       nombreTotal=0;
         nombre=0;
+             for (int index = 0; index < trimestre.size(); index++) {
         pourcentage=0;
         moyenne=0;
         moyennePourcentage=0;
-            nombreTotal=menageRepository.getTotalAVHScolarise(idExercice,trimestre.get(index));
-            nombre=menageRepository.getTotalEnfantHadicapeScolariser(idExercice,trimestre.get(index));
+            nombreTotal+=menageRepository.getTotalAVHScolarise(idExercice,trimestre.get(index));
+            nombre+=menageRepository.getTotalEnfantHadicapeScolariser(idExercice,trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
             sommeMoyenePourcentage.add(pourcentage);
             sommeMoyene.add(nombre); 
@@ -905,7 +910,7 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else{
             List<Integer> trimestre=listTrimestre(null);
              for (int index = 0; index < trimestre.size(); index++) {
-                nombreTotal=0;
+        nombreTotal=0;
         nombre=0;
         pourcentage=0;
         moyenne=0;
@@ -920,7 +925,8 @@ public class QuestionMenageServImpl implements QuestionMenageService{
 		    
          } 
          
-         moyennePourcentage=moyenne(sommeMoyenePourcentage);
+         //moyennePourcentage=moyenne(sommeMoyenePourcentage);
+         moyennePourcentage=pourcentage(nombre, nombreTotal);
          moyenne=moyenne(sommeMoyene);
 
          Map<String,Object> donnee3=new HashMap<>();
@@ -959,8 +965,8 @@ public class QuestionMenageServImpl implements QuestionMenageService{
         pourcentage=0;
         moyenne=0;
         moyennePourcentage=0;
-            nombreTotal=menageRepository.getTotalInvestiAVH(idExercice,idTrimestre);
-            nombre=menageRepository.getTotalResourceFinancierePourenfantHadicape(idExercice,idTrimestre);
+            nombreTotal+=menageRepository.getTotalInvestiAVH(idExercice,idTrimestre);
+            nombre+=menageRepository.getTotalResourceFinancierePourenfantHadicape(idExercice,idTrimestre);
             pourcentage=pourcentage(nombre, nombreTotal);
 			pg = menageRepository.getResourceFinancierePourenfantHadicape(idExercice,idTrimestre,pagingSort);
 		    sommeMoyenePourcentage.add(pourcentage);
@@ -968,14 +974,14 @@ public class QuestionMenageServImpl implements QuestionMenageService{
 
          }else   if (idExercice!=null && idTrimestre==null) {
             List<Integer> trimestre=listTrimestre(idExercice);
-             for (int index = 0; index < trimestre.size(); index++) {
-                nombreTotal=0;
+        nombreTotal=0;
         nombre=0;
+             for (int index = 0; index < trimestre.size(); index++) {
         pourcentage=0;
         moyenne=0;
         moyennePourcentage=0;
-            nombreTotal=menageRepository.getTotalInvestiAVH(idExercice,trimestre.get(index));
-            nombre=menageRepository.getTotalResourceFinancierePourenfantHadicape(idExercice,trimestre.get(index));
+            nombreTotal+=menageRepository.getTotalInvestiAVH(idExercice,trimestre.get(index));
+            nombre+=menageRepository.getTotalResourceFinancierePourenfantHadicape(idExercice,trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
             sommeMoyenePourcentage.add(pourcentage);
             sommeMoyene.add(nombre); 
@@ -1000,7 +1006,8 @@ public class QuestionMenageServImpl implements QuestionMenageService{
 		    
          } 
          
-         moyennePourcentage=moyenne(sommeMoyenePourcentage);
+         //moyennePourcentage=moyenne(sommeMoyenePourcentage);
+         moyennePourcentage=pourcentage(nombre, nombreTotal);
          moyenne=moyenne(sommeMoyene);
 
          Map<String,Object> donnee4=new HashMap<>();
@@ -1059,8 +1066,8 @@ public class QuestionMenageServImpl implements QuestionMenageService{
         pourcentage=0;
         moyenne=0;
         moyennePourcentage=0;
-            nombreTotal=menageRepository.getTotalProgrammeFormation(idExercice,idTrimestre);
-            nombre=menageRepository.getTotalEvaluationParticipantionAuxFormarmation(idExercice,idTrimestre);
+            nombreTotal+=menageRepository.getTotalProgrammeFormation(idExercice,idTrimestre);
+            nombre+=menageRepository.getTotalEvaluationParticipantionAuxFormarmation(idExercice,idTrimestre);
             pourcentage=pourcentage(nombre, nombreTotal);
 			pg = menageRepository.getEvaluationParticipantionAuxFormarmation(idExercice,idTrimestre,pagingSort);
 		    sommeMoyenePourcentage.add(pourcentage);
@@ -1068,14 +1075,14 @@ public class QuestionMenageServImpl implements QuestionMenageService{
 
          }else   if (idExercice!=null && idTrimestre==null) {
             List<Integer> trimestre=listTrimestre(idExercice);
-             for (int index = 0; index < trimestre.size(); index++) {
-                nombreTotal=0;
+        nombreTotal=0;
         nombre=0;
+             for (int index = 0; index < trimestre.size(); index++) { 
         pourcentage=0;
         moyenne=0;
         moyennePourcentage=0;
-            nombreTotal=menageRepository.getTotalProgrammeFormation(idExercice,trimestre.get(index));
-            nombre=menageRepository.getTotalEvaluationParticipantionAuxFormarmation(idExercice,trimestre.get(index));
+            nombreTotal+=menageRepository.getTotalProgrammeFormation(idExercice,trimestre.get(index));
+            nombre+=menageRepository.getTotalEvaluationParticipantionAuxFormarmation(idExercice,trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
             sommeMoyenePourcentage.add(pourcentage);
             sommeMoyene.add(nombre); 
@@ -1100,7 +1107,8 @@ public class QuestionMenageServImpl implements QuestionMenageService{
 		    
          } 
          
-         moyennePourcentage=moyenne(sommeMoyenePourcentage);
+         //moyennePourcentage=moyenne(sommeMoyenePourcentage);
+         moyennePourcentage=pourcentage(nombre, nombreTotal);
          moyenne=moyenne(sommeMoyene);
 
          Map<String,Object> donneeAssezMange=new HashMap<>();
@@ -1141,8 +1149,8 @@ public class QuestionMenageServImpl implements QuestionMenageService{
         pourcentage=0;
         moyenne=0;
         moyennePourcentage=0;
-            nombreTotal=menageRepository.getTotalAVH(idExercice,idTrimestre);
-            nombre=menageRepository.getTotalConsiderationPositiveAuxEnfantHendicape(idExercice,idTrimestre);
+            nombreTotal+=menageRepository.getTotalAVH(idExercice,idTrimestre);
+            nombre+=menageRepository.getTotalConsiderationPositiveAuxEnfantHendicape(idExercice,idTrimestre);
             pourcentage=pourcentage(nombre, nombreTotal);
 			pg = menageRepository.getConsiderationPositiveAuxEnfantHendicape(idExercice,idTrimestre,pagingSort);
 		    sommeMoyenePourcentage.add(pourcentage);
@@ -1150,14 +1158,14 @@ public class QuestionMenageServImpl implements QuestionMenageService{
 
          }else   if (idExercice!=null && idTrimestre==null) {
             List<Integer> trimestre=listTrimestre(idExercice);
-             for (int index = 0; index < trimestre.size(); index++) {
-                nombreTotal=0;
+         nombreTotal=0;
         nombre=0;
+             for (int index = 0; index < trimestre.size(); index++) {
         pourcentage=0;
         moyenne=0;
         moyennePourcentage=0;
-            nombreTotal=menageRepository.getTotalAVH(idExercice,trimestre.get(index));
-            nombre=menageRepository.getTotalConsiderationPositiveAuxEnfantHendicape(idExercice,trimestre.get(index));
+            nombreTotal+=menageRepository.getTotalAVH(idExercice,trimestre.get(index));
+            nombre+=menageRepository.getTotalConsiderationPositiveAuxEnfantHendicape(idExercice,trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
             sommeMoyenePourcentage.add(pourcentage);
             sommeMoyene.add(nombre); 
@@ -1166,9 +1174,9 @@ public class QuestionMenageServImpl implements QuestionMenageService{
 		    
          }else{
             List<Integer> trimestre=listTrimestre(null);
-             for (int index = 0; index < trimestre.size(); index++) {
-                nombreTotal=0;
+         nombreTotal=0;
         nombre=0;
+        for (int index = 0; index < trimestre.size(); index++) {
         pourcentage=0;
         moyenne=0;
         moyennePourcentage=0;
@@ -1182,7 +1190,8 @@ public class QuestionMenageServImpl implements QuestionMenageService{
 		    
          } 
          
-         moyennePourcentage=moyenne(sommeMoyenePourcentage);
+         //moyennePourcentage=moyenne(sommeMoyenePourcentage);
+         moyennePourcentage=pourcentage(nombre, nombreTotal);
          moyenne=moyenne(sommeMoyene);
 
          Map<String,Object> donnee2=new HashMap<>();
@@ -1239,8 +1248,8 @@ public class QuestionMenageServImpl implements QuestionMenageService{
         pourcentage=0;
         moyenne=0;
         moyennePourcentage=0;
-            nombreTotal=menageRepository.getTotal(idExercice,idTrimestre);
-            nombre=menageRepository.getTotalMenageHeure(idExercice,idTrimestre);
+            nombreTotal+=menageRepository.getTotal(idExercice,idTrimestre);
+            nombre+=menageRepository.getTotalMenageHeure(idExercice,idTrimestre);
             pourcentage=pourcentage(nombre, nombreTotal);
 			pg = menageRepository.getMenageHeure(idExercice,idTrimestre,pagingSort);
 		    sommeMoyenePourcentage.add(pourcentage);
@@ -1248,14 +1257,14 @@ public class QuestionMenageServImpl implements QuestionMenageService{
 
          }else   if (idExercice!=null && idTrimestre==null) {
             List<Integer> trimestre=listTrimestre(idExercice);
-             for (int index = 0; index < trimestre.size(); index++) {
-                nombreTotal=0;
+         nombreTotal=0;
         nombre=0;
+            for (int index = 0; index < trimestre.size(); index++) {
         pourcentage=0;
         moyenne=0;
         moyennePourcentage=0;
-            nombreTotal=menageRepository.getTotal(idExercice,trimestre.get(index));
-            nombre=menageRepository.getTotalMenageHeure(idExercice,trimestre.get(index));
+            nombreTotal+=menageRepository.getTotal(idExercice,trimestre.get(index));
+            nombre+=menageRepository.getTotalMenageHeure(idExercice,trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
             sommeMoyenePourcentage.add(pourcentage);
             sommeMoyene.add(nombre); 
@@ -1280,7 +1289,8 @@ public class QuestionMenageServImpl implements QuestionMenageService{
 		    
          } 
          
-         moyennePourcentage=moyenne(sommeMoyenePourcentage);
+         //moyennePourcentage=moyenne(sommeMoyenePourcentage);
+         moyennePourcentage=pourcentage(nombre, nombreTotal);
          moyenne=moyenne(sommeMoyene);
 
          Map<String,Object> donneeAssezMange=new HashMap<>();
@@ -1312,13 +1322,13 @@ public class QuestionMenageServImpl implements QuestionMenageService{
            sommeMoyene.clear(); 
         //2.	% d'enfants et de jeunes handicapés déclarant être plus heureux 
         if (idExercice!=null && idTrimestre!=null) {
-          nombreTotal=0;
+        nombreTotal=0;
         nombre=0;
         pourcentage=0;
         moyenne=0;
         moyennePourcentage=0;
-            nombreTotal=menageRepository.getTotal(idExercice,idTrimestre);
-            nombre=menageRepository.getTotalEnfantHandicapeHeure(idExercice,idTrimestre);
+            nombreTotal+=menageRepository.getTotal(idExercice,idTrimestre);
+            nombre+=menageRepository.getTotalEnfantHandicapeHeure(idExercice,idTrimestre);
             pourcentage=pourcentage(nombre, nombreTotal);
 			pg = menageRepository.getEnfantHandicapeHeure(idExercice,idTrimestre,pagingSort);
 		    sommeMoyenePourcentage.add(pourcentage);
@@ -1326,14 +1336,14 @@ public class QuestionMenageServImpl implements QuestionMenageService{
 
          }else   if (idExercice!=null && idTrimestre==null) {
             List<Integer> trimestre=listTrimestre(idExercice);
-             for (int index = 0; index < trimestre.size(); index++) {
-                nombreTotal=0;
+        nombreTotal=0;
         nombre=0;
+             for (int index = 0; index < trimestre.size(); index++) {
         pourcentage=0;
         moyenne=0;
         moyennePourcentage=0;
-            nombreTotal=menageRepository.getTotal(idExercice,trimestre.get(index));
-            nombre=menageRepository.getTotalEnfantHandicapeHeure(idExercice,trimestre.get(index));
+            nombreTotal+=menageRepository.getTotal(idExercice,trimestre.get(index));
+            nombre+=menageRepository.getTotalEnfantHandicapeHeure(idExercice,trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
             sommeMoyenePourcentage.add(pourcentage);
             sommeMoyene.add(nombre); 
@@ -1358,7 +1368,8 @@ public class QuestionMenageServImpl implements QuestionMenageService{
 		    
          } 
          
-         moyennePourcentage=moyenne(sommeMoyenePourcentage);
+         //moyennePourcentage=moyenne(sommeMoyenePourcentage);
+         moyennePourcentage=pourcentage(nombre, nombreTotal);
          moyenne=moyenne(sommeMoyene);
 
          Map<String,Object> donnee2=new HashMap<>();
@@ -1396,8 +1407,8 @@ public class QuestionMenageServImpl implements QuestionMenageService{
         pourcentage=0;
         moyenne=0;
         moyennePourcentage=0;
-            nombreTotal=menageRepository.getTotal(idExercice,idTrimestre);
-            nombre=menageRepository.getTotalMenageMieuxAccepteSocialementEconomiquementCommunaute(idExercice,idTrimestre);
+            nombreTotal+=menageRepository.getTotal(idExercice,idTrimestre);
+            nombre+=menageRepository.getTotalMenageMieuxAccepteSocialementEconomiquementCommunaute(idExercice,idTrimestre);
             pourcentage=pourcentage(nombre, nombreTotal);
 			pg = menageRepository.getMenageMieuxAccepteSocialementEconomiquementCommunaute(idExercice,idTrimestre,pagingSort);
 		    sommeMoyenePourcentage.add(pourcentage);
@@ -1405,14 +1416,14 @@ public class QuestionMenageServImpl implements QuestionMenageService{
 
          }else   if (idExercice!=null && idTrimestre==null) {
             List<Integer> trimestre=listTrimestre(idExercice);
-             for (int index = 0; index < trimestre.size(); index++) {
-                nombreTotal=0;
+        nombreTotal=0;
         nombre=0;
+             for (int index = 0; index < trimestre.size(); index++) {
         pourcentage=0;
         moyenne=0;
         moyennePourcentage=0;
-            nombreTotal=menageRepository.getTotal(idExercice,trimestre.get(index));
-            nombre=menageRepository.getTotalMenageMieuxAccepteSocialementEconomiquementCommunaute(idExercice,trimestre.get(index));
+            nombreTotal+=menageRepository.getTotal(idExercice,trimestre.get(index));
+            nombre+=menageRepository.getTotalMenageMieuxAccepteSocialementEconomiquementCommunaute(idExercice,trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
             sommeMoyenePourcentage.add(pourcentage);
             sommeMoyene.add(nombre); 
@@ -1437,7 +1448,8 @@ public class QuestionMenageServImpl implements QuestionMenageService{
 		    
          } 
          
-         moyennePourcentage=moyenne(sommeMoyenePourcentage);
+         //moyennePourcentage=moyenne(sommeMoyenePourcentage);
+         moyennePourcentage=pourcentage(nombre, nombreTotal);
          moyenne=moyenne(sommeMoyene);
 
          Map<String,Object> donnee3=new HashMap<>();
@@ -1496,8 +1508,8 @@ public class QuestionMenageServImpl implements QuestionMenageService{
         pourcentage=0;
         moyenne=0;
         moyennePourcentage=0;
-            nombreTotal=menageRepository.getTotal(idExercice,idTrimestre); 
-            nombre=menageRepository.getTotalFamilleAugmentRevenuParFournie(idExercice,idTrimestre); 
+            nombreTotal+=menageRepository.getTotal(idExercice,idTrimestre); 
+            nombre+=menageRepository.getTotalFamilleAugmentRevenuParFournie(idExercice,idTrimestre); 
             pourcentage=pourcentage(nombre, nombreTotal);
 			pg = menageRepository.getFamilleAugmentRevenuParFournie(idExercice,idTrimestre,pagingSort);
 		    sommeMoyenePourcentage.add(pourcentage);
@@ -1505,14 +1517,14 @@ public class QuestionMenageServImpl implements QuestionMenageService{
 
          }else   if (idExercice!=null && idTrimestre==null) {
             List<Integer> trimestre=listTrimestre(idExercice);
-             for (int index = 0; index < trimestre.size(); index++) {
-                nombreTotal=0;
+        nombreTotal=0;
         nombre=0;
+             for (int index = 0; index < trimestre.size(); index++) {
         pourcentage=0;
         moyenne=0;
         moyennePourcentage=0;
-            nombreTotal=menageRepository.getTotal(idExercice,trimestre.get(index));
-            nombre=menageRepository.getTotalFamilleAugmentRevenuParFournie(idExercice,trimestre.get(index));
+            nombreTotal+=menageRepository.getTotal(idExercice,trimestre.get(index));
+            nombre+=menageRepository.getTotalFamilleAugmentRevenuParFournie(idExercice,trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
             sommeMoyenePourcentage.add(pourcentage);
             sommeMoyene.add(nombre); 
@@ -1536,8 +1548,9 @@ public class QuestionMenageServImpl implements QuestionMenageService{
 			pg = menageRepository.getFamilleAugmentRevenuParFournie(idExercice,pagingSort);
 		    
          } 
-         
-         moyennePourcentage=moyenne(sommeMoyenePourcentage);
+
+         //moyennePourcentage=moyenne(sommeMoyenePourcentage);
+         moyennePourcentage=pourcentage(nombre, nombreTotal);
          moyenne=moyenne(sommeMoyene);
 
          Map<String,Object> donne1=new HashMap<>();
@@ -1585,7 +1598,7 @@ public class QuestionMenageServImpl implements QuestionMenageService{
          }else   if (idExercice!=null && idTrimestre==null) {
             List<Integer> trimestre=listTrimestre(idExercice);
              for (int index = 0; index < trimestre.size(); index++) {
-                nombreTotal=0;
+        nombreTotal=0;
         nombre=0;
         pourcentage=0;
         moyenne=0;
@@ -1654,8 +1667,8 @@ public class QuestionMenageServImpl implements QuestionMenageService{
         pourcentage=0;
         moyenne=0;
         moyennePourcentage=0;
-            nombreTotal=menageRepository.getTotalAVH(idExercice,idTrimestre);
-            nombre=menageRepository.getTotalFemillePrete(idExercice,idTrimestre);
+            nombreTotal+=menageRepository.getTotalAVH(idExercice,idTrimestre);
+            nombre+=menageRepository.getTotalFemillePrete(idExercice,idTrimestre);
             pourcentage=pourcentage(nombre, nombreTotal);
 			pg = menageRepository.getFemillePrete(idExercice,idTrimestre,pagingSort);
 		    sommeMoyenePourcentage.add(pourcentage);
@@ -1663,14 +1676,14 @@ public class QuestionMenageServImpl implements QuestionMenageService{
 
          }else   if (idExercice!=null && idTrimestre==null) {
             List<Integer> trimestre=listTrimestre(idExercice);
-             for (int index = 0; index < trimestre.size(); index++) {
-                nombreTotal=0;
+        nombreTotal=0;
         nombre=0;
+             for (int index = 0; index < trimestre.size(); index++) {
         pourcentage=0;
         moyenne=0;
         moyennePourcentage=0;
-            nombreTotal=menageRepository.getTotal(idExercice,trimestre.get(index));
-            nombre=menageRepository.getTotalFemillePrete(idExercice,trimestre.get(index));
+            nombreTotal+=menageRepository.getTotal(idExercice,trimestre.get(index));
+            nombre+=menageRepository.getTotalFemillePrete(idExercice,trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
             sommeMoyenePourcentage.add(pourcentage);
             sommeMoyene.add(nombre); 
@@ -1695,7 +1708,8 @@ public class QuestionMenageServImpl implements QuestionMenageService{
 		    
          } 
          
-         moyennePourcentage=moyenne(sommeMoyenePourcentage);
+         //moyennePourcentage=moyenne(sommeMoyenePourcentage);
+         moyennePourcentage=pourcentage(nombre, nombreTotal);
          moyenne=moyenne(sommeMoyene);
 
          Map<String,Object> donnee3=new HashMap<>();
@@ -1734,8 +1748,8 @@ public class QuestionMenageServImpl implements QuestionMenageService{
         pourcentage=0;
         moyenne=0;
         moyennePourcentage=0;
-            nombreTotal=menageRepository.getTotal(idExercice,idTrimestre);
-            nombre=menageRepository.getTotalChoixFamilleEnAGR(idExercice,idTrimestre);
+            nombreTotal+=menageRepository.getTotal(idExercice,idTrimestre);
+            nombre+=menageRepository.getTotalChoixFamilleEnAGR(idExercice,idTrimestre);
             pourcentage=pourcentage(nombre, nombreTotal);
 			pg = menageRepository.getChoixFamilleEnAGR(idExercice,idTrimestre,pagingSort);
 		    sommeMoyenePourcentage.add(pourcentage);
@@ -1749,8 +1763,8 @@ public class QuestionMenageServImpl implements QuestionMenageService{
         pourcentage=0;
         moyenne=0;
         moyennePourcentage=0;
-            nombreTotal=menageRepository.getTotal(idExercice,trimestre.get(index));
-            nombre=menageRepository.getTotalChoixFamilleEnAGR(idExercice,trimestre.get(index));
+            nombreTotal+=menageRepository.getTotal(idExercice,trimestre.get(index));
+            nombre+=menageRepository.getTotalChoixFamilleEnAGR(idExercice,trimestre.get(index));
             pourcentage=pourcentage(nombre, nombreTotal);
             sommeMoyenePourcentage.add(pourcentage);
             sommeMoyene.add(nombre); 
@@ -1759,9 +1773,9 @@ public class QuestionMenageServImpl implements QuestionMenageService{
 		    
          }else{
             List<Integer> trimestre=listTrimestre(null);
-             for (int index = 0; index < trimestre.size(); index++) {
-                nombreTotal=0;
+        nombreTotal=0;
         nombre=0;
+            for (int index = 0; index < trimestre.size(); index++) {
         pourcentage=0;
         moyenne=0;
         moyennePourcentage=0;
@@ -1775,7 +1789,8 @@ public class QuestionMenageServImpl implements QuestionMenageService{
 		    
          } 
          
-         moyennePourcentage=moyenne(sommeMoyenePourcentage);
+         //moyennePourcentage=moyenne(sommeMoyenePourcentage);
+         moyennePourcentage=pourcentage(nombre, nombreTotal);
          moyenne=moyenne(sommeMoyene);
 
          Map<String,Object> donnee4=new HashMap<>();
