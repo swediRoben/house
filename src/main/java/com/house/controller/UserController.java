@@ -46,7 +46,8 @@ public class UserController {
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
             @RequestParam(defaultValue = "id,desc") String[] sort) {
-
+                if (size == 0)
+                size = Integer.MAX_VALUE;
         try {
             List<Sort.Order> orders = new ArrayList<Sort.Order>();
 
@@ -65,13 +66,17 @@ public class UserController {
 
             Page<UserEntity> entityPage = null;
             if (title == null)
-                entityPage = repository.findAll(pagingSort);
+               {
+                 entityPage = repository.findAll(pagingSort);
+               }else{
+                entityPage = repository.getByUsernameAndEmail(title,pagingSort);
+               }
 
 
             entities = entityPage.getContent();
 
             Map<String, Object> response = new HashMap<>();
-            response.put("users", entities);
+            response.put("data", entities);
             response.put("currentPage", entityPage.getNumber());
             response.put("totalItems", entityPage.getTotalElements());
             response.put("totalPages", entityPage.getTotalPages());
@@ -98,30 +103,28 @@ public class UserController {
 
         if (repository.existsByUsername(dto.getUsername()))
             return new ResponseEntity<>(new ResponseHelper(MessageHelper.dataExist("username"), false),
-                    HttpStatus.BAD_REQUEST);
+                    HttpStatus.NOT_ACCEPTABLE);
 
         UserDto userDto = userService.create1(dto);
 
         if (userDto != null) {
-            return new ResponseEntity<>(new ResponseHelper("sucess", true), HttpStatus.OK);
+            return new ResponseEntity<>(new ResponseHelper("operation successful", true), HttpStatus.OK);
         }
-        return new ResponseEntity<>(new ResponseHelper(MessageHelper.noContent()), HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(new ResponseHelper(MessageHelper.operationFeild(),false), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity<?> update(@RequestBody UserDto dto,
-                                    @PathVariable(name = "id") Integer id) {
-        Optional<UserEntity> usernameExist = repository.verificationUsernname(id,
-                dto.getUsername());
-        if (usernameExist.isPresent())
+                                    @PathVariable(name = "id") Integer id) {  
+        if ( repository.verificationUsernname(id,dto.getUsername()))
             return new ResponseEntity<>(
                     new ResponseHelper(("username " + dto.getUsername() + " exist"), true),
-                    HttpStatus.BAD_REQUEST);
+                    HttpStatus.NOT_ACCEPTABLE);
         UserDto userDto = userService.updatem(id, dto);
         if (userDto != null) {
-            return new ResponseEntity<>(new ResponseHelper("sucess", true), HttpStatus.OK);
-        }
-        return new ResponseEntity<>(new ResponseHelper(MessageHelper.noContent()), HttpStatus.OK);
+            return new ResponseEntity<>(new ResponseHelper("operation successful", true), HttpStatus.OK);
+        }else 
+        return new ResponseEntity<>(new ResponseHelper(MessageHelper.operationFeild(),false), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
@@ -174,7 +177,11 @@ public class UserController {
                 return new ResponseEntity<>(new ResponseHelper("Invalid username or password", true), HttpStatus.BAD_REQUEST);
             }
             if (dto.getUsername().equals(dto1.getUsername()) && dto.getPassword().equals(dto1.getPassword()))
-                return new ResponseEntity<>(new ResponseHelper("success", true), HttpStatus.OK);
+             {
+                dto1.setPassword(null);
+                dto1.setDateCreation(null); 
+                return new ResponseEntity<>(new ResponseHelper("success", dto1,true), HttpStatus.OK);
+             }
 
             return new ResponseEntity<>(HttpStatus.OK);
         }

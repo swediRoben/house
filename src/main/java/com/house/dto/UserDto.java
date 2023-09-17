@@ -13,12 +13,15 @@ private String tel;
 private String sex;
 private String dateCreation;
 private String roles;
+private Integer acces;
+
 public Integer getId() {
 	return id;
 }
 public void setId(Integer id) {
 	this.id = id;
 }
+
 public String getUsername() {
 	return username;
 }
@@ -68,5 +71,11 @@ public void setRoles(String roles) {
 	this.roles = roles;
 }
 
+public Integer getAcces() {
+	return acces;
+}
 
+public void setAcces(Integer acces) {
+	this.acces=acces;
+}
 }

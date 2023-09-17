@@ -37,6 +37,7 @@ private String sex;
 private Date dateCreation;
 
 private String roles;
+private Integer acces;
 
 public Integer getId() {
 	return id;
@@ -114,6 +115,12 @@ public static long getSerialversionuid() {
 	return serialVersionUID;
 }
 
+public Integer getAcces() {
+	return acces;
+}
 
+public void setAcces(Integer acces) {
+	this.acces=acces;
+}
 
 }

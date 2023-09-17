@@ -26,9 +26,10 @@ return new BCryptPasswordEncoder();
 
 
 
-private static final String[] UN_SECURED_URLs = {
+private static final String[] UN_SECURED_URLs = { 
 
         "/question_menage/**",
+        "/historique/**",
         "/constantes_param/**",
         "/dashBord/**",
         "/rapport/**",

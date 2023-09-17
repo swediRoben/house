@@ -72,7 +72,8 @@ public class ExerciceControler {
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
             @RequestParam(defaultValue = "id,desc") String[] sort) {
-
+                if (size == 0)
+                size = Integer.MAX_VALUE;
         try {
             List<Order> orders = new ArrayList<Order>();
 
@@ -91,7 +92,11 @@ public class ExerciceControler {
 
             Page<ExerciceEntity> pageTuts = null;
             if (title == null)
-                pageTuts = repository.findAll(pagingSort);
+            {
+                    pageTuts = repository.findAll(pagingSort);
+            }else{
+                    pageTuts = repository.getByDesignation(title,pagingSort);
+            }
 
 
             exerciceEntities = pageTuts.getContent();
@@ -129,9 +134,9 @@ public class ExerciceControler {
         ExerciceDto exerciceDto = exerciceService.create(dto);
 
         if (exerciceDto != null) {
-            return new ResponseEntity<>(new ResponseHelper(null, exerciceDto, true), HttpStatus.OK);
+            return new ResponseEntity<>(new ResponseHelper("operation successful", exerciceDto, true), HttpStatus.OK);
         }
-        return new ResponseEntity<>(new ResponseHelper(MessageHelper.noContent()), HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(new ResponseHelper(MessageHelper.operationFeild(),false), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
@@ -139,9 +144,9 @@ public class ExerciceControler {
                                     @PathVariable(name = "id", required = true) Integer id) {
         ExerciceDto exerciceDto = exerciceService.update(id, dto);
         if (exerciceDto != null) {
-            return new ResponseEntity<>(new ResponseHelper(null, exerciceDto, true), HttpStatus.OK);
-        }
-        return new ResponseEntity<>(new ResponseHelper(MessageHelper.noContent()), HttpStatus.OK);
+            return new ResponseEntity<>(new ResponseHelper("operation successful", exerciceDto, true), HttpStatus.OK);
+        }else
+        return new ResponseEntity<>(new ResponseHelper(MessageHelper.operationFeild(),false), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)

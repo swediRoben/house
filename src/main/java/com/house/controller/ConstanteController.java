@@ -32,4 +32,15 @@ public class ConstanteController {
 		}
 
 	}
+
+	@GetMapping("/list_roles") 
+	public ResponseEntity<Object> getRole(@RequestHeader(name = "Accept-Language", required = false) String localeString) {
+		
+		if (!data.getRoles().isEmpty()) {
+			return new ResponseEntity<>(new ResponseHelper(MessageHelper.success(new Locale(localeString)), data.getRoles(), true), HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(new ResponseHelper(MessageHelper.success(new Locale(localeString)), false), HttpStatus.OK);
+		}
+
+	}
 }

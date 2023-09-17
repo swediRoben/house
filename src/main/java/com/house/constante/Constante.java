@@ -43,5 +43,22 @@ public class Constante {
                 return "eighth quarter";
             }
         }
-    }
+    } 
+    
+    	public enum roles {
+        admin {
+            public String toString() {
+                return "ADMINISTRATEUR";
+            }
+        },
+        enqeteur {
+            public String toString() {
+                return "INTERVIEWER";
+            }
+        },
+        autre {
+            public String toString() {
+                return "VISITOR";
+            }
+        }}
 }

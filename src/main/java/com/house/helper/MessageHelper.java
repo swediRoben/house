@@ -140,6 +140,9 @@ public class MessageHelper {
 		return "Aucune donnée à afficher!";
 	}
 
+	public static String operationFeild() {
+		return "operation failed!";
+	}
 	public static String deletedSuccessFully() {
 		return "Suppression éffectuée avec succès!";
 	}

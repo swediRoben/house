@@ -91,11 +91,10 @@ return result;
 
 }
 
-public UserDto updatem(int id, UserDto dto) {
-UserEntity entity = null;
-
+public UserDto updatem(Integer id, UserDto dto) {
+UserEntity entity = null; 
 try {
-entity = repository.getById(id);
+entity = repository.findById(id).get();
 dto.setId(entity.getId());
 entity = UserConvertDto.getInstance().toEntity(dto);
 UserEntity updated = repository.save(entity);

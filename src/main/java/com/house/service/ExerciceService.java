@@ -98,11 +98,11 @@ return result;
 
 }
 
-public ExerciceDto update(int id, ExerciceDto dto) {
+public ExerciceDto update(Integer id, ExerciceDto dto) {
 ExerciceEntity entity = null;
 
 try {
-entity = repository.getById(id);
+entity = repository.findById(id).get();
 dto.setId(entity.getId());
 entity = ExerciceConvertDto.getInstance().toEntity(dto);
 ExerciceEntity updated = repository.save(entity);
