@@ -132,7 +132,7 @@ public class UserController {
         boolean dto = userService.deleteByIdm(id);
 
         if (dto) {
-            return new ResponseEntity<>(new ResponseHelper("Deletion successful", true), HttpStatus.OK);
+            return new ResponseEntity<>(new ResponseHelper("Deleted successful", true), HttpStatus.OK);
         }
         return new ResponseEntity<>(new ResponseHelper(MessageHelper.noContent()), HttpStatus.NO_CONTENT);
     }

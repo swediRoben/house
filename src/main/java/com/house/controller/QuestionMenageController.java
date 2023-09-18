@@ -133,7 +133,7 @@ public class QuestionMenageController {
                    boolean dataDelete = service.delete(id);
                    if (dataDelete) {
                            return new ResponseEntity<>(
-                                           new ResponseHelper(MessageHelper.message("Deletion successful"), true),
+                                           new ResponseHelper(MessageHelper.message("Deleted successful"), true),
                                            HttpStatus.OK);
                    } else {
                            return new ResponseEntity<>(new ResponseHelper(MessageHelper.message("Delete failed because this item is linked to other data"), false),
