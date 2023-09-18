@@ -48,7 +48,9 @@ public class NewUSers {
         user.setPassword("123");
         user.setSex("1");
         user.setRoles("admin");
-        user.setLastname("admin");
+        user.setLastname("ADMINISTRATEUR");
+        user.setAcces(0);
+        //user.setActivite(true);
         user.setDateCreation(new Date());
         useRepository.save(user);
 

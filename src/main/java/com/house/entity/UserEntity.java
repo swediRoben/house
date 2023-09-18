@@ -32,6 +32,8 @@ private String password;
 private String tel;
 @Column(name = "sex")
 private String sex;
+// @Column(name = "activite")
+// private boolean activite;
 @Column(name = "date_creation")
 @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 private Date dateCreation;
@@ -122,5 +124,11 @@ public Integer getAcces() {
 public void setAcces(Integer acces) {
 	this.acces=acces;
 }
+// public boolean getActivite() {
+// 	return activite;
+// }
 
+// public void setActivite(boolean activite) {
+// 	this.activite=activite;
+// }
 }

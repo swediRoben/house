@@ -14,6 +14,7 @@ private String sex;
 private String dateCreation;
 private String roles;
 private Integer acces;
+//private boolean activite;
 
 public Integer getId() {
 	return id;
@@ -78,4 +79,12 @@ public Integer getAcces() {
 public void setAcces(Integer acces) {
 	this.acces=acces;
 }
+
+// public boolean getActivite() {
+// 	return activite;
+// }
+
+// public void setActivite(boolean activite) {
+// 	this.activite=activite;
+// }
 }

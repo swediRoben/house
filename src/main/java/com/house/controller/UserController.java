@@ -132,7 +132,7 @@ public class UserController {
         boolean dto = userService.deleteByIdm(id);
 
         if (dto) {
-            return new ResponseEntity<>(new ResponseHelper("sucess", true), HttpStatus.OK);
+            return new ResponseEntity<>(new ResponseHelper("Deletion successful", true), HttpStatus.OK);
         }
         return new ResponseEntity<>(new ResponseHelper(MessageHelper.noContent()), HttpStatus.NO_CONTENT);
     }
@@ -176,6 +176,10 @@ public class UserController {
             if (!user.getPassword().equals(dto.getPassword())) {
                 return new ResponseEntity<>(new ResponseHelper("Invalid username or password", true), HttpStatus.BAD_REQUEST);
             }
+
+            //  if (!user.isActivite()) {
+            //     return new ResponseEntity<>(new ResponseHelper("you are not allowed", true), HttpStatus.UNAUTHORIZED);
+            // }
             if (dto.getUsername().equals(dto1.getUsername()) && dto.getPassword().equals(dto1.getPassword()))
              {
                 dto1.setPassword(null);

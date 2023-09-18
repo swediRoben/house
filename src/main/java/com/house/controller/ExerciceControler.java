@@ -154,7 +154,7 @@ public class ExerciceControler {
         boolean dto = exerciceService.deleteById(id);
 
         if (dto) {
-            return new ResponseEntity<>(new ResponseHelper(null, dto, true), HttpStatus.OK);
+            return new ResponseEntity<>(new ResponseHelper("Deletion successful", dto, true), HttpStatus.OK);
         }
         return new ResponseEntity<>(new ResponseHelper(MessageHelper.noContent()), HttpStatus.NO_CONTENT);
     }

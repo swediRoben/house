@@ -25,6 +25,7 @@ entity.setSex(dto.getSex());
 entity.setDateCreation(DateHelper.toDate(dto.getDateCreation()));
 entity.setRoles(dto.getRoles());
 entity.setAcces(dto.getAcces());
+//entity.setActivite(true);
 return entity;
 }
 
@@ -41,7 +42,7 @@ dto.setTel(entity.getTel());
 dto.setSex(entity.getSex());
 dto.setRoles(entity.getRoles());
 dto.setAcces(entity.getAcces());
-
+//dto.setActivite(entity.getActivite());
 dto.setDateCreation(DateHelper.toText(entity.getDateCreation()));
 return dto;
 }
