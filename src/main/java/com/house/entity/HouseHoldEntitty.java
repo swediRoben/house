@@ -75,6 +75,13 @@ public class HouseHoldEntitty implements Serializable {
     private Boolean childrenWithDisabilities;
     @Column(name = "numberOfChildrenWithDisabilities")
     private Integer numberOfChildrenWithDisabilities;
+
+	private Integer province;
+	private Integer AireDeSante;
+	private Integer ZoneDeSante;
+	private String Avenue;
+	private Integer NumeroDeTelephone;
+	private Integer NumeroDeTelephone2;
 	public Integer getId() {
 		return id;
 	}
@@ -216,6 +223,52 @@ public class HouseHoldEntitty implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-    
-    
+
+	public Integer getProvince() {
+		return province;
+	}
+
+	public void setProvince(Integer province) {
+		this.province = province;
+	}
+
+	public Integer getAireDeSante() {
+		return AireDeSante;
+	}
+
+	public void setAireDeSante(Integer aireDeSante) {
+		AireDeSante = aireDeSante;
+	}
+
+	public Integer getZoneDeSante() {
+		return ZoneDeSante;
+	}
+
+	public void setZoneDeSante(Integer zoneDeSante) {
+		ZoneDeSante = zoneDeSante;
+	}
+
+	public String getAvenue() {
+		return Avenue;
+	}
+
+	public void setAvenue(String avenue) {
+		Avenue = avenue;
+	}
+
+	public Integer getNumeroDeTelephone() {
+		return NumeroDeTelephone;
+	}
+
+	public void setNumeroDeTelephone(Integer numeroDeTelephone) {
+		NumeroDeTelephone = numeroDeTelephone;
+	}
+
+	public Integer getNumeroDeTelephone2() {
+		return NumeroDeTelephone2;
+	}
+
+	public void setNumeroDeTelephone2(Integer numeroDeTelephone2) {
+		NumeroDeTelephone2 = numeroDeTelephone2;
+	}
 }

@@ -46,8 +46,10 @@ public Map<String, Object> getHistorique(Integer idMenage, Integer idUSer, Integ
         List<HistoriqueDto> list = new ArrayList<>(); 
         List<HistoriqueEntity> dataEntity = pg.getContent();
         for (HistoriqueEntity historiqueEntity : dataEntity) {
-            HistoriqueDto questionMenageDto = HistoriqueConvert.getInstance().toDto(historiqueEntity);
-            list.add(questionMenageDto);
+            HistoriqueDto historiqueDto = HistoriqueConvert.getInstance().toDto(historiqueEntity);
+            historiqueDto.getUser().setPassword(null);
+
+            list.add(historiqueDto);
         } 
       Map<String, Object> dtos = PagingAndSortingHelper.filteredAndSortedResult(pg.getNumber(), pg.getSize(), pg.getTotalPages(),
         list);

@@ -44,8 +44,14 @@ public class HouseHoldConvertDto {
         entity.setHPVWomen(dto.getHPVWomen());
         entity.setChildrenWithDisabilities(dto.getChildrenWithDisabilities());
         entity.setNumberOfChildrenWithDisabilities(dto.getNumberOfChildrenWithDisabilities());
+        entity.setProvince(dto.getProvince());
+        entity.setAireDeSante(dto.getAireDeSante());
+        entity.setZoneDeSante(dto.getZoneDeSante());
+        entity.setAvenue(dto.getAvenue());
+        entity.setNumeroDeTelephone(dto.getNumeroDeTelephone());
+        entity.setNumeroDeTelephone2(dto.getNumeroDeTelephone2());
 
-;
+
         return entity;
     }
 
@@ -81,6 +87,13 @@ public class HouseHoldConvertDto {
         dto.setChildrenWithDisabilities(entity.getChildrenWithDisabilities());
         dto.setNumberOfChildrenWithDisabilities(entity.getNumberOfChildrenWithDisabilities());
 
+
+        dto.setProvince(entity.getProvince());
+        dto.setAireDeSante(entity.getAireDeSante());
+        dto.setZoneDeSante(entity.getZoneDeSante());
+        dto.setAvenue(entity.getAvenue());
+        dto.setNumeroDeTelephone(entity.getNumeroDeTelephone());
+        dto.setNumeroDeTelephone2(entity.getNumeroDeTelephone2());
         return dto;
     }
 }
