@@ -32,11 +32,11 @@ public class HouseHoldDto {
     private Integer numberOfChildrenWithDisabilities;
 
 	private Integer province;
-	private Integer AireDeSante;
-	private Integer ZoneDeSante;
-	private String Avenue;
-	private Integer NumeroDeTelephone;
-	private Integer NumeroDeTelephone2;
+	private Integer aireDeSante;
+	private Integer zoneDeSante;
+	private String avenue;
+	private Long numeroDeTelephone;
+	private Long numeroDeTelephone2;
 	public Integer getId() {
 		return id;
 	}
@@ -185,42 +185,42 @@ public class HouseHoldDto {
 	}
 
 	public Integer getAireDeSante() {
-		return AireDeSante;
+		return aireDeSante;
 	}
 
 	public void setAireDeSante(Integer aireDeSante) {
-		AireDeSante = aireDeSante;
+		this.aireDeSante = aireDeSante;
 	}
 
 	public Integer getZoneDeSante() {
-		return ZoneDeSante;
+		return zoneDeSante;
 	}
 
 	public void setZoneDeSante(Integer zoneDeSante) {
-		ZoneDeSante = zoneDeSante;
+		this.zoneDeSante = zoneDeSante;
 	}
 
 	public String getAvenue() {
-		return Avenue;
+		return avenue;
 	}
 
 	public void setAvenue(String avenue) {
-		Avenue = avenue;
+		this.avenue = avenue;
 	}
 
-	public Integer getNumeroDeTelephone() {
-		return NumeroDeTelephone;
+	public Long getNumeroDeTelephone() {
+		return numeroDeTelephone;
 	}
 
-	public void setNumeroDeTelephone(Integer numeroDeTelephone) {
-		NumeroDeTelephone = numeroDeTelephone;
+	public void setNumeroDeTelephone(Long numeroDeTelephone) {
+		this.numeroDeTelephone = numeroDeTelephone;
 	}
 
-	public Integer getNumeroDeTelephone2() {
-		return NumeroDeTelephone2;
+	public Long getNumeroDeTelephone2() {
+		return numeroDeTelephone2;
 	}
 
-	public void setNumeroDeTelephone2(Integer numeroDeTelephone2) {
-		NumeroDeTelephone2 = numeroDeTelephone2;
+	public void setNumeroDeTelephone2(Long numeroDeTelephone2) {
+		this.numeroDeTelephone2 = numeroDeTelephone2;
 	}
 }

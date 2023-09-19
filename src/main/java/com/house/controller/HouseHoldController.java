@@ -53,7 +53,7 @@ public class HouseHoldController {
 
 
     @GetMapping("/")
-    public ResponseEntity<Map<String, Object>> getAllTutorialsPage(
+    public ResponseEntity<Map<String, Object>> getAllHouseHoldPage(
             @RequestParam(required = false) String title,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
@@ -81,8 +81,14 @@ public class HouseHoldController {
 
 
             tutorials = pageTuts.getContent();
-
             Map<String, Object> response = new HashMap<>();
+
+            response.put("s", tutorials);
+            if ( tutorials == null){
+                return new ResponseEntity<>(response, HttpStatus.OK);
+            }
+
+
             response.put("tutorials", tutorials);
             response.put("currentPage", pageTuts.getNumber());
             response.put("totalItems", pageTuts.getTotalElements());
