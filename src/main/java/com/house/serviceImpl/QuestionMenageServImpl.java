@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.Map; 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,8 +14,7 @@ import org.springframework.stereotype.Service;
 import com.house.convertDto.QuestionMenageConvert;
 import com.house.dto.QuestionMenageDto;
 import com.house.entity.HistoriqueEntity;
-import com.house.entity.QuestionMenageEntity;
-import com.house.helper.DateHelper;
+import com.house.entity.QuestionMenageEntity; 
 import com.house.helper.PagingAndSortingHelper;
 import com.house.repository.HistoriqueRepository;
 import com.house.repository.QuestionMenageRepository;
@@ -71,18 +69,20 @@ public class QuestionMenageServImpl implements QuestionMenageService{
     public boolean upDateQuestion(Long id, QuestionMenageDto questionMenageDto) {
       
         questionMenageDto.setId(id);
-		QuestionMenageEntity data = QuestionMenageConvert.getInstance().toEntity(questionMenageDto);
+		QuestionMenageEntity dataQuestion = QuestionMenageConvert.getInstance().toEntity(questionMenageDto);
 		try { 
-			 menageRepository.save(data);
-                  HistoriqueEntity entity = new HistoriqueEntity(); 
+		
+                QuestionMenageDto data = QuestionMenageConvert.getInstance().toDto(dataQuestion);
+                HistoriqueEntity entity = new HistoriqueEntity(); 
                 entity.setIdUser(data.getIdUser()); 
                 entity.setIdMenage(data.getIdMenage());
-                entity.setIdExercice(data.getMenage().getIdExercise());
+                entity.setIdExercice(data.getMenageDto().getIdExercise());
                 entity.setIdTrimestre(data.getIdTrimestre());
                  entity.setType("update"); 
-                entity.setClasse("questionnaire"); 
-                entity.setDate(new Date());
+                entity.setClasse("questionnaire");   
+                 entity.setDate(new Date());
                 historiqueRepository.save(entity);
+  	         menageRepository.save(dataQuestion);
              return true;
 		} catch (Exception e) {
 			return false;
@@ -102,21 +102,21 @@ public class QuestionMenageServImpl implements QuestionMenageService{
 
     @Override
     public boolean delete(Long id) {
-        Optional<QuestionMenageEntity> question = menageRepository.findById(id);
+         QuestionMenageEntity  data = menageRepository.findById(id).get();
         try {  
-             if (question.isPresent()) { 
-              menageRepository.deleteById(id); 
-
+                 QuestionMenageDto question = QuestionMenageConvert.getInstance().toDto(data);
                 HistoriqueEntity entity = new HistoriqueEntity(); 
-                entity.setIdUser(question.get().getIdUser()); 
-                entity.setIdMenage(question.get().getIdMenage());
-                entity.setIdExercice(question.get().getMenage().getIdExercise());
-                entity.setIdTrimestre(question.get().getIdTrimestre());
+                entity.setIdUser(question.getIdUser()); 
+                entity.setIdMenage(question.getIdMenage());
+                entity.setIdExercice(question.getMenageDto().getIdExercise());
+                entity.setIdTrimestre(question.getIdTrimestre());   
                  entity.setType("delete"); 
                 entity.setClasse("questionnaire"); 
                 entity.setDate(new Date());
+                              
                 historiqueRepository.save(entity);  
-             }
+                menageRepository.deleteById(id);
+            
             return true;
         } catch (Exception e) {
             return false;

@@ -1,6 +1,7 @@
 package com.house.service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -73,5 +74,23 @@ public boolean deleteAll() {
     } catch (Exception e) {
           return false;
     }
+}
+
+public List<HistoriqueDto> getAlls() {
+  List<HistoriqueEntity> histo= repository.findAll();
+  List<HistoriqueDto> list= new ArrayList<>();
+
+     try {
+        for (HistoriqueEntity historiqueEn : histo) {
+          System.out.println("list  : ****************************"+historiqueEn.getIdExercice());
+            HistoriqueDto historiqueDto = HistoriqueConvert.getInstance().toDto(historiqueEn);
+            historiqueDto.getUser().setPassword(null);
+
+            list.add(historiqueDto);
+        } 
+     } catch (Exception e) {
+      list=Collections.emptyList();
+     }
+    return list;
 } 
 }

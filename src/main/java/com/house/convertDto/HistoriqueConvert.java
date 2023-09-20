@@ -1,10 +1,6 @@
 package com.house.convertDto;
-
-import com.house.dto.EnqueteDto;
-import com.house.dto.ExerciceDto;
-import com.house.dto.HistoriqueDto;
-import com.house.entity.EnqueteEntity;
-import com.house.entity.ExerciceEntity;
+ 
+import com.house.dto.HistoriqueDto; 
 import com.house.entity.HistoriqueEntity;
 import com.house.helper.DateHelper;
 
@@ -45,14 +41,15 @@ HistoriqueDto dto = new HistoriqueDto();
 dto.setIdUser(entity.getIdUser());
 dto.setIdMenage(entity.getIdMenage());
 dto.setIdExercice(entity.getIdExercice());
-dto.setIdTrimestre(entity.getIdTrimestre());
-dto.setExercice(entity.getExerciceEntity());
-dto.setUser(entity.getUserEntity());
-dto.setMenage(entity.getMenage());
+dto.setIdTrimestre(entity.getIdTrimestre()+1);
+dto.setExercice(ExerciceConvertDto.getInstance().toDto(entity.getExerciceEntity()));
+dto.setUser(UserConvertDto.getInstance().toDto( entity.getUserEntity()));
+dto.setMenage(HouseHoldConvertDto.getInstance().toDto(entity.getMenage()));
 dto.setType(entity.getType());
 dto.setClasse(entity.getClasse());
-
-dto.setDate(DateHelper.toText(entity.getDate()));
+if (entity.getDate()!=null) {
+  dto.setDate(DateHelper.toText(entity.getDate()));  
+}
 return dto;
 }
 

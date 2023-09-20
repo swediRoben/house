@@ -65,12 +65,12 @@ public class QuestionMenageController {
   
         if (service.checkQuarter(questionMenageDto.getIdMenage(),questionMenageDto.getIdTrimestre()) ) {
         return new ResponseEntity<>(
-        new ResponseHelper(MessageHelper.message(" this quarter's information exists "), false),HttpStatus.NOT_ACCEPTABLE);
+        new ResponseHelper(MessageHelper.message("the information for this household already exists in this quarter"), false),HttpStatus.NOT_ACCEPTABLE);
         }
 
         if (service.checkMenageIfExistInTrimestre(questionMenageDto.getIdMenage(),questionMenageDto.getIdTrimestre()) ) {
         return new ResponseEntity<>(
-        new ResponseHelper(MessageHelper.message("you registered this household during this quarter. "), false),HttpStatus.NOT_ACCEPTABLE);
+        new ResponseHelper(MessageHelper.message("you have already registered this household during this quarter. the information for this household already exists in this quarter"), false),HttpStatus.NOT_ACCEPTABLE);
         } 
         if (questionMenageDto.getIdMenage()==null ) {
         return new ResponseEntity<>(

@@ -18,7 +18,7 @@ import lombok.Data;
 public class HistoriqueEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", length = 30)
+    @Column(name = "id", length = 10)
     private Long id;
     @Column(name = "id_user")
     private Integer idUser;
@@ -35,6 +35,7 @@ public class HistoriqueEntity {
     @Column(name = "classe")
     private String classe;
 
+    @Column(name = "date")
     private Date date;
 
     @ManyToOne(fetch = FetchType.LAZY)
