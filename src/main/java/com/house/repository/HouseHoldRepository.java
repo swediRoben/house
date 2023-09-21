@@ -29,4 +29,10 @@ Integer nombreSansMenageHandicape(Integer idExercice);
 //@Query("SELECT count(e) > 0 FROM ExerciceEntity e  WHERE e.id = :id")
 //boolean existsByExercise(Integer id);
 
+@Query("select SUM(h.combienPersonHandicapeEnfant) from  HouseHoldEntitty  h where h.idExercise=?1 ")
+Integer nombreEnfantHandicape(Integer idExercice);
+
+@Query("select SUM(h.combienPersonHandicapeJeunesse) from HouseHoldEntitty  h where h.idExercise=?1")
+Integer nombreJeuneHandicape(Integer idExercice);
+
 }

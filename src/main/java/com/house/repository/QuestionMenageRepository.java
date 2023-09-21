@@ -398,13 +398,5 @@ Integer getTotalTrimestreChoixFamilleEnAGR(Integer idTrimestre);
 double getTotalChoixFamilleEnAGR(Integer idTrimestre);
 
 @Query("select count(p) > 0 from QuestionMenageEntity p where  p.idMenage=?1 and p.idTrimestre=?2")
-boolean checkMenageIfExistInTrimestre(Integer idMenage, Integer idTrimestre);
-
-@Query("select SUM(p.combienPersonHandicapeEnfant) from QuestionMenageEntity p JOIN HouseHoldEntitty  h ON p.idMenage=h.id  where h.idExercise=?1 and p.idTrimestre=?2")
-Integer nombreEnfantHandicape(Integer idExercice, Integer trimestre);
-
-@Query("select SUM(p.combienPersonHandicapeJeunesse) from QuestionMenageEntity p JOIN HouseHoldEntitty  h ON p.idMenage=h.id  where h.idExercise=?1 and p.idTrimestre=?2")
-Integer nombreJeuneHandicape(Integer idExercice, Integer trimestre);
-
-
+boolean checkMenageIfExistInTrimestre(Integer idMenage, Integer idTrimestre); 
 }

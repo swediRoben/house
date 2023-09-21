@@ -37,6 +37,13 @@ public class HouseHoldDto {
 	private String avenue;
 	private Long numeroDeTelephone;
 	private Long numeroDeTelephone2;
+
+
+	private Boolean headOfHouseholdHavDisability;
+	private Boolean headOfHouseHoldDisabilityHaveIGA;
+	private Integer combienPersonHandicapeEnfant;
+	private Integer combienPersonHandicapeJeunesse;
+
 	public Integer getId() {
 		return id;
 	}

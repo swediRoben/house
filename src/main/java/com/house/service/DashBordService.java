@@ -45,26 +45,11 @@ public class DashBordService {
     } 
 
     public Map<String, Object> nombreHandicape(Integer idExercice) {
-        Map<String, Object> data=new HashMap<>();  
-        List<Integer> trimestre=listTrimestre(idExercice);
-         List<Integer> nombreEnfantHandicape=listTrimestre(idExercice);
-          List<Integer> nombreJeuneHandicape=listTrimestre(idExercice);
-        Integer totalEnfant=0;
-        Integer totalJeune=0;
-        for (int i = 0; i < trimestre.size(); i++) {
-            Integer nombreEnf =menageRepository.nombreEnfantHandicape(idExercice,trimestre.get(i));
-            Integer nombreJeun=menageRepository.nombreJeuneHandicape(idExercice,trimestre.get(i));
-          nombreEnfantHandicape.add(menageRepository.nombreEnfantHandicape(idExercice,trimestre.get(i)));
-          nombreJeuneHandicape.add(menageRepository.nombreJeuneHandicape(idExercice,trimestre.get(i)));
-        totalEnfant=totalEnfant+nombreEnf;
-        totalJeune=totalJeune+nombreJeun;
-     
-        }
-
-        data.put("nombreEnfantHandicapeTrimeste", nombreEnfantHandicape);
-        data.put("nombreJeuneHandicapeTrimeste", nombreEnfantHandicape);
-        data.put("totalEnfantHandicape", totalEnfant);
-        data.put("totalJeuneHandicape", totalJeune);
+        Map<String, Object> data=new HashMap<>();   
+            Integer nombreEnf =repository.nombreEnfantHandicape(idExercice);
+            Integer nombreJeun=repository.nombreJeuneHandicape(idExercice); 
+        data.put("totalEnfantHandicape", nombreEnf);
+        data.put("totalJeuneHandicape", nombreJeun);
 
         return data;
     }

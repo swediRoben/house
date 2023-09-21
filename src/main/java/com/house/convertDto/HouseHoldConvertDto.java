@@ -9,9 +9,10 @@ import java.text.ParseException;
 
 @Component
 public class HouseHoldConvertDto {
-    private HouseHoldConvertDto(){};
+    private HouseHoldConvertDto() {
+    };
 
-    public static HouseHoldConvertDto getInstance(){
+    public static HouseHoldConvertDto getInstance() {
         return new HouseHoldConvertDto();
     }
 
@@ -51,14 +52,17 @@ public class HouseHoldConvertDto {
         entity.setNumeroDeTelephone(dto.getNumeroDeTelephone());
         entity.setNumeroDeTelephone2(dto.getNumeroDeTelephone2());
 
-
+        entity.setHeadOfHouseholdHavDisability(dto.getHeadOfHouseholdHavDisability());
+        entity.setHeadOfHouseHoldDisabilityHaveIGA(dto.getHeadOfHouseHoldDisabilityHaveIGA());
+        entity.setCombienPersonHandicapeEnfant(dto.getCombienPersonHandicapeEnfant());
+        entity.setCombienPersonHandicapeJeunesse(dto.getCombienPersonHandicapeJeunesse());
         return entity;
     }
 
-    public HouseHoldDto toDto(HouseHoldEntitty entity){
+    public HouseHoldDto toDto(HouseHoldEntitty entity) {
         HouseHoldDto dto = new HouseHoldDto();
 
-        if (entity.getExercise() != null){
+        if (entity.getExercise() != null) {
             dto.setExercise(ExerciceConvertDto.getInstance().toDto(entity.getExercise()));
         }
         dto.setId(entity.getId());
@@ -87,13 +91,17 @@ public class HouseHoldConvertDto {
         dto.setChildrenWithDisabilities(entity.getChildrenWithDisabilities());
         dto.setNumberOfChildrenWithDisabilities(entity.getNumberOfChildrenWithDisabilities());
 
-
         dto.setProvince(entity.getProvince());
         dto.setAireDeSante(entity.getAireDeSante());
         dto.setZoneDeSante(entity.getZoneDeSante());
         dto.setAvenue(entity.getAvenue());
         dto.setNumeroDeTelephone(entity.getNumeroDeTelephone());
         dto.setNumeroDeTelephone2(entity.getNumeroDeTelephone2());
+
+        dto.setHeadOfHouseholdHavDisability(entity.getHeadOfHouseholdHavDisability());
+        dto.setHeadOfHouseHoldDisabilityHaveIGA(entity.getHeadOfHouseHoldDisabilityHaveIGA());
+        dto.setCombienPersonHandicapeEnfant(entity.getCombienPersonHandicapeEnfant());
+        dto.setCombienPersonHandicapeJeunesse(entity.getCombienPersonHandicapeJeunesse());
         return dto;
     }
 }
