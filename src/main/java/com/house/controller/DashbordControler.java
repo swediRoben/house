@@ -75,7 +75,7 @@ public class DashbordControler {
   
         List<Rapport> data = service.menageheureux(idExercice);
 
-        if (data.size() > 0) {
+        if (!data.isEmpty()) {
             return new ResponseEntity<>(new ResponseHelper("succes",data, true), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(new ResponseHelper("not found", false), HttpStatus.NOT_FOUND);
@@ -88,7 +88,7 @@ public class DashbordControler {
   
         List<Rapport> data = service.formation(idExercice);
 
-        if (data.size() > 0) {
+        if (!data.isEmpty()) {
             return new ResponseEntity<>(new ResponseHelper("succes",data, true), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(new ResponseHelper("not found", false), HttpStatus.NOT_FOUND);
