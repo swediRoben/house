@@ -398,5 +398,11 @@ Integer getTotalTrimestreChoixFamilleEnAGR(Integer idTrimestre);
 double getTotalChoixFamilleEnAGR(Integer idTrimestre);
 
 @Query("select count(p) > 0 from QuestionMenageEntity p where  p.idMenage=?1 and p.idTrimestre=?2")
-boolean checkMenageIfExistInTrimestre(Integer idMenage, Integer idTrimestre); 
+boolean checkMenageIfExistInTrimestre(Integer idMenage, Integer idTrimestre);
+
+@Query("select count(p)>0 from QuestionMenageEntity p where p.idMenage=?1 and p.idTrimestre=?2  and p.id!=id")
+boolean getByIdMenageAndIdTrimestre(Integer idMenage, Integer idTrimestre, Long id);
+
+@Query("select count(p) > 0 from QuestionMenageEntity p where p.idMenage=?1 and p.idTrimestre=?2 and p.id!=id")
+boolean checkMenageIfExistInTrimestre(Integer idMenage, Integer idTrimestre, Long id); 
 }

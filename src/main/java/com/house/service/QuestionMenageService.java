@@ -33,5 +33,9 @@ public interface QuestionMenageService {
             String[] sort);//
 
     boolean checkMenageIfExistInTrimestre(Integer idMenage, Integer idTrimestre);
+
+    boolean checkQuarter(Integer idMenage, Integer idTrimestre, Long id);
+
+    boolean checkMenageIfExistInTrimestre(Integer idMenage, Integer idTrimestre, Long id);
     
 }

@@ -9,6 +9,7 @@ import com.house.entity.ExerciceEntity;
 import com.house.entity.UserEntity;
 import com.house.repository.EnqueteRepository;
 import com.house.repository.ExerciceRepository;
+import com.house.repository.HistoriqueRepository;
 import com.house.repository.HouseHoldRepository;
 import com.house.repository.QuestionMenageRepository;
 import com.house.repository.UserRepository;
@@ -18,7 +19,8 @@ public class NewUSers {
    
      @Autowired
     private ExerciceRepository repository;
-
+  @Autowired
+    private HistoriqueRepository historiqueRepository;
      @Autowired
      private UserRepository useRepository;
 
@@ -59,6 +61,7 @@ public class NewUSers {
     
     public boolean deleteAll() {
     try {  
+        historiqueRepository.deleteAll();
      questionMenageRepository.deleteAll();
      holdRepository.deleteAll();
      enqueteRepository.deleteAll();

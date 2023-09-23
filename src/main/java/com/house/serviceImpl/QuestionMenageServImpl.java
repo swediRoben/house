@@ -70,20 +70,23 @@ public class QuestionMenageServImpl implements QuestionMenageService{
       
         questionMenageDto.setId(id);
 		QuestionMenageEntity dataQuestion = QuestionMenageConvert.getInstance().toEntity(questionMenageDto);
+        QuestionMenageEntity  data = menageRepository.findById(id).get();
 		try { 
-		
-                QuestionMenageDto data = QuestionMenageConvert.getInstance().toDto(dataQuestion);
+               if (data!=null) {
+                 QuestionMenageDto question = QuestionMenageConvert.getInstance().toDto(data);
                 HistoriqueEntity entity = new HistoriqueEntity(); 
-                entity.setIdUser(data.getIdUser()); 
-                entity.setIdMenage(data.getIdMenage());
-                entity.setIdExercice(data.getMenageDto().getIdExercise());
-                entity.setIdTrimestre(data.getIdTrimestre());
+                entity.setIdUser(question.getIdUser()); 
+                entity.setIdMenage(question.getIdMenage());
+                entity.setIdExercice(question.getMenageDto().getIdExercise());
+                entity.setIdTrimestre(question.getIdTrimestre());   
                  entity.setType("update"); 
-                entity.setClasse("questionnaire");   
-                 entity.setDate(new Date());
-                historiqueRepository.save(entity);
-  	         menageRepository.save(dataQuestion);
-             return true;
+                entity.setClasse("questionnaire"); 
+                entity.setDate(new Date());
+                   historiqueRepository.save(entity); 
+               } 
+
+           menageRepository.save(dataQuestion);
+                    return true; 
 		} catch (Exception e) {
 			return false;
 		}
@@ -1862,5 +1865,15 @@ public class QuestionMenageServImpl implements QuestionMenageService{
    public boolean checkMenageIfExistInTrimestre(Integer idMenage, Integer idTrimestre) {
       return menageRepository.checkMenageIfExistInTrimestre(idMenage,idTrimestre);
    }
+
+@Override
+public boolean checkQuarter(Integer idMenage, Integer idTrimestre, Long id) {
+       return menageRepository.getByIdMenageAndIdTrimestre(idMenage,idTrimestre,id);  
+}
+
+@Override
+public boolean checkMenageIfExistInTrimestre(Integer idMenage, Integer idTrimestre, Long id) {
+        return menageRepository.checkMenageIfExistInTrimestre(idMenage,idTrimestre,id);
+}
     
 }

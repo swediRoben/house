@@ -96,6 +96,17 @@ public class QuestionMenageController {
         @RequestBody QuestionMenageDto questionMenageDto){ 
 
         if (id==null) {
+
+         if (service.checkQuarter(questionMenageDto.getIdMenage(),questionMenageDto.getIdTrimestre(),id) ) {
+        return new ResponseEntity<>(
+        new ResponseHelper(MessageHelper.message("the information for this household already exists in this quarter"), false),HttpStatus.NOT_ACCEPTABLE);
+        }
+
+        if (service.checkMenageIfExistInTrimestre(questionMenageDto.getIdMenage(),questionMenageDto.getIdTrimestre(),id) ) {
+        return new ResponseEntity<>(
+        new ResponseHelper(MessageHelper.message("you have already registered this household during this quarter. the information for this household already exists in this quarter"), false),HttpStatus.NOT_ACCEPTABLE);
+        } 
+
         return new ResponseEntity<>(
         new ResponseHelper(MessageHelper.message("id not found"), false),HttpStatus.NOT_ACCEPTABLE);
         }  
