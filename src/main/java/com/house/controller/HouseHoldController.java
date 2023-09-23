@@ -52,8 +52,9 @@ public class HouseHoldController {
     }
 
 
-    @GetMapping("/")
+    @GetMapping("/getHouseholdsByIdExercice")
     public ResponseEntity<Map<String, Object>> getAllHouseHoldPage(
+            @RequestParam(required = false) Integer idExercise,
             @RequestParam(required = false) String title,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
@@ -76,8 +77,14 @@ public class HouseHoldController {
             Pageable pagingSort = PageRequest.of(page, size, Sort.by(orders));
 
             Page<HouseHoldEntitty> pageTuts = null;
-            if (title == null)
-                pageTuts = repository.findAll(pagingSort);
+            if (title == null && idExercise!=null)
+                {
+                    pageTuts = repository.findByIdExercise(idExercise,pagingSort); 
+                }else if (title != null && idExercise!=null) {
+                   pageTuts = repository.getByIdExerciseAndTitre(idExercise,title,pagingSort);  
+                }else{
+                  pageTuts = repository.findByIdExercise(null,pagingSort);   
+                }
 
 
             tutorials = pageTuts.getContent();

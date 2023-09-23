@@ -2,6 +2,9 @@ package com.house.repository;
 
 import com.house.entity.ExerciceEntity;
 import com.house.entity.HouseHoldEntitty;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -34,5 +37,10 @@ List<HouseHoldEntitty>  nombreEnfantHandicape(Integer idExercice);
 
 @Query("select h from HouseHoldEntitty  h where h.idExercise=?1 ")
 List<HouseHoldEntitty>  nombreJeuneHandicape(Integer idExercice);
+
+Page<HouseHoldEntitty> findByIdExercise(Integer idExercise, Pageable pagingSort);
+
+@Query("select h from  HouseHoldEntitty  h where h.idExercise=?1 and  (h.headOfHouseholdName like '%' || ?2  || '%')")
+Page<HouseHoldEntitty> getByIdExerciseAndTitre(Integer idExercise, String titre,Pageable pagingSort);
 
 }
