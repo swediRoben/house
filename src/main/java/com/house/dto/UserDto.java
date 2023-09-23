@@ -14,7 +14,6 @@ private String sex;
 private String dateCreation;
 private String roles;
 private Integer acces;
-private String token;
 //private boolean activite;
 
 public Integer getId() {
