@@ -152,11 +152,11 @@ public class MessageHelper {
 	}
 
 	public static String noContent(String name) {
-		return "Aucun " + name + " à afficher";
+		return "No " + name + " to display";
 	}
 
 	public static String dataExist(String name) {
-		return name + "  est déjà utilisé ";
+		return name +  "is already used ";
 	}
 
 	public static String canNotBeNull() {

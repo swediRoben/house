@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.house.dto.Rapport;
+import com.house.entity.HouseHoldEntitty;
 import com.house.repository.HouseHoldRepository;
 import com.house.repository.QuestionMenageRepository;
 
@@ -45,11 +46,23 @@ public class DashBordService {
     } 
 
     public Map<String, Object> nombreHandicape(Integer idExercice) {
-        Map<String, Object> data=new HashMap<>();   
-            Integer nombreEnf =repository.nombreEnfantHandicape(idExercice);
-            Integer nombreJeun=repository.nombreJeuneHandicape(idExercice); 
-        data.put("totalEnfantHandicape", nombreEnf);
-        data.put("totalJeuneHandicape", nombreJeun);
+        Map<String, Object> data=new HashMap<>();
+        Integer a=0;
+        Integer b=0;
+        List<HouseHoldEntitty> list=repository.nombreEnfantHandicape(idExercice);
+        for (HouseHoldEntitty houseHoldEntitty : list) {
+            if (houseHoldEntitty.getCombienPersonHandicapeEnfant()!=null ) {
+               a+=a+houseHoldEntitty.getCombienPersonHandicapeEnfant(); 
+            }
+        }
+        List<HouseHoldEntitty> listE=repository.nombreJeuneHandicape(idExercice); 
+        for (HouseHoldEntitty houseHoldEntitty : listE) {
+            if (houseHoldEntitty.getCombienPersonHandicapeJeunesse()!=null ) {
+               b=b+houseHoldEntitty.getCombienPersonHandicapeJeunesse(); 
+            }
+        }
+        data.put("totalEnfantHandicape", a);
+        data.put("totalJeuneHandicape", b);
 
         return data;
     }

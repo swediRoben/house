@@ -38,7 +38,7 @@ public class DateHelper {
             if (date_as_string != null && !date_as_string.equals("")) {
                 convert = format.parse(date_as_string);
             }
-
+   
         } catch (ParseException e) {
             System.out.println("Fail to convert to date: " + e.getMessage());
         }

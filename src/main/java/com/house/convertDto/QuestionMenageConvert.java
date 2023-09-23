@@ -1,4 +1,4 @@
-package com.house.convertDto;
+package com.house.convertDto; 
 
 import com.house.constante.StaticListOfValues;
 import com.house.constante.StaticValue;
@@ -243,9 +243,7 @@ public class QuestionMenageConvert {
         dto.setMembreSHG(questionMenageEntity.getMembreSHG());
         dto.setMembreStrictureCommunautaire(questionMenageEntity.getMembreStrictureCommunautaire());
         dto.setMembreStrictureCommunautaireLequel(questionMenageEntity.getMembreStrictureCommunautaireLequel());
-        dto.setUploaded(questionMenageEntity.getUploaded());
-
-        dto.setDateTime(DateHelper.toDate(questionMenageEntity.getDateTime()));
+        dto.setUploaded(questionMenageEntity.getUploaded()); 
         return dto;
     }
 }

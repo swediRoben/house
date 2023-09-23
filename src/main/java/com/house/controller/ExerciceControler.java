@@ -2,6 +2,7 @@ package com.house.controller;
 
 import com.house.dto.ExerciceDto;
 import com.house.entity.ExerciceEntity;
+import com.house.helper.DateHelper;
 import com.house.helper.MessageHelper;
 import com.house.helper.ResponseHelper;
 import com.house.repository.ExerciceRepository;
@@ -127,10 +128,12 @@ public class ExerciceControler {
     @PostMapping("/")
     public ResponseEntity<?> create(@RequestBody ExerciceDto dto) {
 
-        if (repository.existsByLibelle(dto.getLibelle()))
-            return new ResponseEntity<>(new ResponseHelper(MessageHelper.dataExist("libelle"), false),
+         if (repository.existsByLibelle(dto.getLibelle()))
+          {
+              return new ResponseEntity<>(new ResponseHelper(MessageHelper.dataExist("libelle"), false),
                     HttpStatus.BAD_REQUEST);
-
+          }
+ 
         ExerciceDto exerciceDto = exerciceService.create(dto);
 
         if (exerciceDto != null) {
@@ -142,6 +145,11 @@ public class ExerciceControler {
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity<?> update(@RequestBody ExerciceDto dto,
                                     @PathVariable(name = "id", required = true) Integer id) {
+       if (repository.existsByLibelle(dto.getLibelle(),id))
+          {
+              return new ResponseEntity<>(new ResponseHelper(MessageHelper.dataExist("libelle"), false),
+                    HttpStatus.BAD_REQUEST);
+          } 
         ExerciceDto exerciceDto = exerciceService.update(id, dto);
         if (exerciceDto != null) {
             return new ResponseEntity<>(new ResponseHelper("operation successful", exerciceDto, true), HttpStatus.OK);

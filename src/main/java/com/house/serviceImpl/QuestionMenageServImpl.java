@@ -93,6 +93,7 @@ public class QuestionMenageServImpl implements QuestionMenageService{
     public boolean createQuestion(QuestionMenageDto questionMenageDto) {
            QuestionMenageEntity data = QuestionMenageConvert.getInstance().toEntity(questionMenageDto);  
 		try { 
+            data.setDateTime(new Date());
 		   menageRepository.save(data); 
            return true;
 		} catch (Exception e) {
@@ -665,7 +666,7 @@ public class QuestionMenageServImpl implements QuestionMenageService{
         donnee6.put("details",list6);  
          }
 
-        dataReturn.put("suffisammentNourriture12Mois", donnee6);
+        dataReturn.put("penurieAlimentaire", donnee6);
 
         sommeMoyenePourcentage.clear();
         sommeMoyene.clear();
