@@ -52,7 +52,7 @@ public class DashBordService {
         List<HouseHoldEntitty> list=repository.nombreEnfantHandicape(idExercice);
         for (HouseHoldEntitty houseHoldEntitty : list) {
             if (houseHoldEntitty.getCombienPersonHandicapeEnfant()!=null ) {
-               a+=a+houseHoldEntitty.getCombienPersonHandicapeEnfant(); 
+               a=a+houseHoldEntitty.getCombienPersonHandicapeEnfant(); 
             }
         }
         List<HouseHoldEntitty> listE=repository.nombreJeuneHandicape(idExercice); 
