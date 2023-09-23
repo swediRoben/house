@@ -1,5 +1,6 @@
 package com.house.controller;
  
+import java.util.Collections;
 import java.util.List; 
 import java.util.Map;
 
@@ -34,7 +35,7 @@ public class DashbordControler {
         if (data.size() > 0) {
             return new ResponseEntity<>(new ResponseHelper("succes",data, true), HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(new ResponseHelper("not found", false), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(new ResponseHelper(Collections.emptyList(), false), HttpStatus.NOT_FOUND);
         }
 
  } 
@@ -49,7 +50,7 @@ public class DashbordControler {
         if (data.size() > 0) {
             return new ResponseEntity<>(new ResponseHelper("succes", data, true), HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(new ResponseHelper("not found", false), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(new ResponseHelper(Collections.emptyList(), false), HttpStatus.NOT_FOUND);
         }
 
  }
@@ -64,7 +65,7 @@ public class DashbordControler {
         if (data.size() > 0) {
             return new ResponseEntity<>(new ResponseHelper("succes",data, true), HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(new ResponseHelper("not found", false), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(new ResponseHelper(Collections.emptyList(), false), HttpStatus.NOT_FOUND);
         }
 
  } 
@@ -78,7 +79,7 @@ public class DashbordControler {
         if (!data.isEmpty()) {
             return new ResponseEntity<>(new ResponseHelper("succes",data, true), HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(new ResponseHelper("not found", false), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(new ResponseHelper(Collections.emptyList(), false), HttpStatus.OK);
         }
     }
 
@@ -91,7 +92,7 @@ public class DashbordControler {
         if (!data.isEmpty()) {
             return new ResponseEntity<>(new ResponseHelper("succes",data, true), HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(new ResponseHelper("not found", false), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(new ResponseHelper(Collections.emptyList(), false), HttpStatus.OK);
         }
     }
 }
