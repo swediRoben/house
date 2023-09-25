@@ -70,6 +70,7 @@ public class QuestionMenageServImpl implements QuestionMenageService{
       
         questionMenageDto.setId(id);
 		QuestionMenageEntity dataQuestion = QuestionMenageConvert.getInstance().toEntity(questionMenageDto);
+        
         QuestionMenageEntity  data = menageRepository.findById(id).get();
 		try { 
                if (data!=null) {
@@ -84,7 +85,7 @@ public class QuestionMenageServImpl implements QuestionMenageService{
                 entity.setDate(new Date());
                    historiqueRepository.save(entity); 
                } 
-
+            dataQuestion.setDateTime(new Date());
            menageRepository.save(dataQuestion);
                     return true; 
 		} catch (Exception e) {

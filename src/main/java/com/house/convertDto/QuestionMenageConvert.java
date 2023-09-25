@@ -15,6 +15,7 @@ public class QuestionMenageConvert {
                 QuestionMenageDto dto = new QuestionMenageDto();
                 dto.setId(questionMenageEntity.getId()); 
         dto.setIdMenage(questionMenageEntity.getIdMenage()); 
+         dto.setIdUser(questionMenageEntity.getIdUser()); 
          dto.setIdTrimestre(questionMenageEntity.getIdTrimestre()); 
          dto.setIdUser(questionMenageEntity.getIdUser()); 
         if (questionMenageEntity.getIdTrimestre()!=null && questionMenageEntity.getIdTrimestre()<8) {
