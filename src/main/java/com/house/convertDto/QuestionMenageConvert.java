@@ -164,6 +164,7 @@ public class QuestionMenageConvert {
                 dto.setId(questionMenageEntity.getId());
                 dto.setIdMenage(questionMenageEntity.getIdMenage());
                 dto.setIdTrimestre(questionMenageEntity.getIdTrimestre());
+                dto.setIdUser(questionMenageEntity.getIdUser());
                 dto.setMenageProprieteMaison(questionMenageEntity.getMenageProprieteMaison());
                 dto.setEtattoitmaison(questionMenageEntity.getEtattoitmaison());
                 dto.setTypeToit(questionMenageEntity.getTypeToit());
