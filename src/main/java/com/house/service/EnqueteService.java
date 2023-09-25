@@ -6,6 +6,7 @@ import com.house.dto.EnqueteDto;
 import com.house.dto.ExerciceDto;
 import com.house.entity.EnqueteEntity;
 import com.house.entity.ExerciceEntity;
+import com.house.helper.DateHelper;
 import com.house.repository.EnqueteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -62,8 +63,8 @@ EnqueteDto dto = null;
 try {
 EnqueteEntity entity = EnqueteConvertDto.getInstance()
         .toEntity(enqueteDto);
-//entity.setDateCreation(DateHelper.now());
-EnqueteEntity fromBd = repository.save(entity);
+    entity.setDateCreation(DateHelper.now());
+    EnqueteEntity fromBd = repository.save(entity);
 
 dto = EnqueteConvertDto.getInstance().toDto(fromBd);
 

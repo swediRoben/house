@@ -49,7 +49,7 @@ public class NewUSers {
         user.setTel("000000");
         user.setPassword("123");
         user.setSex("1");
-        user.setRoles("admin");
+        user.setRoles("ADMINISTRATEUR");
         user.setLastname("ADMINISTRATEUR");
         user.setAcces(0);
         //user.setActivite(true);

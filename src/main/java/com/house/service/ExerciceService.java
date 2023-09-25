@@ -2,17 +2,10 @@ package com.house.service;
 
 import com.house.convertDto.ExerciceConvertDto;
 import com.house.dto.ExerciceDto;
-import com.house.entity.ExerciceEntity;
-import com.house.entity.HouseHoldEntitty;
-import com.house.helper.PagingAndSortingHelper;
+import com.house.entity.ExerciceEntity; 
 import com.house.repository.ExerciceRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.stereotype.Service;
-
-import java.text.ParseException;
+import org.springframework.beans.factory.annotation.Autowired; 
+import org.springframework.stereotype.Service; 
 import java.util.*;
 
 @Service

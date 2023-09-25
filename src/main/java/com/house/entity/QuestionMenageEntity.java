@@ -149,4 +149,23 @@ public class QuestionMenageEntity {
     @JoinColumn(name = "id_user", referencedColumnName = "id", insertable = false, updatable = false)
     private UserEntity userEntity; 
 
+    private Integer youthWithDisabilitiesNumber;
+    private Integer childrenWithDisabilitiesNumber;
+
+
+    private Integer roof;
+    private Integer flooring;
+    private Integer informationTool;
+    private Integer mainSourceOfEnergy;
+    private Boolean landOwnershipRegistered;
+    private Boolean houseHoldPracticeAgriculture;
+    private Integer houseHoldHaveMarketAccess;
+    private Integer timeToGetToMarket;
+    private Integer houseHoldHavAccessToMobilePayment;
+    private Integer whereToGetTreatment;
+    private Boolean healthProblemOrIllnessInLastThreeMonths;
+    private Integer howLongIllnessPreventFromActivity;
+    private Integer distanceBetweenResidenceAndConsultation;
+    private Boolean houseHoldMembersHaveHealthInsurance;
+    private Integer whoRunTheSchoolChildrenAttend;
 }
