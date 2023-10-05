@@ -43,6 +43,18 @@ public class MessageHelper {
 	}
  
 	
+	public static  String quarterExist(@RequestHeader(name = "Accept-Language", required = false) Locale locale) {
+		return messageSource.getMessage("lang.quarterExist", null, locale);
+	}
+
+	public static  String chooseQueter(@RequestHeader(name = "Accept-Language", required = false) Locale locale) {
+		return messageSource.getMessage("lang.noContent", null, locale);
+	}
+
+	public static  String chooseHouseOld(@RequestHeader(name = "Accept-Language", required = false) Locale locale) {
+		return messageSource.getMessage("lang.noContent", null, locale);
+	}
+
 	public static  String noContent(@RequestHeader(name = "Accept-Language", required = false) Locale locale) {
 		return messageSource.getMessage("lang.noContent", null, locale);
 	}
