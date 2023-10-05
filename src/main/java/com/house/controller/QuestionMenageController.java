@@ -65,20 +65,20 @@ public class QuestionMenageController {
   
         if (service.checkQuarter(questionMenageDto.getIdMenage(),questionMenageDto.getIdTrimestre()) ) {
         return new ResponseEntity<>(
-        new ResponseHelper(MessageHelper.message("the information for this household already exists in this quarter"), false),HttpStatus.NOT_ACCEPTABLE);
+        new ResponseHelper(MessageHelper.quarterExist(new Locale(localeString)), false),HttpStatus.NOT_ACCEPTABLE);
         }
 
         if (service.checkMenageIfExistInTrimestre(questionMenageDto.getIdMenage(),questionMenageDto.getIdTrimestre()) ) {
         return new ResponseEntity<>(
-        new ResponseHelper(MessageHelper.message("you have already registered this household during this quarter. the information for this household already exists in this quarter"), false),HttpStatus.NOT_ACCEPTABLE);
+        new ResponseHelper(MessageHelper.quarterExist(new Locale(localeString)), false),HttpStatus.NOT_ACCEPTABLE);
         } 
         if (questionMenageDto.getIdMenage()==null ) {
         return new ResponseEntity<>(
-        new ResponseHelper(MessageHelper.message("choose HouseOwn"), false),HttpStatus.NOT_ACCEPTABLE);
+        new ResponseHelper(MessageHelper.chooseHouseOld(new Locale(localeString)), false),HttpStatus.NOT_ACCEPTABLE);
         }  
         if (questionMenageDto.getIdTrimestre()==null ) {
         return new ResponseEntity<>(
-        new ResponseHelper(MessageHelper.message("choose Quarter"), false),HttpStatus.NOT_ACCEPTABLE);
+        new ResponseHelper(MessageHelper.chooseQueter(new Locale(localeString)), false),HttpStatus.NOT_ACCEPTABLE);
         } 
         boolean dataSave= service.createQuestion(questionMenageDto);
 
@@ -98,27 +98,22 @@ public class QuestionMenageController {
        
         if (id==null) { 
         return new ResponseEntity<>(
-        new ResponseHelper(MessageHelper.message("id not found"), false),HttpStatus.NOT_ACCEPTABLE);
+        new ResponseHelper(MessageHelper.notFound(new Locale(localeString)), false),HttpStatus.NOT_ACCEPTABLE);
         }  
 
         if (service.checkQuarter(questionMenageDto.getIdMenage(),questionMenageDto.getIdTrimestre()) && !service.checkQuarter(questionMenageDto.getIdMenage(),questionMenageDto.getIdTrimestre(),id) ) {
         return new ResponseEntity<>(
-        new ResponseHelper(MessageHelper.message("the information for this household already exists in this quarter"), false),HttpStatus.NOT_ACCEPTABLE);
-        }
-
-        if (service.checkMenageIfExistInTrimestre(questionMenageDto.getIdMenage(),questionMenageDto.getIdTrimestre(),id) ) {
-        return new ResponseEntity<>(
-        new ResponseHelper(MessageHelper.message("you have already registered this household during this quarter. the information for this household already exists in this quarter"), false),HttpStatus.NOT_ACCEPTABLE);
+        new ResponseHelper(MessageHelper.quarterExist(new Locale(localeString)), false),HttpStatus.NOT_ACCEPTABLE);
         }  
       
         if (questionMenageDto.getIdMenage()==null ) {
         return new ResponseEntity<>(
-        new ResponseHelper(MessageHelper.message("choose HouseOwn"), false),HttpStatus.NOT_ACCEPTABLE);
+        new ResponseHelper(MessageHelper.chooseHouseOld(new Locale(localeString)), false),HttpStatus.NOT_ACCEPTABLE);
         }
 
         if (questionMenageDto.getIdTrimestre()==null ) {
         return new ResponseEntity<>(
-        new ResponseHelper(MessageHelper.message("choose Quarter"), false),HttpStatus.NOT_ACCEPTABLE);
+        new ResponseHelper(MessageHelper.chooseQueter(new Locale(localeString)), false),HttpStatus.NOT_ACCEPTABLE);
         }
 
         boolean dataSave= service.upDateQuestion(id,questionMenageDto);
