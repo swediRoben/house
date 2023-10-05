@@ -1,6 +1,7 @@
 package com.house.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -400,8 +401,8 @@ double getTotalChoixFamilleEnAGR(Integer idTrimestre);
 @Query("select count(p) > 0 from QuestionMenageEntity p where  p.idMenage=?1 and p.idTrimestre=?2")
 boolean checkMenageIfExistInTrimestre(Integer idMenage, Integer idTrimestre);
 
-@Query("select count(p)>0 from QuestionMenageEntity p where p.idMenage=?1 and p.idTrimestre=?2  and p.id!=?3")
-boolean getByIdMenageAndIdTrimestre(Integer idMenage, Integer idTrimestre, Long id);
+@Query("select p from QuestionMenageEntity p where p.idMenage=?1 and p.idTrimestre=?2 and p.id=?3")
+Optional<QuestionMenageEntity> getByIdMenageAndIdTrimestre(Integer idMenage, Integer idTrimestre, Long id);
 
 @Query("select count(p) > 0 from QuestionMenageEntity p where p.idMenage=?1 and p.idTrimestre=?2 and p.id!=?3")
 boolean checkMenageIfExistInTrimestre(Integer idMenage, Integer idTrimestre, Long id); 

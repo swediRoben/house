@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map; 
+import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -1869,7 +1870,8 @@ public class QuestionMenageServImpl implements QuestionMenageService{
 
 @Override
 public boolean checkQuarter(Integer idMenage, Integer idTrimestre, Long id) {
-       return menageRepository.getByIdMenageAndIdTrimestre(idMenage,idTrimestre,id);  
+    Optional<QuestionMenageEntity> checkdata = menageRepository.getByIdMenageAndIdTrimestre(idMenage,idTrimestre,id);  
+		return checkdata.isPresent(); 
 }
 
 @Override
