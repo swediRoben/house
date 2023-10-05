@@ -95,9 +95,8 @@ public class QuestionMenageController {
          @RequestHeader(name = "Accept-Language", required = false) String localeString,
         @RequestBody QuestionMenageDto questionMenageDto){ 
 
-        if (id==null) {
-
-         if (service.checkQuarter(questionMenageDto.getIdMenage(),questionMenageDto.getIdTrimestre(),id) ) {
+        if (id==null) { 
+         if (service.checkQuarter(questionMenageDto.getIdMenage(),questionMenageDto.getIdTrimestre()) && !service.checkQuarter(questionMenageDto.getIdMenage(),questionMenageDto.getIdTrimestre(),id) ) {
         return new ResponseEntity<>(
         new ResponseHelper(MessageHelper.message("the information for this household already exists in this quarter"), false),HttpStatus.NOT_ACCEPTABLE);
         }
