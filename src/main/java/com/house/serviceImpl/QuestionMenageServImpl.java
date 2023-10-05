@@ -1869,7 +1869,7 @@ public class QuestionMenageServImpl implements QuestionMenageService{
    }
 
 @Override
-public boolean checkQuarter(Integer idMenage, Integer idTrimestre, Long id) {
+public boolean checkQuarter(Integer idMenage, Integer idTrimestre, Long id) { 
     Optional<QuestionMenageEntity> checkdata = menageRepository.getByIdMenageAndIdTrimestre(idMenage,idTrimestre,id);  
 		return checkdata.isPresent(); 
 }
