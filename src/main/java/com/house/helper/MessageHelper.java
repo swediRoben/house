@@ -22,6 +22,31 @@ public class MessageHelper {
 		return messageSource.getMessage("lang.success", null, locale);
 	}
 
+		public static  String deleted(@RequestHeader(name = "Accept-Language", required = false) Locale locale) {
+		return messageSource.getMessage("lang.deletedSuccessFully", null, locale);
+	}
+
+		public static  String echec(@RequestHeader(name = "Accept-Language", required = false) Locale locale) {
+		return messageSource.getMessage("lang.echec", null, locale);
+	}
+
+	 public static  String update(@RequestHeader(name = "Accept-Language", required = false) Locale locale) {
+		return messageSource.getMessage("lang.updatedSuccessFully.", null, locale);
+	}
+ 
+    public static  String save(@RequestHeader(name = "Accept-Language", required = false) Locale locale) {
+		return messageSource.getMessage("lang.createdSuccessfully", null, locale);
+	}
+
+	public static  String notFound(@RequestHeader(name = "Accept-Language", required = false) Locale locale) {
+		return messageSource.getMessage("lang.notFound", null, locale);
+	}
+ 
+	
+	public static  String noContent(@RequestHeader(name = "Accept-Language", required = false) Locale locale) {
+		return messageSource.getMessage("lang.noContent", null, locale);
+	}
+  
 	public static  String success() {
 		return "Operation completed successfully!";
 	}

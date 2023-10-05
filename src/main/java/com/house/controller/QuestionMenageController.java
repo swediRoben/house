@@ -51,7 +51,7 @@ public class QuestionMenageController {
         if (data.size() > 0) {
             return new ResponseEntity<>(new ResponseHelper(MessageHelper.success(new Locale(localeString)), data, true), HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(new ResponseHelper(MessageHelper.success(new Locale(localeString)), false), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(new ResponseHelper(MessageHelper.noContent(new Locale(localeString)), false), HttpStatus.NOT_FOUND);
         }
 
  }
@@ -83,9 +83,9 @@ public class QuestionMenageController {
         boolean dataSave= service.createQuestion(questionMenageDto);
 
         if (dataSave) {
-                   return new ResponseEntity<>(new ResponseHelper(MessageHelper.success(new Locale(localeString)), true),HttpStatus.CREATED);
+                   return new ResponseEntity<>(new ResponseHelper(MessageHelper.save(new Locale(localeString)), true),HttpStatus.CREATED);
             } else {
-                  return new ResponseEntity<>(new ResponseHelper(MessageHelper.message("Operation failed"), false),HttpStatus.INTERNAL_SERVER_ERROR);
+                  return new ResponseEntity<>(new ResponseHelper(MessageHelper.echec(new Locale(localeString)), false),HttpStatus.INTERNAL_SERVER_ERROR);
           }
    }
 
@@ -124,9 +124,9 @@ public class QuestionMenageController {
         boolean dataSave= service.upDateQuestion(id,questionMenageDto);
     
       if (dataSave) {
-            return new ResponseEntity<>(new ResponseHelper(MessageHelper.message("Update affected successfully"), true),HttpStatus.CREATED);
+            return new ResponseEntity<>(new ResponseHelper(MessageHelper.update(new Locale(localeString)), true),HttpStatus.CREATED);
      } else {
-           return new ResponseEntity<>(new ResponseHelper(MessageHelper.message("Operation failed"), false),HttpStatus.INTERNAL_SERVER_ERROR);
+           return new ResponseEntity<>(new ResponseHelper(MessageHelper.echec(new Locale(localeString)), false),HttpStatus.INTERNAL_SERVER_ERROR);
    }
 
    }
@@ -144,10 +144,10 @@ public class QuestionMenageController {
                    boolean dataDelete = service.delete(id);
                    if (dataDelete) {
                            return new ResponseEntity<>(
-                                           new ResponseHelper(MessageHelper.message("Deleted successful"), true),
+                                           new ResponseHelper(MessageHelper.deleted(new Locale(localeString)), true),
                                            HttpStatus.OK);
                    } else {
-                           return new ResponseEntity<>(new ResponseHelper(MessageHelper.message("Delete failed because this item is linked to other data"), false),
+                           return new ResponseEntity<>(new ResponseHelper(MessageHelper.echec(new Locale(localeString)), false),
                                            HttpStatus.INTERNAL_SERVER_ERROR);
                    }
            } 

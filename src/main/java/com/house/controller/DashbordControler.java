@@ -1,7 +1,8 @@
 package com.house.controller;
  
 import java.util.Collections;
-import java.util.List; 
+import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.house.dto.Rapport; 
+import com.house.dto.Rapport;
+import com.house.helper.MessageHelper;
 import com.house.helper.ResponseHelper;
 import com.house.service.DashBordService;
 
@@ -33,7 +35,7 @@ public class DashbordControler {
         Map<String, Object> data = service.countMenage(idExercice);
 
         if (data.size() > 0) {
-            return new ResponseEntity<>(new ResponseHelper("succes",data, true), HttpStatus.OK);
+            return new ResponseEntity<>(new ResponseHelper(MessageHelper.success(new Locale(localeString)),data, true), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(new ResponseHelper(Collections.emptyList(), false), HttpStatus.NOT_FOUND);
         }
@@ -48,7 +50,7 @@ public class DashbordControler {
         Map<String, Object> data = service.nombreHandicape(idExercice);
 
         if (data.size() > 0) {
-            return new ResponseEntity<>(new ResponseHelper("succes", data, true), HttpStatus.OK);
+            return new ResponseEntity<>(new ResponseHelper(MessageHelper.success(new Locale(localeString)), data, true), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(new ResponseHelper(Collections.emptyList(), false), HttpStatus.NOT_FOUND);
         }
@@ -63,7 +65,7 @@ public class DashbordControler {
         Map<String, Object> data = service.menagebyquestionnaire(idExercice);
 
         if (data.size() > 0) {
-            return new ResponseEntity<>(new ResponseHelper("succes",data, true), HttpStatus.OK);
+            return new ResponseEntity<>(new ResponseHelper(MessageHelper.success(new Locale(localeString)),data, true), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(new ResponseHelper(Collections.emptyList(), false), HttpStatus.NOT_FOUND);
         }
@@ -71,26 +73,28 @@ public class DashbordControler {
  } 
 
    @GetMapping(value = "/menageheureux")
-     public ResponseEntity<Object> menageheureux(      
+     public ResponseEntity<Object> menageheureux( 
+                                 @RequestHeader(name = "Accept-Language", required = false) String localeString,       
                                  @RequestParam(required = false) Integer idExercice) { 
   
         List<Rapport> data = service.menageheureux(idExercice);
 
         if (!data.isEmpty()) {
-            return new ResponseEntity<>(new ResponseHelper("succes",data, true), HttpStatus.OK);
+            return new ResponseEntity<>(new ResponseHelper(MessageHelper.success(new Locale(localeString)),data, true), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(new ResponseHelper(Collections.emptyList(), false), HttpStatus.OK);
         }
     }
 
        @GetMapping(value = "/formation")
-     public ResponseEntity<Object> formation(      
+     public ResponseEntity<Object> formation(   
+                                  @RequestHeader(name = "Accept-Language", required = false) String localeString,     
                                  @RequestParam(required = false) Integer idExercice) { 
   
         List<Rapport> data = service.formation(idExercice);
 
         if (!data.isEmpty()) {
-            return new ResponseEntity<>(new ResponseHelper("succes",data, true), HttpStatus.OK);
+            return new ResponseEntity<>(new ResponseHelper(MessageHelper.success(new Locale(localeString)),data, true), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(new ResponseHelper(Collections.emptyList(), false), HttpStatus.OK);
         }
