@@ -54,7 +54,7 @@ public class ExerciceControler {
 //    }
 
     @RequestMapping(value = "/getAll/a", method = RequestMethod.GET)
-    public ResponseEntity<?> getAll() {
+    public ResponseEntity<?> getAll(@RequestHeader(name = "Accept-Language", required = false) String localeString) {
         boolean admExist=uSers.verifyUserExist();
         if (!admExist) {
            uSers.createFestAdmin();
@@ -125,7 +125,7 @@ public class ExerciceControler {
     }
 
     @PostMapping("/")
-    public ResponseEntity<?> create(@RequestBody ExerciceDto dto) {
+    public ResponseEntity<?> create(@RequestHeader(name = "Accept-Language", required = false) String localeString,@RequestBody ExerciceDto dto) {
 
          if (repository.existsByLibelle(dto.getLibelle()))
           {
@@ -136,13 +136,13 @@ public class ExerciceControler {
         ExerciceDto exerciceDto = exerciceService.create(dto);
 
         if (exerciceDto != null) {
-            return new ResponseEntity<>(new ResponseHelper("operation successful", exerciceDto, true), HttpStatus.OK);
+            return new ResponseEntity<>(new ResponseHelper(MessageHelper.success(new Locale(localeString)), exerciceDto, true), HttpStatus.OK);
         }
-        return new ResponseEntity<>(new ResponseHelper(MessageHelper.operationFeild(),false), HttpStatus.OK);
+        return new ResponseEntity<>(new ResponseHelper(MessageHelper.echec(new Locale(localeString)),false), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<?> update(@RequestBody ExerciceDto dto,
+    public ResponseEntity<?> update(@RequestHeader(name = "Accept-Language", required = false) String localeString,@RequestBody ExerciceDto dto,
                                     @PathVariable(name = "id", required = true) Integer id) {
        if (repository.existsByLibelle(dto.getLibelle(),id))
           {
@@ -151,19 +151,19 @@ public class ExerciceControler {
           } 
         ExerciceDto exerciceDto = exerciceService.update(id, dto);
         if (exerciceDto != null) {
-            return new ResponseEntity<>(new ResponseHelper("operation successful", exerciceDto, true), HttpStatus.OK);
+            return new ResponseEntity<>(new ResponseHelper(MessageHelper.update(new Locale(localeString)), exerciceDto, true), HttpStatus.OK);
         }else
-        return new ResponseEntity<>(new ResponseHelper(MessageHelper.operationFeild(),false), HttpStatus.OK);
+        return new ResponseEntity<>(new ResponseHelper(MessageHelper.echec(new Locale(localeString)),false), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<?> deleteById(@PathVariable(name = "id") Integer id) {
+    public ResponseEntity<?> deleteById(@RequestHeader(name = "Accept-Language", required = false) String localeString,@PathVariable(name = "id") Integer id) {
         boolean dto = exerciceService.deleteById(id);
 
         if (dto) {
-            return new ResponseEntity<>(new ResponseHelper("Deleted successful", dto, true), HttpStatus.OK);
+            return new ResponseEntity<>(new ResponseHelper(MessageHelper.deleted(new Locale(localeString)), dto, true), HttpStatus.OK);
         }
-        return new ResponseEntity<>(new ResponseHelper(MessageHelper.noContent()), HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(new ResponseHelper(MessageHelper.deleteFeild(new Locale(localeString))), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 

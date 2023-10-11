@@ -142,7 +142,7 @@ public class QuestionMenageController {
                                            new ResponseHelper(MessageHelper.deleted(new Locale(localeString)), true),
                                            HttpStatus.OK);
                    } else {
-                           return new ResponseEntity<>(new ResponseHelper(MessageHelper.echec(new Locale(localeString)), false),
+                           return new ResponseEntity<>(new ResponseHelper(MessageHelper.deleteFeild(new Locale(localeString)), false),
                                            HttpStatus.INTERNAL_SERVER_ERROR);
                    }
            } 

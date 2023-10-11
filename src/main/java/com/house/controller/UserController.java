@@ -97,7 +97,7 @@ public class UserController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<?> create(@RequestBody UserDto dto) {
+    public ResponseEntity<?> create(@RequestHeader(name = "Accept-Language", required = false) String localeString,@RequestBody UserDto dto) {
 
         if (repository.existsByUsername(dto.getUsername()))
             return new ResponseEntity<>(new ResponseHelper(MessageHelper.dataExist("username"), false),
@@ -106,13 +106,13 @@ public class UserController {
         UserDto userDto = userService.create1(dto);
 
         if (userDto != null) {
-            return new ResponseEntity<>(new ResponseHelper("operation successful", true), HttpStatus.OK);
+            return new ResponseEntity<>(new ResponseHelper(MessageHelper.save(new Locale(localeString)), true), HttpStatus.OK);
         }
-        return new ResponseEntity<>(new ResponseHelper(MessageHelper.operationFeild(),false), HttpStatus.OK);
+        return new ResponseEntity<>(new ResponseHelper(MessageHelper.echec(new Locale(localeString)),false), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<?> update(@RequestBody UserDto dto,
+    public ResponseEntity<?> update(@RequestHeader(name = "Accept-Language", required = false) String localeString,@RequestBody UserDto dto,
                                     @PathVariable(name = "id") Integer id) {  
         if ( repository.verificationUsernname(id,dto.getUsername()))
             return new ResponseEntity<>(
@@ -120,19 +120,19 @@ public class UserController {
                     HttpStatus.NOT_ACCEPTABLE);
         UserDto userDto = userService.updatem(id, dto);
         if (userDto != null) {
-            return new ResponseEntity<>(new ResponseHelper("operation successful", true), HttpStatus.OK);
+            return new ResponseEntity<>(new ResponseHelper(MessageHelper.update(new Locale(localeString)), true), HttpStatus.OK);
         }else 
-        return new ResponseEntity<>(new ResponseHelper(MessageHelper.operationFeild(),false), HttpStatus.OK);
+        return new ResponseEntity<>(new ResponseHelper(MessageHelper.echec(new Locale(localeString)),false), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<?> deleteById(@PathVariable(name = "id") Integer id) {
+    public ResponseEntity<?> deleteById(@RequestHeader(name = "Accept-Language", required = false) String localeString,@PathVariable(name = "id") Integer id) {
         boolean dto = userService.deleteByIdm(id);
 
         if (dto) {
-            return new ResponseEntity<>(new ResponseHelper("Deleted successful", true), HttpStatus.OK);
+            return new ResponseEntity<>(new ResponseHelper(MessageHelper.deleted(new Locale(localeString)), true), HttpStatus.OK);
         }
-        return new ResponseEntity<>(new ResponseHelper(MessageHelper.noContent()), HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(new ResponseHelper(MessageHelper.deleteFeild(new Locale(localeString))), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @GetMapping("/getUsersByUsername/{username}")

@@ -58,6 +58,10 @@ public class MessageHelper {
 	public static  String noContent(@RequestHeader(name = "Accept-Language", required = false) Locale locale) {
 		return messageSource.getMessage("lang.noContent", null, locale);
 	}
+
+	 public static String deleteFeild(@RequestHeader(name = "Accept-Language", required = false) Locale locale) {
+			return messageSource.getMessage("lang.deleteFeild", null, locale);
+	}
   
 	public static  String success() {
 		return "Operation completed successfully!";
@@ -310,6 +314,8 @@ public class MessageHelper {
     public static String deletedSuccessFully(Locale locale) {
         return messageSource.getMessage("lang.deletedSuccessFully", null, locale);
     }
+
+
 
      
 }
