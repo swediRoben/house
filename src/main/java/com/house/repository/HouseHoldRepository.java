@@ -43,4 +43,7 @@ Page<HouseHoldEntitty> findByIdExercise(Integer idExercise, Pageable pagingSort)
 @Query("select h from  HouseHoldEntitty  h where h.idExercise=?1 and  (h.headOfHouseholdName like '%' || ?2  || '%')")
 Page<HouseHoldEntitty> getByIdExerciseAndTitre(Integer idExercise, String titre,Pageable pagingSort);
 
+@Query(value = "SELECT count(h)>0 FROM HouseHoldEntitty h WHERE h.idExercise =?1") 
+boolean checkManageByExercice(Integer idExercice);
+
 }

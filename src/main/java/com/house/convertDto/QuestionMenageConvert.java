@@ -26,6 +26,8 @@ public class QuestionMenageConvert {
 
         dto.setMenageDto(HouseHoldConvertDto.getInstance().toDto(questionMenageEntity.getMenage()));
         if (questionMenageEntity.getUserEntity()!=null) {
+                questionMenageEntity.getUserEntity().setAcces(null);
+                questionMenageEntity.getUserEntity().setPassword(null);  
                    dto.setUserDto(UserConvertDto.getInstance().toDto(questionMenageEntity.getUserEntity())); 
         }
 
