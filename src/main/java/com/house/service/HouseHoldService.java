@@ -135,10 +135,9 @@ public class HouseHoldService {
         return result;
     }
 
-        public boolean checkExercice(Integer idExercice) {
-            return repository.checkManageByExercice(idExercice);
-        }
-     
+    public boolean checkExercice(Integer idExercice) {
+        return repository.checkManageByExercice(idExercice);
+    }
 
  
 }

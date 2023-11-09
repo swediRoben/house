@@ -25,7 +25,7 @@ public class QuestionMenageConvert {
 		}
 
         dto.setMenageDto(HouseHoldConvertDto.getInstance().toDto(questionMenageEntity.getMenage()));
-        if (questionMenageEntity.getUserEntity()!=null) {
+        if (questionMenageEntity.getUserEntity()!=null) { 
                 questionMenageEntity.getUserEntity().setAcces(null);
                 questionMenageEntity.getUserEntity().setPassword(null);  
                    dto.setUserDto(UserConvertDto.getInstance().toDto(questionMenageEntity.getUserEntity())); 
@@ -37,6 +37,7 @@ public class QuestionMenageConvert {
         dto.setTyperevêtementSol(questionMenageEntity.getTyperevêtementSol());
         dto.setChaise(questionMenageEntity.getChaise());
         dto.setOutilInformation(questionMenageEntity.getOutilInformation());
+        dto.setOutilTransport(questionMenageEntity.getOutilTransport());
         dto.setElectricite(questionMenageEntity.getElectricite());
         dto.setElectriciteCuisine(questionMenageEntity.getElectriciteCuisine());
         dto.setMembreMenagePorteChaussirLit(questionMenageEntity.isMembreMenagePorteChaussirLit());
@@ -173,6 +174,7 @@ public class QuestionMenageConvert {
                 dto.setTyperevêtementSol(questionMenageEntity.getTyperevêtementSol());
                 dto.setChaise(questionMenageEntity.getChaise());
                 dto.setOutilInformation(questionMenageEntity.getOutilInformation());
+                dto.setOutilTransport(questionMenageEntity.getOutilTransport());
                 dto.setElectricite(questionMenageEntity.getElectricite());
                 dto.setElectriciteCuisine(questionMenageEntity.getElectriciteCuisine());
                 dto.setMembreMenagePorteChaussirLit(questionMenageEntity.isMembreMenagePorteChaussirLit());

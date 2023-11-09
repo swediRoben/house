@@ -133,7 +133,7 @@ public class HouseHoldController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteExercise(@RequestHeader(name = "Accept-Language", required = false) String localeString,@PathVariable Integer id) {
-             boolean dataDelete=houseHoldService.delete(id); 
+         boolean dataDelete=houseHoldService.delete(id); 
                    if (dataDelete) {
                            return new ResponseEntity<>(
                                            new ResponseHelper(MessageHelper.deleted(new Locale(localeString)), true),

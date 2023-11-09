@@ -30,7 +30,6 @@ public class ExerciceControler {
 
     @Autowired
     private HouseHoldService houseHoldService;
-    
     @Autowired
     private NewUSers uSers;
     
@@ -167,7 +166,6 @@ public class ExerciceControler {
             new ResponseHelper(MessageHelper.deleteFeild(new Locale(localeString))),HttpStatus.NOT_ACCEPTABLE);
             }  
 
-       
         boolean dto = exerciceService.deleteById(id);
 
         if (dto) {
