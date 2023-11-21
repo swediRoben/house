@@ -74,10 +74,13 @@ public class QuestionMenageEntity {
     private Double montantEstimer;
     private Integer premiereBesoinManage;
     private boolean activteEnfantHandicapeAGR;//
+    private Integer activteEnfantHandicapeAGR2;//
     private boolean enfantHandicapeDicussionGroupe; //
+    private Integer enfantHandicapeDicussionGroupe2; // 
     private Integer familleAugmentRevenuParFournie;//
     private double epargneMnsuelleMoyenneParFemme;//
     private boolean femillePrete;//
+    private Integer femillePrete2;// 
     private Integer choixFamilleEnAGR;//
 
     private Integer menageTerrain;
@@ -127,8 +130,10 @@ public class QuestionMenageEntity {
     private Integer principalProblemeScolaire;
     private Integer chefDeEcole;
     private Integer principaleRaisonEnfantNonScolarise;
-    private boolean enfantHadicapeAbandonneEcole;//
+    private boolean enfantHadicapeAbandonneEcole;
+    private Integer enfantHadicapeAbandonneEcole2;//
     private boolean enfantHadicapeScolariser;//
+    private Integer enfantHadicapeScolariser2;//
     private double resourceFinancierePourenfantHadicape;//
 
     private Integer membreFoyer;
